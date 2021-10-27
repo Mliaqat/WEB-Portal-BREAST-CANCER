@@ -3,7 +3,8 @@ import styled from "styled-components";
 export const Footerstyle = styled.footer`
 
 background: ${(p) => p.theme.colors.BRICK_RED};
-/* margin-top: 15rem; */
+
+
 
 h4{
     margin-top: 2rem;
@@ -14,7 +15,7 @@ h4{
 
 .icon{
     >svg{
-        width: 2rem;
+     width: 2rem;
     height: 2rem;
     }
     background: #ffbecf;

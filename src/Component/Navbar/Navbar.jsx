@@ -1,6 +1,7 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom';
 import { Link } from "react-router-dom";
+import logo from "../../Asset/images/Logo.png"
 import { Navbarstyle } from './Navbar.style';
 
 function Navbar() {
@@ -19,7 +20,7 @@ function Navbar() {
         <Navbarstyle>
             <nav className="navbar fixed-top navbar-expand-lg navbar-dark p-md-3">
                 <div className="container">
-                    <a className="navbar-brand" href="#">Breast Cancer Prediction</a>
+                    <img src={logo} width={200} />
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
@@ -35,9 +36,9 @@ function Navbar() {
                                 <a className="nav-link text-white" href="#">About</a>
                             </NavLink>
                             <NavLink className="nav-item" activeClassName="is-active" to="Team">
-                                <a className="nav-link text-white" href="#">Team</a>
+                                <a className="nav-link text-white" to="/Team" href="#">Team</a>
                             </NavLink>
-                            <NavLink className="nav-item" activeClassName="is-active" to="Contactus">
+                            <NavLink className="nav-item" activeClassName="is-active" to="/Contact">
                                 <a className="nav-link text-white" href="#">Contact Us</a>
                             </NavLink>
                             <NavLink className="nav-item" activeClassName="is-active" to="/Login">

@@ -1,4 +1,5 @@
 import React from 'react';
+import 'animate.css';
 import { Blockqotestyle, Futurestyle, Headerstyle, Headingstyle, Missionstyle } from './Home.style';
 import img from '../../Asset/images/women.png';
 import { Help, Message, Ribbion, Support } from '../../Asset/Icon/Icon';
@@ -9,11 +10,11 @@ const Header = () => {
 
         <Headerstyle>
             <article className="header">
-                <article>
-                    <h1>Helping Women Now!</h1>
+                <article className="animate__animated animate__fadeInLeft">
+                    <h1 >Helping Women Now!</h1>
                     <button className="btn">More Information!</button>
                 </article>
-                <picture>
+                <picture className="animate__animated animate__fadeInRight">
                     <img src={img} alt="" />
                 </picture>
             </article>
@@ -27,9 +28,9 @@ const Mission = () => {
 
         <Missionstyle>
             <article className="missioncontainer">
-                <h1>OUR Mission</h1>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum nulla alias modi deserunt nihil rerum aspernatur eius omnis cumque quam eum eveniet blanditiis accusantium sunt quod, laudantium voluptatem quos iste.</p>
-                <button className="btn">Click Here!</button>
+                <h1 className="animate__animated animate__fadeInLeft">OUR Mission</h1>
+                <p className="animate__animated animate__fadeInRight">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum nulla alias modi deserunt nihil rerum aspernatur eius omnis cumque quam eum eveniet blanditiis accusantium sunt quod, laudantium voluptatem quos iste.</p>
+                <button className="btn animate__animated animate__fadeInUp">Click Here!</button>
             </article>
         </Missionstyle>
     )

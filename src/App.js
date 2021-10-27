@@ -7,6 +7,9 @@ import { GlobalStyle } from './style/globalStyle';
 import Home from './Pages/Home/Home';
 import Footer from './Component/Footer/Footer';
 import Login from './Pages/Login/Login';
+import Team from './Pages/Team/Team';
+import Contact from './Pages/Contact/Contact';
+import About from './Pages/About/About';
 
 function App() {
   return (
@@ -17,6 +20,10 @@ function App() {
           <Navbar />
           <Route exact={true} path="/" component={Home} />
           <Route path="/Login" component={Login} />
+          <Route path="/Team" component={Team} />
+          <Route path="/Contact" component={Contact} />
+          <Route path="/About" component={About} />
+
           <Footer />
         </ThemeProvider>
       </Switch>
