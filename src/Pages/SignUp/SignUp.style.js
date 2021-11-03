@@ -1,51 +1,66 @@
 import styled from "styled-components";
-import { CommonButton } from "../../style/commomStyle";
+import { CommonButton, FlexboxStyle } from "../../style/commomStyle";
 import img from "../../Asset/images/Login.png";
 
-export const Loginstyle = styled.article`
+export const Signupstyle = styled.article`
   background-image: url(${img});
+  background-repeat: no-repeat;
   width: 100%;
+  background-size: 100% 100%;
   .card {
-    height: 47rem;
-    width: 40rem;
     background-color: rgba(0, 0, 0, 0.5) !important;
     margin: 12rem 0rem 4rem 0rem;
+    border-radius: 2rem;
 
     .card-header {
       color: white;
       font-weight: 800;
+      text-align: center;
       padding: 1rem;
     }
 
     .card-body {
       padding: 4rem;
     }
+
     .form-group {
-      margin-bottom: 1rem;
+      margin-bottom: 2rem;
+      text-align: center;
+      label {
+        color: white;
+        font-size: 2rem;
+        padding: 0rem 0rem 1rem 0rem;
+        float: left;
+      }
     }
     .form-control {
       font-size: 2rem;
+      border-radius: 0.5rem !important;
+      padding: 1rem;
       &:focus {
         border: ${(p) => p.theme.colors.PRIMARY_COLOR} 0.3rem solid;
-        outline: 0;
-        box-shadow: none;
       }
     }
-    .input-group-text {
-      background-color: ${(p) => p.theme.colors.PRIMARY_COLOR};
-      border: 0 !important;
-      padding: 1rem;
-    }
-    .checkboxinput {
+
+    .checkbox {
+      ${FlexboxStyle({
+        justify: "baseline",
+      })}
       width: 2rem;
       height: 2rem;
       margin-right: 1rem;
     }
 
+    .checkboxinput {
+      width: 2rem;
+      height: 2rem;
+      margin-right: 1rem;
+    }
     .remember-text {
       font-size: 1.8rem;
       color: ${(p) => p.theme.colors.WHITE_COLOR};
     }
+
     .login-btn {
       margin-top: 4rem;
     }

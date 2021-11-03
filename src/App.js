@@ -1,15 +1,21 @@
-import './App.css';
-import { BrowserRouter as Router, Switch, Route, NavLink } from "react-router-dom";
+import "./App.css";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  NavLink,
+} from "react-router-dom";
 import { ThemeProvider } from "styled-components";
-import Navbar from './Component/Navbar/Navbar';
-import THEMES from './style/theme';
-import { GlobalStyle } from './style/globalStyle';
-import Home from './Pages/Home/Home';
-import Footer from './Component/Footer/Footer';
-import Login from './Pages/Login/Login';
-import Team from './Pages/Team/Team';
-import Contact from './Pages/Contact/Contact';
-import About from './Pages/About/About';
+import Navbar from "./Component/Navbar/Navbar";
+import THEMES from "./style/theme";
+import { GlobalStyle } from "./style/globalStyle";
+import Home from "./Pages/Home/Home";
+import Footer from "./Component/Footer/Footer";
+import Login from "./Pages/Login/Login";
+import Team from "./Pages/Team/Team";
+import Contact from "./Pages/Contact/Contact";
+import About from "./Pages/About/About";
+import SignUp from "./Pages/SignUp/SingUp";
 
 function App() {
   return (
@@ -23,6 +29,7 @@ function App() {
           <Route path="/Team" component={Team} />
           <Route path="/Contact" component={Contact} />
           <Route path="/About" component={About} />
+          <Route path="/signup" component={SignUp} />
 
           <Footer />
         </ThemeProvider>

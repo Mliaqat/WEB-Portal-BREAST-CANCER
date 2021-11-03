@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Facebook, Instagram, Linkedin, Twitter } from '../../Asset/Icon/Icon';
 import { Teamstyle } from './Team.style';
 import img from "../../Asset/images/a.png"
+import Breaker from "../../Asset/images/breaker.png";
 
 function Team() {
     return (
@@ -12,6 +13,7 @@ function Team() {
                     <div className="row text-center">
                         <div className="col-lg-8 mx-auto">
                             <h1 className="display-4">The Creative CREW </h1>
+                            <img src={Breaker} alt="Saperater" />
                             <h3 className="my-3">
                                 Behind Our System
                             </h3>

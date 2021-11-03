@@ -21,6 +21,7 @@ function About() {
                         <p>
                             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Facere aliquid fugit, quo, at expedita tempore quam a saepe recusandae distinctio voluptatibus dolorem veritatis dignissimos placeat quis? Libero fuga sint illo.
                         </p>
+                        <br />
                         <h1>
                             Our Mission
                         </h1>
