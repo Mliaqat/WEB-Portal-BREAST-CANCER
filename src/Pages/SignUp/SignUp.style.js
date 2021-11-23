@@ -3,12 +3,13 @@ import { CommonButton, FlexboxStyle } from "../../style/commomStyle";
 import img from "../../Asset/images/Login.png";
 
 export const Signupstyle = styled.article`
-  background-image: url(${img});
-  background-repeat: no-repeat;
-  width: 100%;
   background-size: 100% 100%;
+  background-color: #050d1f;
+  width: 100%;
+  height: 150%;
+
   .card {
-    background-color: rgba(0, 0, 0, 0.5) !important;
+    background-color: rgba(0, 0, 0, 0.4) !important;
     margin: 12rem 0rem 4rem 0rem;
     border-radius: 2rem;
 

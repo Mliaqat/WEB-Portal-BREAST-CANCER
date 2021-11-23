@@ -5,6 +5,10 @@ export const Aboutstyle = styled.article`
   padding: 8rem;
   background-color: ${(p) => p.theme.colors.BACKGROUND_COLOR};
 
+  .sperater {
+    width: 25rem;
+  }
+
   h1 {
     font-size: 3.5rem;
     text-transform: uppercase;

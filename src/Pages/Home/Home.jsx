@@ -5,6 +5,8 @@ import img from '../../Asset/images/women.png';
 import VideoPlayer from "react-background-video-player";
 import vedio from '../../Asset/vedio/vedio.webm'
 import { Help, Message, Ribbion, Support } from '../../Asset/Icon/Icon';
+import Navbar from '../../Component/Navbar/Navbar';
+import Footer from '../../Component/Footer/Footer';
 
 
 const Header = () => {
@@ -119,11 +121,13 @@ function Home() {
     return (
 
         <>
+            <Navbar />
             <Header />
             <Mission />
             <Futureservice />
             <Blockquote />
             <Heading />
+            <Footer />
         </>
 
 

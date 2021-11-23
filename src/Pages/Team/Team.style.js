@@ -20,6 +20,10 @@ export const Teamstyle = styled.article`
       }
     }
 
+    .sperater {
+      width: 25rem;
+    }
+
     .grow {
       box-shadow: 0px 0px 10px 0px #c7bfbf;
     }
