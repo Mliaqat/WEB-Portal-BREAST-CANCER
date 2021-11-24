@@ -1,29 +1,4 @@
-import {
-  DashboardUserIcon,
-  DoctorIcon,
-  ManageUserIcon,
-  PatientIcon,
-} from "../Asset/Icon/Icon";
-
-export const userCounters = [
-  {
-    //   icon: <BoxIcon />,
-    heading: "25",
-    subHeading: "Total Order",
-  },
-
-  {
-    //   icon: <SalesIcon />,
-    heading: "12250",
-    subHeading: "Total Amount",
-  },
-
-  {
-    //   icon: <PendingIcon />,
-    heading: "25",
-    subHeading: "Pending Orders",
-  },
-];
+import { ManageUserIcon } from "../Asset/Icon/Icon";
 
 export const counters = [
   {

@@ -142,33 +142,12 @@ function Adminpanel() {
                   <span className="me-3 iconsidebar">
                     {/* <UserIcon /> */}
                   </span>
-                  <span> Manage Vendors</span>
+                  <span> Manage Patinet</span>
                   <span className="ms-auto icondropdown right-icon">
                     {/* <Dropdown /> */}
                   </span>
                 </a>
-                <div className="collapse" id="ManageReseller">
-                  <ul className="navbar-nav ps-3">
-                    <li>
-                      <NavLink
-                        to="/vendor-list"
-                        activeClassName="isactive"
-                        className="nav-link px-3"
-                      >
-                        <span>Vendors List</span>
-                      </NavLink>
-                    </li>
-                    <li>
-                      <NavLink
-                        to="/create-vendor"
-                        activeClassName="isactive"
-                        className="nav-link px-3"
-                      >
-                        <span>Add Vendor</span>
-                      </NavLink>
-                    </li>
-                  </ul>
-                </div>
+
               </li>
 
               <li>
@@ -180,34 +159,12 @@ function Adminpanel() {
                   <span className="me-3 iconsidebar">
                     {/* <ProductIcon /> */}
                   </span>
-                  <span> Manage Catagory</span>
+                  <span> Manage Doctor</span>
                   <span className="ms-auto icondropdown right-icon">
                     {/* <Dropdown /> */}
                   </span>
                 </a>
-                <div className="collapse" id="ManageCategory">
-                  <ul className="navbar-nav ps-3">
-                    <li>
-                      <NavLink
-                        to="/catagory-list"
-                        activeClassName="isactive"
-                        className="nav-link px-3"
-                      >
-                        <span>Catagory List</span>
-                      </NavLink>
-                    </li>
 
-                    <li>
-                      <NavLink
-                        to="/add-catagories"
-                        activeClassName="isactive"
-                        className="nav-link px-3"
-                      >
-                        <span>Add Catagory</span>
-                      </NavLink>
-                    </li>
-                  </ul>
-                </div>
               </li>
 
               <li>
@@ -219,33 +176,12 @@ function Adminpanel() {
                   <span className="me-3 iconsidebar">
                     {/* <OrderIcon /> */}
                   </span>
-                  <span> Reports</span>
+                  <span>Manage Patient Reports</span>
                   <span className="ms-auto icondropdown right-icon">
                     {/* <Dropdown /> */}
                   </span>
                 </a>
-                <div className="collapse" id="Reports">
-                  <ul className="navbar-nav ps-3">
-                    <li>
-                      <NavLink
-                        to="/orders-report"
-                        activeClassName="isactive"
-                        className="nav-link px-3"
-                      >
-                        <span>Orders Report</span>
-                      </NavLink>
-                    </li>
-                    <li>
-                      <NavLink
-                        to="/customers-report"
-                        activeClassName="isactive"
-                        className="nav-link px-3"
-                      >
-                        <span> Customers Report </span>
-                      </NavLink>
-                    </li>
-                  </ul>
-                </div>
+
               </li>
 
               <li>
@@ -258,24 +194,12 @@ function Adminpanel() {
                   <span className="me-3 iconsidebar">
                     {/* <PaynmentIcon /> */}
                   </span>
-                  <span>Payment</span>
+                  <span>Change Account Info</span>
                   <span className="ms-auto icondropdown right-icon">
                     {/* <Dropdown /> */}
                   </span>
                 </a>
-                <div className="collapse" id="PaymentManagement">
-                  <ul className="navbar-nav ps-3">
-                    <li>
-                      <NavLink
-                        to="/payment-details"
-                        activeClassName="isactive"
-                        className="nav-link px-3"
-                      >
-                        <span>Payment Details</span>
-                      </NavLink>
-                    </li>
-                  </ul>
-                </div>
+
               </li>
             </ul>
           </nav>
