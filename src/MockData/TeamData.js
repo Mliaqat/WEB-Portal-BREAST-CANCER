@@ -2,6 +2,7 @@ export const TeamData = [
   {
     name: "Miss Wajiha Mughal",
     post: "Supervizor",
+    image: "/image/b.png",
     // fbid: "/hhh",
     // twtterid: "/jhg",
     // instaid: "/hdgf",
@@ -10,6 +11,7 @@ export const TeamData = [
   {
     name: "Liaqat Shehzad",
     post: "Student",
+    image: "/image/a.png",
     // fbid: "/hhh",
     // twtterid: "/jhg",
     // instaid: "/hdgf",
@@ -18,6 +20,7 @@ export const TeamData = [
   {
     name: "Musharaff Shakoor",
     post: "Student",
+    image: "/image/c.png",
     // fbid: "/hhh",
     // twtterid: "/jhg",
     // instaid: "/hdgf",
@@ -26,6 +29,7 @@ export const TeamData = [
   {
     name: "Usama Ali",
     post: "Student",
+    image: "/image/usama.png",
     // fbid: "/hhh",
     // twtterid: "/jhg",
     // instaid: "/hdgf",

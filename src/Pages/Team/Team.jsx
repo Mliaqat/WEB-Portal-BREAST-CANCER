@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from "react-router-dom";
 import { Facebook, Instagram, Linkedin, Twitter } from '../../Asset/Icon/Icon';
 import { Teamstyle } from './Team.style';
-import img from "../../Asset/images/a.png"
 import Breaker from "../../Asset/images/breaker.png";
 import { TeamData } from '../../MockData/TeamData';
 import Navbar from '../../Component/Navbar/Navbar';
@@ -30,13 +29,13 @@ function Team() {
                         <div className="row text-center">
                             {TeamData.map((item, index) => {
 
-                                const { name, post } = item;
+                                const { name, post, image } = item;
 
                                 return (
                                     <div className="col-xl-3 col-sm-6 mb-5" key={index}>
                                         <div className="bg-white  grow  rounded     py-5 px-4">
                                             <img
-                                                src={img}
+                                                src={image}
                                                 alt=""
                                                 width="100"
                                                 className="img-fluid rounded-circle mb-3 img-thumbnail    "

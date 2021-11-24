@@ -15,7 +15,6 @@ import Contact from "./Pages/Contact/Contact";
 import About from "./Pages/About/About";
 import SignUp from "./Pages/SignUp/SingUp";
 import Adminpanel from "./Component/Adminpanel/Adminpanel";
-import Dashboardcontent from "./Component/Adminpanel/Dashboardcontent";
 
 function App() {
   return (

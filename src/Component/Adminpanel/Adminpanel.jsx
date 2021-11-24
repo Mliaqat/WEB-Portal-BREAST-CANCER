@@ -5,6 +5,8 @@ import { DashboardIcon, ManageUserIcon } from "../../Asset/Icon/Icon";
 import Dashboardcontent from "./Dashboardcontent";
 import { Sidebarstyle } from "./Style/Adminpanel.style";
 import UserList from "./Subpages/ManageUser/UserList/UserList";
+import logo from '../../Asset/images/Logo.png'
+import Seereport from "./Subpages/ManageUser/UserList/SeeReport/Seereport";
 
 function Adminpanel() {
   return (
@@ -21,11 +23,11 @@ function Adminpanel() {
           >
             {/* <span className="navbar-toggler-icon menue"><Menue /> </span> */}
           </button>
-          <a
+          <Link
             className="navbar-brand me-auto ms-lg-0 ms-3 text-uppercase fw-bold"
-            href="#">
-            I-GEN Solution
-          </a>
+            to="/">
+            <img src={logo} alt="Logo" />
+          </Link>
           <button
             className="navbar-toggler"
             type="button"
@@ -107,7 +109,7 @@ function Adminpanel() {
                 <NavLink
                   to="/admin"
                   activeClassName="isactive"
-                  className="nav-link px-3 active"
+                  className="nav-link px-3"
                 >
                   <span className="me-3 iconsidebar">
                     <DashboardIcon />
@@ -118,7 +120,7 @@ function Adminpanel() {
 
               <li>
                 <NavLink
-                  to="/manage-user"
+                  to="/user"
                   activeClassName="isactive"
                   className="nav-link px-3"
                 >
@@ -281,10 +283,11 @@ function Adminpanel() {
       </div>
 
       <section className="dashboard-body">
+
         <Router>
           <Switch>
-            <Route path="/admin" exact component={Dashboardcontent} />
-            <Route path="/manage-user" exact component={UserList} />
+            <Route exact path="/admin" component={Dashboardcontent} />
+            <Route exact path="/user" component={UserList} />
           </Switch>
         </Router>
       </section>

@@ -7,6 +7,7 @@ const THEMES = {
     DARK_COLOR: "#222222",
     WHITE_COLOR: "#fff",
     BRICK_RED: "#C23B57",
+    // BRICK_RED: "#201f1f",
     BACKGROUND_COLOR: "#dcdcdc",
     BEAU_BLUE_COLOR: "#CADCEC",
     SILVER_SAND_COlOR: "#C1C6CB",

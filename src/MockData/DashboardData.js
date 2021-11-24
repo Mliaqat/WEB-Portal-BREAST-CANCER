@@ -1,4 +1,9 @@
-import { DashboardUserIcon, DoctorIcon, PatientIcon } from "../Asset/Icon/Icon";
+import {
+  DashboardUserIcon,
+  DoctorIcon,
+  ManageUserIcon,
+  PatientIcon,
+} from "../Asset/Icon/Icon";
 
 export const userCounters = [
   {
@@ -22,19 +27,19 @@ export const userCounters = [
 
 export const counters = [
   {
-    // icon: <DashboardUserIcon />,
+    icon: <ManageUserIcon />,
     heading: "25",
     subHeading: "All User",
   },
 
   {
-    // icon: <DoctorIcon />,
+    icon: <ManageUserIcon />,
     heading: "12250",
     subHeading: "Doctor",
   },
 
   {
-    // icon: <PatientIcon />,
+    icon: <ManageUserIcon />,
     heading: "25",
     subHeading: "Patient",
   },

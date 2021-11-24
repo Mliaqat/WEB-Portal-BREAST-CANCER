@@ -12,7 +12,7 @@ function VerticalCard(props) {
           </picture>
         )
       ) : (
-        <span class="card-icon">aa</span>
+        <span className="card-icon">{icon}</span>
       )}
       {heading && (
         <figcaption className="user-details">

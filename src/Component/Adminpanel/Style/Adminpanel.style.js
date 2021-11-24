@@ -3,7 +3,10 @@ import styled from "styled-components";
 export const Sidebarstyle = styled.div`
   .topnavbar {
     background-color: ${(p) => p.theme.colors.BRICK_RED};
-    padding: 2rem;
+    /* padding: 2rem; */
+    img {
+      width: 20rem;
+    }
   }
   .offcanvas {
     z-index: 0;
@@ -76,7 +79,6 @@ export const Sidebarstyle = styled.div`
       visibility: visible !important;
       height: 100%;
       background-color: ${(p) => p.theme.colors.BRICK_RED};
-      /* background-color: ${(p) => p.theme.colors.DIM_GRAY_COLOR}; */
       top: 7rem;
       color: Black;
     }

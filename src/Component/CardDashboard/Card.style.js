@@ -212,6 +212,7 @@ export const VerticalCardStyle = styled.figure`
   .card-icon {
     > svg {
       width: 4.5rem;
+      fill: ${(p) => p.theme.colors.BRICK_RED};
     }
   }
 
