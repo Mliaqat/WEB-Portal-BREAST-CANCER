@@ -11,8 +11,8 @@ function About() {
             <Aboutstyle>
                 <div className="row container-fluid">
 
-                    <div className="col-12">
-                        <div className="col-8 mx-auto  text-center">
+                    <div className="col-12 col-sm-12">
+                        <div className="col-sm-12 mx-auto  text-center">
                             <h1>
                                 Who we are?
                             </h1>

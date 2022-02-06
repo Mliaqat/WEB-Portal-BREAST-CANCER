@@ -1,5 +1,5 @@
 import React from 'react'
-import { UserIcon } from '../../Asset/Icon/Icon';
+// import { UserIcon } from '../../Asset/Icon/Icon';
 import Footer from '../../Component/Footer/Footer';
 import Navbar from '../../Component/Navbar/Navbar';
 import { Contactstyle } from './Contact.style';
@@ -12,15 +12,15 @@ function Contact() {
                 <article className="box">
                     <div className="row container text-center">
 
-                        <div className="col-md-12 text-white col-md-offset-1 ">
-                            <h1>Get In Touch</h1>
+                        <div className="col-md-12 col-sm-12 text-white col-md-offset-1  ">
+                            <h1 className='heading'>Get In Touch</h1>
                         </div>
 
                     </div>
                     <br /><br />
                     <form action="">
                         <div className="row">
-                            <div className="col-md-12 col-md-offset-1">
+                            <div className="col-md-12 col-sm-12 col-md-offset-1">
                                 <div className="row">
                                     <div className="col-md-6 mx-auto">
                                         <div className="input-group form-group">

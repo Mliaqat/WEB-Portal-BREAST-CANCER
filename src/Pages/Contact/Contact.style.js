@@ -11,6 +11,10 @@ export const Contactstyle = styled.article`
   margin: auto;
   padding: 8rem;
 
+  @media (max-width: 600px) {
+    padding: 8rem 2rem;
+  }
+
   .box {
     background-color: rgba(0, 0, 0, 0.5) !important;
     padding: 4rem;
@@ -59,6 +63,12 @@ export const Contactstyle = styled.article`
 
   textarea {
     height: 19.6rem;
+  }
+  @media (max-width: 500px) {
+    .heading {
+      font-size: 4rem;
+      font-weight: 500;
+    }
   }
 
   .button {

@@ -4,6 +4,10 @@ export const Teamstyle = styled.article`
   padding: 8rem;
   background-color: ${(p) => p.theme.colors.BACKGROUND_COLOR};
 
+  @media (max-width: 600px) {
+    padding: 8rem 2rem;
+  }
+
   .teambody {
     .icon {
       background: #ffbecf;

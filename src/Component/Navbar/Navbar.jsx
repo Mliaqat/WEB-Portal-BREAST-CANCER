@@ -29,19 +29,19 @@ function Navbar() {
                     <div className="collapse navbar-collapse" id="navbarNav">
                         <div className="mx-auto"></div>
                         <ul className="navbar-nav">
-                            <NavLink className="nav-item" exact={true} activeClassName="is-active" to="/">
+                            <NavLink className="nav-item" to="/">
                                 <a className="nav-link text-white" href="#">Home</a>
                             </NavLink>
-                            <NavLink className="nav-item" activeClassName="is-active" to="About">
+                            <NavLink className="nav-item" to="About">
                                 <a className="nav-link text-white" href="#">About</a>
                             </NavLink>
-                            <NavLink className="nav-item" activeClassName="is-active" to="Team">
+                            <NavLink className="nav-item" to="Team">
                                 <a className="nav-link text-white" to="/Team" href="#">Team</a>
                             </NavLink>
-                            <NavLink className="nav-item" activeClassName="is-active" to="/Contact">
+                            <NavLink className="nav-item" to="/Contact">
                                 <a className="nav-link text-white" href="#">Contact Us</a>
                             </NavLink>
-                            <NavLink className="nav-item" activeClassName="is-active" to="/Login">
+                            <NavLink className="nav-item" to="/Login">
                                 <a className="nav-link text-white" href="#">Login</a>
                             </NavLink>
                         </ul>

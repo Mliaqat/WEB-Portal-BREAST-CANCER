@@ -42,35 +42,35 @@ const Mission = () => {
     )
 }
 
-const Futureservice = () => {
-    return (
-        <Futurestyle>
-            <article className="container future">
-                <article>
-                    <span className="icon"><Message /></span>
-                    <h3>What is Breast Cancer?</h3>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptates, illum ducimus. Veniam obcaecati cum praesentium repudiandae nulla nostrum quasi </p>
-                    <button className="btn">Click Here!</button>
+// const Futureservice = () => {
+//     return (
+//         <Futurestyle>
+//             <article className="container future">
+//                 <article>
+//                     <span className="icon"><Message /></span>
+//                     <h3>What is Breast Cancer?</h3>
+//                     <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptates, illum ducimus. Veniam obcaecati cum praesentium repudiandae nulla nostrum quasi </p>
+//                     <button className="btn">Click Here!</button>
 
-                </article>
-                <article>
-                    <span className="icon"><Help /></span>
-                    <h3>Get Help Now</h3>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptates, illum ducimus. Veniam obcaecati cum praesentium repudiandae nulla nostrum quasi </p>
-                    <button className="btn">Click Here!</button>
-                </article>
-                <article>
-                    <span className="icon"><Support /></span>
-                    <h3>Support the Cause</h3>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptates, illum ducimus. Veniam obcaecati cum praesentium repudiandae nulla nostrum quasi </p>
-                    <button className="btn">Click Here!</button>
-                </article>
+//                 </article>
+//                 <article>
+//                     <span className="icon"><Help /></span>
+//                     <h3>Get Help Now</h3>
+//                     <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptates, illum ducimus. Veniam obcaecati cum praesentium repudiandae nulla nostrum quasi </p>
+//                     <button className="btn">Click Here!</button>
+//                 </article>
+//                 <article>
+//                     <span className="icon"><Support /></span>
+//                     <h3>Support the Cause</h3>
+//                     <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptates, illum ducimus. Veniam obcaecati cum praesentium repudiandae nulla nostrum quasi </p>
+//                     <button className="btn">Click Here!</button>
+//                 </article>
 
-            </article>
-        </Futurestyle>
+//             </article>
+//         </Futurestyle>
 
-    )
-}
+//     )
+// }
 
 const Blockquote = () => {
 
@@ -124,7 +124,7 @@ function Home() {
             <Navbar />
             <Header />
             <Mission />
-            <Futureservice />
+            {/* <Futureservice /> */}
             <Blockquote />
             <Heading />
             <Footer />

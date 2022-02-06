@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import { Link, Redirect } from "react-router-dom";
+import React from "react";
+import { Link } from "react-router-dom";
 import { PasswordIcon, UserIcon } from "../../Asset/Icon/Icon";
 import Footer from "../../Component/Footer/Footer";
 import Navbar from "../../Component/Navbar/Navbar";
@@ -56,14 +56,14 @@ function Login() {
                                                 <label className="remember-text"> Remember Me</label>
                                             </article>
                                         </div>
-                                        <Link className="form-group login-btn" to="/admin">
+                                        <a className="form-group login-btn" >
                                             <input
                                                 type="submit"
                                                 value="Login"
                                                 className="btn"
 
                                             />
-                                        </Link>
+                                        </a>
                                     </form>
                                 </div>
                                 <div className="card-footer">

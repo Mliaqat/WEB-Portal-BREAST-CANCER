@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { CommonButton, FlexboxStyle } from "../../style/commomStyle";
-import img from "../../Asset/images/Login.png";
+// import img from "../../Asset/images/Login.png";
 
 export const Signupstyle = styled.article`
   background-size: 100% 100%;

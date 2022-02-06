@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import VideoPlayer from "react-background-video-player";
 import vedio from '../../Asset/vedio/signupvedio.mp4'
 import { Signupstyle } from "./SignUp.style";

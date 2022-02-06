@@ -24,6 +24,12 @@ export const Headerstyle = styled.main`
       margin-left: 6rem;
       margin-bottom: 3rem;
     }
+    @media (max-width: 600px) {
+      h1 {
+        margin-left: 0rem;
+        font-size: 4rem;
+      }
+    }
     .btn {
       ${CommonButton}
       margin-left: 6rem;
