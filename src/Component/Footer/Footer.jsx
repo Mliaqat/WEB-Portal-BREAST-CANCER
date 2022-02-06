@@ -21,18 +21,18 @@ function Footer() {
 
                         <div className="col-lg-4 mb-5 mb-lg-0">
                             <h4 className="text-uppercase mb-4"  >Around the Web</h4>
-                            <Link className="icon">
+                            <label className="icon">
                                 <Facebook />
-                            </Link>
-                            <Link className="icon">
+                            </label>
+                            <label className="icon">
                                 <Instagram />
-                            </Link>
-                            <Link className="icon">
+                            </label>
+                            <label className="icon">
                                 <Linkedin />
-                            </Link>
-                            <Link className="icon">
+                            </label>
+                            <label className="icon">
                                 <Twitter />
-                            </Link>
+                            </label>
                         </div>
 
                         <div className="col-lg-4">

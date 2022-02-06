@@ -1,6 +1,6 @@
 import "./App.css";
-import { Switch, Route } from "react-router-dom";
-import { ThemeProvider } from "styled-components";
+import * as ReactDOM from "react-dom";
+import { Routes, Route, BrowserRouter } from "react-router-dom";
 import THEMES from "./style/theme";
 import { GlobalStyle } from "./style/globalStyle";
 import Home from "./Pages/Home/Home";
@@ -9,20 +9,23 @@ import Team from "./Pages/Team/Team";
 import Contact from "./Pages/Contact/Contact";
 import About from "./Pages/About/About";
 import SignUp from "./Pages/SignUp/SingUp";
+import { ThemeProvider } from "styled-components";
 
 function App() {
   return (
-    <Switch>
-      <ThemeProvider theme={THEMES}>
-        <GlobalStyle />
-        <Route exact path="/" component={Home} />
-        <Route exact path="/Login" component={Login} />
-        <Route exact path="/Team" component={Team} />
-        <Route exact path="/Contact" component={Contact} />
-        <Route exact path="/About" component={About} />
-        <Route exact path="/signup" component={SignUp} />
-      </ThemeProvider>
-    </Switch>
+    <ThemeProvider theme={THEMES}>
+      <GlobalStyle />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="Login" element={<Login />} />
+          <Route path="Team" element={<Team />} />
+          <Route path="Contact" element={<Contact />} />
+          <Route path="About" element={<About />} />
+          <Route path="signup" element={<SignUp />} />
+        </Routes>
+      </BrowserRouter>
+    </ThemeProvider>
   );
 }
 

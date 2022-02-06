@@ -32,11 +32,11 @@ function Navbar() {
                             <NavLink className="nav-item" to="/">
                                 <a className="nav-link text-white" href="#">Home</a>
                             </NavLink>
-                            <NavLink className="nav-item" to="About">
+                            <NavLink className="nav-item" to="/About">
                                 <a className="nav-link text-white" href="#">About</a>
                             </NavLink>
-                            <NavLink className="nav-item" to="Team">
-                                <a className="nav-link text-white" to="/Team" href="#">Team</a>
+                            <NavLink className="nav-item" to="/Team">
+                                <a className="nav-link text-white" href="#">Team</a>
                             </NavLink>
                             <NavLink className="nav-item" to="/Contact">
                                 <a className="nav-link text-white" href="#">Contact Us</a>

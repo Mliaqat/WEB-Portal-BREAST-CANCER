@@ -31,7 +31,7 @@ function SignUp() {
                             <form className="row  justify-content-center" >
                                 <div className="col-sm-4 mx-5">
                                     <div className="form-group">
-                                        <label for="Fname"> First Name:</label>
+                                        <label htmlFor="Fname"> First Name:</label>
                                         <input
                                             type="text"
                                             className="form-control"
@@ -42,7 +42,7 @@ function SignUp() {
                                         />
                                     </div>
                                     <div className="form-group">
-                                        <label for="Phone_No">Phone Number:</label>
+                                        <label htmlFor="Phone_No">Phone Number:</label>
                                         <input
                                             type="Number"
                                             className="form-control"
@@ -52,7 +52,7 @@ function SignUp() {
                                         />
                                     </div>
                                     <div className="form-group">
-                                        <label for="Address">Address:</label>
+                                        <label htmlFor="Address">Address:</label>
                                         <input
                                             type="text"
                                             className="form-control"
@@ -63,7 +63,7 @@ function SignUp() {
                                         />
                                     </div>
                                     <div className="form-group">
-                                        <label for="Password">Enter Password:</label>
+                                        <label htmlFor="Password">Enter Password:</label>
                                         <input
                                             type="Password"
                                             className="form-control"
@@ -89,7 +89,7 @@ function SignUp() {
                                 <div className="col-sm-4">
 
                                     <div className="form-group">
-                                        <label for="Lname">Last Name:</label>
+                                        <label htmlFor="Lname">Last Name:</label>
                                         <input
                                             type="text"
                                             className="form-control"
@@ -101,7 +101,7 @@ function SignUp() {
                                     </div>
 
                                     <div className="form-group ">
-                                        <label for="Email">Email Address:</label>
+                                        <label htmlFor="Email">Email Address:</label>
                                         <input
                                             type="Email"
                                             className="form-control"
@@ -112,10 +112,8 @@ function SignUp() {
                                         />
                                     </div>
 
-
-
                                     <div className="form-group">
-                                        <label for="DOB">DOB:</label>
+                                        <label htmlFor="DOB">DOB:</label>
                                         <input
                                             type="date"
                                             className="form-control"
@@ -128,7 +126,7 @@ function SignUp() {
 
 
                                     <div className="form-group">
-                                        <label for="CPassword">Confirm Password:</label>
+                                        <label htmlFor="CPassword">Confirm Password:</label>
                                         <input
                                             type="Password"
                                             className="form-control"

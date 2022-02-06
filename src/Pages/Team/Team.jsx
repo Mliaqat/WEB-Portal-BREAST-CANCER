@@ -47,24 +47,24 @@ function Team() {
                                             </h5>
                                             <ul className=" mb-2list-inline mt-3">
                                                 <li className="list-inline-item">
-                                                    <Link href="#" className="icon">
+                                                    <label href="#" className="icon">
                                                         <Facebook />
-                                                    </Link>
+                                                    </label>
                                                 </li>
                                                 <li className="list-inline-item">
-                                                    <Link href="#" className="icon">
+                                                    <label href="#" className="icon">
                                                         <Twitter />
-                                                    </Link>
+                                                    </label>
                                                 </li>
                                                 <li className="list-inline-item">
-                                                    <Link href="#" className="icon">
+                                                    <label href="#" className="icon">
                                                         <Instagram />
-                                                    </Link>
+                                                    </label>
                                                 </li>
                                                 <li className="list-inline-item">
-                                                    <Link href="#" className="icon">
+                                                    <label href="#" className="icon">
                                                         <Linkedin />
-                                                    </Link>
+                                                    </label>
                                                 </li>
                                             </ul>
                                         </div>
