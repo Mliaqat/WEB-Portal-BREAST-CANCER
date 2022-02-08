@@ -10,8 +10,23 @@ import Contact from "./Pages/Contact/Contact";
 import About from "./Pages/About/About";
 import SignUp from "./Pages/SignUp/SingUp";
 import { ThemeProvider } from "styled-components";
+import AdminProtal from "./Dashboards/AdminProtal/AdminProtal";
+import DoctorProtal from "./Dashboards/DoctorProtal/DoctorProtal";
+import UserProtal from "./Dashboards/UserProtal/UserPortal";
+
+import AdminDashboard from "./Dashboards/AdminProtal/AdminProtalSubPages/AdminDashboard/AdminDashboard";
+import ViewAllPatient from "./Dashboards/AdminProtal/AdminProtalSubPages/ViewAllPatient/ViewAllPatient";
+import DoctorDashboard from "./Dashboards/DoctorProtal/DoctorProtalSubPages/DoctorDashboard/DoctorDashboard";
+import DocViewAllPatient from "./Dashboards/DoctorProtal/DoctorProtalSubPages/DocViewAllPatient/DocViewAllPatient";
+import UserDashboard from "./Dashboards/UserProtal/UserProtalSubPages/UserDashboard/UserDashboard";
+import ViewReport from "./Dashboards/UserProtal/UserProtalSubPages/ViewReport/ViewReport";
+import { useEffect } from "react";
 
 function App() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <ThemeProvider theme={THEMES}>
       <GlobalStyle />
@@ -23,6 +38,22 @@ function App() {
           <Route path="Contact" element={<Contact />} />
           <Route path="About" element={<About />} />
           <Route path="signup" element={<SignUp />} />
+
+          <Route path="admin-protal" element={<AdminProtal />}>
+            <Route index element={<AdminDashboard />} />
+            <Route index path="admin-dashboard" element={<AdminDashboard />} />
+            <Route path="view-all-patient" element={<ViewAllPatient />} />
+          </Route>
+
+          <Route path="doctor-protal" element={<DoctorProtal />}>
+            <Route path="doctor-dashboard" element={<DoctorDashboard />} />
+            <Route path="docview-all-patient" element={<DocViewAllPatient />} />
+          </Route>
+
+          <Route path="user-protal" element={<UserProtal />}>
+            <Route path="user-dashboard" element={<UserDashboard />} />
+            <Route path="view-report" element={<ViewReport />} />
+          </Route>
         </Routes>
       </BrowserRouter>
     </ThemeProvider>

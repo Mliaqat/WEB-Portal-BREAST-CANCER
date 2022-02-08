@@ -56,14 +56,14 @@ function Login() {
                                                 <label className="remember-text"> Remember Me</label>
                                             </article>
                                         </div>
-                                        <a className="form-group login-btn" >
+                                        <Link to="/admin-protal" className="form-group login-btn" >
                                             <input
                                                 type="submit"
                                                 value="Login"
                                                 className="btn"
 
                                             />
-                                        </a>
+                                        </Link>
                                     </form>
                                 </div>
                                 <div className="card-footer">
