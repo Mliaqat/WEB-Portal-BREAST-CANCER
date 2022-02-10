@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './AdminProtal'
 import { Link, Outlet } from 'react-router-dom';
 import { DashboardStyle } from '../CommnonStyle/Dashboard.style';
+import { BiLogIn } from "react-icons/bi";
 
 function AdminProtal() {
 
@@ -21,10 +22,12 @@ function AdminProtal() {
     return (
         <DashboardStyle>
 
-            <article className='header-nav'><h1>nav</h1></article>
+
             <nav className={`sidebar  ${isOpen ? 'close' : ''}`}>
 
+
                 <header>
+
 
                     <div className="text logo-text">
                         <span className="name">Admin</span>
@@ -103,6 +106,14 @@ function AdminProtal() {
 
 
             <section className="home">
+                <article className='header-nav'>
+                    <label className='logout'>
+                        <article className='btn'>
+                            <i className='bx bx-log-in header-icon' ></i>
+                            <p>Logout</p>
+                        </article>
+                    </label>
+                </article>
                 <Outlet></Outlet>
             </section>
         </DashboardStyle>

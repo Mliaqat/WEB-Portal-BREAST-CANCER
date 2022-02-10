@@ -20,7 +20,6 @@ function UserProtal() {
     return (
         <DashboardStyle>
 
-            <article className='header-nav'><h1>nav</h1></article>
             <nav className={`sidebar  ${isOpen ? 'close' : ''}`}>
 
                 <header>
@@ -99,6 +98,14 @@ function UserProtal() {
             </nav>
 
             <section className="home">
+                <article className='header-nav'>
+                    <label className='logout'>
+                        <article className='btn'>
+                            <i className='bx bx-log-in header-icon' ></i>
+                            <p>Logout</p>
+                        </article>
+                    </label>
+                </article>
                 <Outlet></Outlet>
             </section>
         </DashboardStyle>
