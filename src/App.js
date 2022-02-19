@@ -15,12 +15,15 @@ import DoctorProtal from "./Dashboards/DoctorProtal/DoctorProtal";
 import UserProtal from "./Dashboards/UserProtal/UserPortal";
 
 import AdminDashboard from "./Dashboards/AdminProtal/AdminProtalSubPages/AdminDashboard/AdminDashboard";
-import ViewAllPatient from "./Dashboards/AdminProtal/AdminProtalSubPages/ViewAllPatient/ViewAllPatient";
 import DoctorDashboard from "./Dashboards/DoctorProtal/DoctorProtalSubPages/DoctorDashboard/DoctorDashboard";
 import DocViewAllPatient from "./Dashboards/DoctorProtal/DoctorProtalSubPages/DocViewAllPatient/DocViewAllPatient";
 import UserDashboard from "./Dashboards/UserProtal/UserProtalSubPages/UserDashboard/UserDashboard";
 import ViewReport from "./Dashboards/UserProtal/UserProtalSubPages/ViewReport/ViewReport";
 import { useEffect } from "react";
+
+import UpdateProfile from "./Dashboards/AdminProtal/AdminProtalSubPages/UpdateProfile/UpdateProfile";
+import ManagePatient from "./Dashboards/AdminProtal/AdminProtalSubPages/ManagePatient/ManagePatient";
+import ManageDoctor from "./Dashboards/AdminProtal/AdminProtalSubPages/ManageDoctor/ManageDoctor";
 
 function App() {
   useEffect(() => {
@@ -42,7 +45,9 @@ function App() {
           <Route path="admin-protal" element={<AdminProtal />}>
             <Route index element={<AdminDashboard />} />
             <Route index path="admin-dashboard" element={<AdminDashboard />} />
-            <Route path="view-all-patient" element={<ViewAllPatient />} />
+            <Route path="managepatient" element={<ManagePatient />} />
+            <Route path="managedoctor" element={<ManageDoctor />} />
+            <Route path="updateprofile" element={<UpdateProfile />} />
           </Route>
 
           <Route path="doctor-protal" element={<DoctorProtal />}>

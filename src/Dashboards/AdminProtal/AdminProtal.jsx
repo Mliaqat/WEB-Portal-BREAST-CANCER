@@ -3,6 +3,7 @@ import './AdminProtal'
 import { Link, Outlet } from 'react-router-dom';
 import { DashboardStyle } from '../CommnonStyle/Dashboard.style';
 import { BiLogIn } from "react-icons/bi";
+import { DashboardIcon, DoctorIcon, LogOutIcon, PatientIcon, UpdateProfileIcon } from '../../Asset/Icon/Icon';
 
 function AdminProtal() {
 
@@ -46,43 +47,37 @@ function AdminProtal() {
                         <ul className="menu-links">
                             <li className="nav-link">
                                 <a href="#">
-                                    <i className='bx bx-home-alt icon' ></i>
+                                    <i className='svgicon' >
+                                        <DashboardIcon />
+                                    </i>
                                     <Link className="text  nav-text" to="admin-dashboard">Dashboard</Link>
                                 </a>
                             </li>
 
                             <li className="nav-link">
                                 <a href="#">
-                                    <i className='bx bx-bar-chart-alt-2 icon' ></i>
-                                    <Link className="text nav-text" to="view-all-patient">View All Pateint</Link>
+                                    <i className='svgicon' >
+                                        <PatientIcon />
+                                    </i>
+                                    <Link className="text nav-text" to="managepatient">Manage Patient</Link>
                                 </a>
                             </li>
 
                             <li className="nav-link">
                                 <a href="#">
-                                    <i className='bx bx-bell icon'></i>
-                                    <span className="text nav-text">Notifications</span>
+                                    <i className='svgicon' >
+                                        <DoctorIcon />
+                                    </i>
+                                    <Link to="managedoctor" className="text nav-text">Manage Doctor</Link>
                                 </a>
                             </li>
 
                             <li className="nav-link">
                                 <a href="#">
-                                    <i className='bx bx-pie-chart-alt icon' ></i>
-                                    <span className="text nav-text">Analytics</span>
-                                </a>
-                            </li>
-
-                            <li className="nav-link">
-                                <a href="#">
-                                    <i className='bx bx-heart icon' ></i>
-                                    <span className="text nav-text">Likes</span>
-                                </a>
-                            </li>
-
-                            <li className="nav-link">
-                                <a href="#">
-                                    <i className='bx bx-wallet icon' ></i>
-                                    <span className="text nav-text">Wallets</span>
+                                    <i className='svgicon' >
+                                        <UpdateProfileIcon />
+                                    </i>
+                                    <Link to="updateprofile" className="text nav-text">Update Profile</Link>
                                 </a>
                             </li>
 
@@ -92,7 +87,9 @@ function AdminProtal() {
                     <div className="bottom-content">
                         <li className="">
                             <a href="#">
-                                <i className='bx bx-log-out icon' ></i>
+                                <i className='svgicon' >
+                                    <LogOutIcon />
+                                </i>
                                 <span className="text nav-text">Logout</span>
                             </a>
                         </li>
