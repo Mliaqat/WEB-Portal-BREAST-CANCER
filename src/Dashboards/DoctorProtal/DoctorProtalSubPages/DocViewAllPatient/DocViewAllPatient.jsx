@@ -1,7 +1,10 @@
-import React from 'react';
+import React from 'react'
 
 function DocViewAllPatient() {
-    return <div>Doc Patiet</div>;
+    return (
+        <div>DocViewAllPatient</div>
+    )
 }
 
 export default DocViewAllPatient;
+

@@ -51,6 +51,7 @@ function App() {
           </Route>
 
           <Route path="doctor-protal" element={<DoctorProtal />}>
+            <Route index element={<DoctorDashboard />} />
             <Route path="doctor-dashboard" element={<DoctorDashboard />} />
             <Route path="docview-all-patient" element={<DocViewAllPatient />} />
           </Route>
