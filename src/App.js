@@ -24,6 +24,8 @@ import { useEffect } from "react";
 import UpdateProfile from "./Dashboards/AdminProtal/AdminProtalSubPages/UpdateProfile/UpdateProfile";
 import ManagePatient from "./Dashboards/AdminProtal/AdminProtalSubPages/ManagePatient/ManagePatient";
 import ManageDoctor from "./Dashboards/AdminProtal/AdminProtalSubPages/ManageDoctor/ManageDoctor";
+import DoctorProfile from "./Dashboards/DoctorProtal/DoctorProtalSubPages/DoctorProfile/DoctorProfile";
+import UserProfile from "./Dashboards/UserProtal/UserProtalSubPages/UserProfile/UserProfile";
 
 function App() {
   useEffect(() => {
@@ -52,13 +54,16 @@ function App() {
 
           <Route path="doctor-protal" element={<DoctorProtal />}>
             <Route index element={<DoctorDashboard />} />
-            <Route path="doctor-dashboard" element={<DoctorDashboard />} />
+            <Route excat path="" element={<DoctorDashboard />} />
             <Route path="docview-all-patient" element={<DocViewAllPatient />} />
+
+            <Route path="doc-profile" element={<DoctorProfile />} />
           </Route>
 
           <Route path="user-protal" element={<UserProtal />}>
             <Route path="user-dashboard" element={<UserDashboard />} />
             <Route path="view-report" element={<ViewReport />} />
+            <Route path="user-profile" element={<UserProfile />} />
           </Route>
         </Routes>
       </BrowserRouter>

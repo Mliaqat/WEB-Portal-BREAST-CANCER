@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { ProfileModalStyle } from '../../../CommnonStyle/Dashboard.style';
 
-function UpdateProfile() {
+function UserProfile() {
     const [image, setImage] = useState([]);
     const [postimage, setpostimage] = useState();
     const [userData, setUserData] = useState({
@@ -121,6 +121,7 @@ function UpdateProfile() {
                         </button>
                         <button
                             className="cancel-button mx-3"
+
                         >
                             Cancel
                         </button>
@@ -131,4 +132,4 @@ function UpdateProfile() {
     )
 }
 
-export default UpdateProfile;
+export default UserProfile;

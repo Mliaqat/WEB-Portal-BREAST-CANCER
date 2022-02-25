@@ -2,14 +2,53 @@ import styled from "styled-components";
 import { CommonButton } from "../../../../style/commomStyle";
 
 export const DoctorDashboardStyle = styled.main`
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  width: 50%;
-  align-items: center;
-  row-gap: 2rem;
+  width: 95%;
   margin: auto;
-  margin-top: 3rem;
+
+  .file {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: end;
+    input {
+      border: 0.1rem solid;
+      padding: 0.3rem;
+      font-size: 2rem;
+    }
+    input[type="file"]::file-selector-button {
+      ${CommonButton}
+      border-radius: 0.5rem;
+      padding: 0.3rem;
+    }
+    .btn {
+      ${CommonButton}
+      border-radius: 0.5rem;
+      padding: 0.8rem 1rem;
+    }
+  }
+
+  .viewresult {
+    margin-top: 5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+    align-content: center;
+    row-gap: 2rem;
+    .preview-image {
+      width: 12rem;
+      height: 12rem;
+    }
+
+    .btn {
+      ${CommonButton}
+      padding: 0.5rem 1rem;
+      font-size: 1.5rem;
+      border-radius: 0.5rem;
+    }
+  }
+
   .product-image-wrapper {
     display: flex;
 
@@ -37,9 +76,5 @@ export const DoctorDashboardStyle = styled.main`
         width: 5rem;
       }
     }
-  }
-  .btn {
-    ${CommonButton}
-    border-radius: 2rem;
   }
 `;

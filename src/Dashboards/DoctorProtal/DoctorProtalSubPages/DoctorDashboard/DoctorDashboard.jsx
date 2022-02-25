@@ -9,6 +9,8 @@ function DoctorDashboard() {
     const [image, setImage] = useState();
     const [result, setResult] = useState();
     const [previewimage, setPreViewImage] = useState();
+    let confidence = 0;
+
     console.log(image)
 
     const add = async () => {
@@ -28,6 +30,13 @@ function DoctorDashboard() {
 
     };
 
+
+
+    if (result) {
+        confidence = (parseFloat(result?.confidence) * 100).toFixed(2);
+    }
+
+
     const filehandler = (e) => {
         setImage(e.target.files[0]);
 
@@ -38,13 +47,47 @@ function DoctorDashboard() {
 
     return (
         <DoctorDashboardStyle>
-            {/* <div>
+            <article className="file">
+                <label>
+                    <h4 className='mb-3'>Upload Only Histopathology Image:</h4>
+                    <input type="file" onChange={filehandler} />
+                </label>
+                <button className='btn mx-3' onClick={() => add()}>View Result</button>
+            </article>
 
-                <input type="file" onChange={(e) => setImage(e.target.files[0])}></input>
-                <button onClick={() => add()}>check</button>
+            <article className='viewresult'>
+                {previewimage &&
+                    <article><h3>Uploded Image</h3></article>
+                }
+                {result &&
+                    <>
+                        <article><h3>Algorithem Result</h3></article>
+                        <article><h3>Report</h3></article>
+                    </>
+                }
 
-            </div> */}
-            <label htmlFor="upload-photo" className="product-image-wrapper">
+                {previewimage &&
+                    <article>
+                        <img className="preview-image" src={previewimage}></img>
+                    </article>
+                }
+                {result &&
+
+                    <>
+                        <article>
+                            <h4>{result?.class}</h4>
+                            <h4 className='my-3'>{confidence}%</h4>
+                        </article>
+                        <article>
+                            <button className='btn'>Add Report</button>
+                        </article>
+                    </>
+
+                }
+
+
+            </article>
+            {/* <label htmlFor="upload-photo" className="product-image-wrapper">
                 <input type="file" id="upload-photo" onChange={filehandler} />
 
                 {image ? (
@@ -61,7 +104,7 @@ function DoctorDashboard() {
                     <h2>Cancer Type = {result?.class}</h2>
                     <h2>Accuracy = {result?.confidence}</h2>
                 </>
-            }
+            } */}
         </DoctorDashboardStyle>
     )
 }

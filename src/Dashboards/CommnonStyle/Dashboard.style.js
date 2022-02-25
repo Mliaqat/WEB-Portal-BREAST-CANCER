@@ -7,36 +7,15 @@ import {
 } from "../../style/commomStyle";
 
 export const DashboardStyle = styled.main`
-  :root {
-    /* ===== Colors ===== */
-    --body-color: red;
-    --sidebar-color: #fff;
-    --primary-color: #695cfe;
-    --primary-color-light: #f6f5ff;
-    --toggle-color: #ddd;
-    --text-color: #707070;
-
-    /* ====== Transition ====== */
-    --tran-03: all 0.2s ease;
-    --tran-03: all 0.3s ease;
-    --tran-04: all 0.3s ease;
-    --tran-05: all 0.3s ease;
-  }
-
-  ::selection {
-    background-color: var(--primary-color);
-    color: #fff;
-  }
-
   /* ===== Sidebar ===== */
+
   .sidebar {
     position: fixed;
     top: 0;
     left: 0;
     height: 100%;
     width: 25rem;
-    /* padding: 10px 14px; */
-    background: #000000;
+    background: ${(p) => p.theme.colors.BRICK_RED};
     z-index: 100;
   }
   .sidebar.close {
@@ -51,10 +30,6 @@ export const DashboardStyle = styled.main`
     align-items: center;
     margin-top: 1rem;
   }
-  .header-nav {
-    background: black;
-    height: 7rem;
-  }
 
   .header-icon {
     min-width: 3.5rem;
@@ -67,42 +42,30 @@ export const DashboardStyle = styled.main`
   }
 
   header {
-    background: black;
+    background: ${(p) => p.theme.colors.BRICK_RED};
     color: white;
     height: 7rem;
-  }
-
-  .sidebar header,
-  .sidebar .icon {
-    min-width: 6rem;
-  }
-
-  .sidebar .icon {
-    min-width: 6rem;
-    border-radius: 0.6rem;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 2rem;
+    a {
+      text-decoration: none;
+    }
   }
 
   .svgicon {
     > svg {
       width: 3rem;
       fill: #ffffff;
-      display: flex;
+      /* display: flex;
       align-items: center;
       justify-content: center;
       font-size: 2rem;
       margin-right: 2rem;
-      margin-left: 1rem;
+      margin-left: 1rem; */
     }
   }
 
   .sidebar .text {
-    font-size: 1.7rem;
-    font-weight: 500;
+    font-size: 1.8rem;
+    font-weight: 700;
     white-space: nowrap;
     opacity: 1;
     color: #ffffff;
@@ -132,19 +95,17 @@ export const DashboardStyle = styled.main`
   .sidebar header .toggle {
     position: absolute;
     top: 50%;
-    right: -2.5rem;
+    right: 0.5rem;
     transform: translateY(-50%) rotate(180deg);
     height: 2.55rem;
     width: 2.5rem;
     background-color: ${(p) => p.theme.colors.BRICK_RED};
-    color: var(--sidebar-color);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 2.2rem;
     cursor: pointer;
-    transition: var(--tran-05);
   }
 
   .sidebar.close .toggle {
@@ -173,18 +134,48 @@ export const DashboardStyle = styled.main`
   .menu-bar::-webkit-scrollbar {
     display: none;
   }
+  .sidebaricon {
+    margin-left: 2rem;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: baseline;
+    img {
+      width: 4rem;
+    }
+  }
+  .link {
+    text-decoration: none;
+    article:hover {
+      background: ${(p) => p.theme.colors.PRIMARY_COLOR};
+      margin-left: 1rem;
+      padding: 0rem 0rem 0.5rem 1rem;
+      border-top-left-radius: 1rem;
+      border-bottom-left-radius: 1rem;
+    }
+  }
+  .is-active {
+    text-decoration: none;
+    article,
+    article:hover {
+      background: ${(p) => p.theme.colors.PRIMARY_COLOR};
+      margin-left: 1rem;
+      padding: 0rem 0rem 0.5rem 1rem;
+      border-top-left-radius: 1rem;
+      border-bottom-left-radius: 1rem;
+    }
+  }
 
   .home {
     position: absolute;
     left: 25rem;
     width: calc(100% - 25rem);
-    height: 100%;
-    background-color: #d9d9e2;
+    background-color: ${(p) => p.theme.colors.BACKGROUND_COLOR};
+    height: auto;
+    min-height: 100vh;
   }
   .home .text {
     font-size: 3rem;
     font-weight: 500;
-    color: var(--text-color);
     padding: 1.2rem 6rem;
   }
 
@@ -196,7 +187,31 @@ export const DashboardStyle = styled.main`
   .bottom-content {
     margin-bottom: 1rem;
   }
-  .logout {
+
+  .header-nav {
+    position: sticky;
+    width: 95%;
+    height: 7rem;
+    margin: auto;
+  }
+  .profile-wrapper {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    /* background: #ebebeb; */
+    /* background: #dcdcdc;
+    -webkit-box-shadow: 5px 5px 67px #a1a1a1, -5px -5px 67px #ffffff;
+    box-shadow: 5px 5px 67px #a1a1a1, -5px -5px 67px #ffffff; */
+    background: #f2f0f0;
+    -webkit-box-shadow: 5px 5px 67px #b1afaf, -5px -5px 67px #ffffff;
+    box-shadow: 5px 5px 67px #b1afaf, -5px -5px 67px #ffffff;
+  }
+  .content {
+    /* margin-top: 2rem; */
+  }
+  /* .logout {
     display: flex;
     justify-content: end;
     color: white;
@@ -210,7 +225,7 @@ export const DashboardStyle = styled.main`
       padding: 0.5rem;
       color: white;
     }
-  }
+  } */
 `;
 
 export const TableStyle = styled.main`
@@ -365,12 +380,32 @@ export const ProfileModalStyle = styled.main`
     padding: 2rem 0;
   }
 
+  .form-control {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    box-shadow: none;
+
+    /* border: 2px solid rgba(0, 0, 0, 0.1) !important;
+    height: 54px !important; */
+    font-size: 18px;
+    font-weight: 300;
+
+    border-radius: 0px !important;
+    font-size: 2rem;
+    border-radius: 0.5rem !important;
+    padding: 1rem;
+    &:focus {
+      border: ${(p) => p.theme.colors.PRIMARY_COLOR} 0.3rem solid;
+    }
+  }
+
   input,
   textarea {
     font-size: 1.5rem;
   }
   .profile-form {
-    ${CommonGridStyle({ columns: "1fr 2fr", columnGap: "1rem" })}
+    ${CommonGridStyle({ columns: "1fr", columnGap: "1rem" })}
     justify-items: stretch;
 
     @media (max-width: ${({ theme }) => theme.breakPoints.largeDevices}) {
@@ -421,6 +456,7 @@ export const ProfileModalStyle = styled.main`
             padding: 1rem;
             border: 0.1rem solid ${({ theme }) => theme.colors.PRIMARY_COLOR};
             border-radius: 0.5rem;
+            background: white;
             outline: none;
           }
 

@@ -3,8 +3,8 @@ import styled from "styled-components";
 export const VerticalCardStyle = styled.figure`
   margin-bottom: 2rem;
   border-radius: 10px;
-  background: linear-gradient(145deg, #c3c3cb, #e8e8f2);
-  box-shadow: 13px 13px 40px #bfbfc7, -13px -13px 40px #f3f3fd;
+  background: #ebebeb;
+  box-shadow: inset 5px 5px 28px #929292, inset -5px -5px 28px #ffffff;
 
   .thumbnail-wrapper {
     width: 10rem;

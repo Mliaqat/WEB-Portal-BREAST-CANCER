@@ -1,5 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { Link, Outlet } from 'react-router-dom';
+import { Link, NavLink, Outlet } from 'react-router-dom';
+import { DashboardIcon, PatientIcon, ReportIcon } from '../../Asset/Icon/Icon';
+import dashboardicon from "../../Asset/dashboard/dashboard.png"
+import patienticon from "../../Asset/dashboard/patient.png"
+import logouticon from "../../Asset/dashboard/logout.png"
+import editicon from "../../Asset/dashboard/editprofile.png"
 import { DashboardStyle } from '../CommnonStyle/Dashboard.style';
 
 function DoctorProtal() {
@@ -20,75 +25,64 @@ function DoctorProtal() {
 
                 <header>
 
-                    <div className="text logo-text">
+                    <Link to="/" className="text logo-text">
                         <span className="name">Doctor</span>
                         <span className="profession">Protal</span>
-                    </div>
+                    </Link>
+                    <hr></hr>
 
                     <i className='bx bx-chevron-right toggle' onClick={onclickactive}></i>
                 </header>
 
+
                 <div className="menu-bar">
                     <div className="menu">
+                        <article >
+                            <NavLink to="" className={({ isActive }) => (isActive ? 'is-active' : 'link')}>
+                                <article className='sidebaricon my-5' >
+                                    <h2>
+                                        <img src={dashboardicon}></img>
+                                    </h2>
+                                    <label className="text  nav-text mx-3" >Dashboard</label>
+                                </article>
+
+                            </NavLink>
+
+                            <article>
+                                <NavLink to="docview-all-patient" className={({ isActive }) => (isActive ? 'is-active' : 'link')}>
+                                    <article className='sidebaricon my-5' >
+                                        <h2>
+                                            <img src={patienticon}></img>
+                                        </h2>
+                                        <label className="text  nav-text mx-3" >Patients Reports</label>
+                                    </article>
+                                </NavLink>
+                            </article>
+
+                            <article>
+                                <NavLink to="doc-profile" className={({ isActive }) => (isActive ? 'is-active' : 'link')}>
+                                    <article className='sidebaricon my-5' >
+                                        <h2>
+                                            <img src={editicon}></img>
+                                        </h2>
+                                        <label className="text  nav-text mx-3" >Edit Profile</label>
+                                    </article>
+                                </NavLink>
+                            </article>
 
 
-
-                        <ul className="menu-links">
-                            <li className="nav-link">
-                                <a href="#">
-                                    <i className='bx bx-home-alt icon' ></i>
-                                    <Link className="text  nav-text" to="doctor-dashboard">Dashboard</Link>
-                                </a>
-                            </li>
-
-                            <li className="nav-link">
-                                <a href="#">
-                                    <i className='bx bx-bar-chart-alt-2 icon' ></i>
-                                    <Link className="text nav-text" to="docview-all-patient">View All Pateint</Link>
-                                </a>
-                            </li>
-
-                            <li className="nav-link">
-                                <a href="#">
-                                    <i className='bx bx-bell icon'></i>
-                                    <span className="text nav-text">Notifications</span>
-                                </a>
-                            </li>
-
-                            <li className="nav-link">
-                                <a href="#">
-                                    <i className='bx bx-pie-chart-alt icon' ></i>
-                                    <span className="text nav-text">Analytics</span>
-                                </a>
-                            </li>
-
-                            <li className="nav-link">
-                                <a href="#">
-                                    <i className='bx bx-heart icon' ></i>
-                                    <span className="text nav-text">Likes</span>
-                                </a>
-                            </li>
-
-                            <li className="nav-link">
-                                <a href="#">
-                                    <i className='bx bx-wallet icon' ></i>
-                                    <span className="text nav-text">Wallets</span>
-                                </a>
-                            </li>
-
-                        </ul>
+                        </article>
                     </div>
 
                     <div className="bottom-content">
-                        <li className="">
-                            <a href="#">
-                                <i className='bx bx-log-out icon' ></i>
-                                <span className="text nav-text">Logout</span>
-                            </a>
-                        </li>
-
-
-
+                        <NavLink to="/" className={({ isActive }) => (isActive ? 'is-active' : 'link')}>
+                            <article className='sidebaricon mb-5' >
+                                <h2>
+                                    <img src={logouticon}></img>
+                                </h2>
+                                <label className="text  nav-text mx-3" >LogOut</label>
+                            </article>
+                        </NavLink>
                     </div>
                 </div>
 
@@ -96,13 +90,15 @@ function DoctorProtal() {
 
             <section className="home">
                 <article className='header-nav'>
-                    <label className='logout'>
-                        <article className='btn'>
-                            <i className='bx bx-log-in header-icon' ></i>
-                            <p>Logout</p>
+                    <article className='profile-wrapper'>
+                        <h4>Hi, Liaqat Welcome to our System</h4>
+                        <article>
+                            <h4>profile</h4>
                         </article>
-                    </label>
+
+                    </article>
                 </article>
+
 
                 <Outlet></Outlet>
             </section>

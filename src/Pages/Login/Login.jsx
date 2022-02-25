@@ -56,7 +56,7 @@ function Login() {
                                                 <label className="remember-text"> Remember Me</label>
                                             </article>
                                         </div>
-                                        <Link to="/admin-protal" className="form-group login-btn" >
+                                        <Link to="/doctor-protal" className="form-group login-btn" >
                                             <input
                                                 type="submit"
                                                 value="Login"
