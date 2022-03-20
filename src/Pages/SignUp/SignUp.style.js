@@ -24,6 +24,16 @@ export const Signupstyle = styled.article`
       padding: 4rem;
     }
 
+    .form-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-column-gap: 3rem;
+      padding: 3rem;
+      @media (max-width: 600px) {
+        grid-template-columns: 1fr;
+      }
+    }
+
     .form-group {
       margin-bottom: 2rem;
       text-align: center;
@@ -68,7 +78,7 @@ export const Signupstyle = styled.article`
     .btn {
       ${CommonButton({
         borderRadius: "1rem",
-        padding: "1rem 12.6rem",
+        padding: "1rem 5rem",
       })}
     }
     .card-footer {

@@ -61,4 +61,38 @@ export const Loginstyle = styled.article`
       color: ${(p) => p.theme.colors.WHITE_COLOR};
     }
   }
+  .forgetbtn {
+    color: #0d6efd;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  .modelbody {
+    background-color: white;
+    .forminputbtn {
+      justify-content: end !important;
+    }
+    .forminput,
+    .forminputbtn {
+      display: flex;
+      padding: 1rem;
+      align-items: end;
+      justify-content: start;
+      width: 90%;
+      margin: auto;
+    }
+    input {
+      padding: 0.5rem;
+      border: 0.1rem solid ${(p) => p.theme.colors.PRIMARY_COLOR};
+      font-size: 1.5rem;
+      width: 72%;
+      margin-left: 1rem;
+    }
+    .btn {
+      ${CommonButton({
+        borderRadius: "1rem",
+        padding: ".5rem 3rem",
+      })}
+    }
+  }
 `;

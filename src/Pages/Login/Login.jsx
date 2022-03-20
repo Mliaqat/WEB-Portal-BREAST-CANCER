@@ -1,11 +1,71 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { PasswordIcon, UserIcon } from "../../Asset/Icon/Icon";
+import { CrossIcon, PasswordIcon, UserIcon } from "../../Asset/Icon/Icon";
 import Footer from "../../Component/Footer/Footer";
 import Navbar from "../../Component/Navbar/Navbar";
+import { Modelstyle } from "../../style/commomStyle";
 import { Loginstyle } from "./Login.style";
 
+
+
+const Modal = ({ handleClose, data }) => {
+
+
+
+    return (
+        <Modelstyle>
+            <div className="modal display-block">
+                <section className="modal-main">
+
+                    <div className="container">
+                        <p className="heading">Forget Password</p>
+                        <article className="cancel" onClick={handleClose}><CrossIcon /></article>
+                    </div>
+                    <hr className="mb-3"></hr>
+                    <Loginstyle>
+
+                        <article className="modelbody">
+                            <article className="forminput">
+                                <h3>Enter Email:</h3>
+                                <input type="email"></input>
+
+
+                            </article>
+
+                            <article className="forminputbtn">
+                                <label className="btn">Submit</label>
+                            </article>
+
+
+                        </article>
+
+                    </Loginstyle>
+
+
+
+                </section>
+            </div>
+        </Modelstyle >
+    );
+};
+
 function Login() {
+    const [show, setShow] = useState(false);
+    const [selectedData, setSelectedData] = useState({});
+
+
+    const hanldeClick = (data) => {
+        setSelectedData(data);
+        setShow(true);
+    };
+    const hideModal = () => {
+        setShow(false);
+    };
+
+
+
+
+
     return (
         <>
             <Navbar />
@@ -71,13 +131,14 @@ function Login() {
                                         Don't have an account? &nbsp;<Link to="/signup">Sign Up</Link>
                                     </div>
                                     <div className="d-flex justify-content-center">
-                                        <Link to="#">Forgot your password? </Link>
+                                        <a className="forgetbtn" onClick={() => hanldeClick()}>Forgot your password? </a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </article>
+                {show && <Modal data={selectedData} handleClose={hideModal} />}
             </Loginstyle>
             <Footer />
         </>

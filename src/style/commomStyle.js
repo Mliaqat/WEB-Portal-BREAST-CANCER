@@ -1,11 +1,11 @@
-import { css } from "styled-components";
+import styled, { css } from "styled-components";
 
 export const FlexboxStyle = ({ align, justify, direction, rowgap }) => css`
   display: flex;
   align-items: ${align || "center"};
   justify-content: ${justify || "space-between"};
   flex-direction: ${direction || "row"};
-  row-gap: ${rowgap || "0rem"}
+  row-gap: ${rowgap || "0rem"};
 `;
 
 export const CommonGridStyle = ({ columns, rowGap, columnGap, align }) => css`
@@ -51,5 +51,60 @@ export const CommonButton = ({ padding, borderRadius }) => css`
   &:hover {
     background: ${(p) => p.theme.colors.WHITE_COLOR};
     color: ${(p) => p.theme.colors.PRIMARY_COLOR};
+  }
+`;
+
+export const Modelstyle = styled.main`
+  .modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+  }
+
+  .modal-main {
+    position: fixed;
+    background: white;
+    width: 40%;
+    height: auto;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 0.5rem;
+  }
+
+  .display-block {
+    display: block !important;
+  }
+
+  .display-none {
+    display: none;
+  }
+  .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+  }
+  .textbox {
+    max-height: 30rem;
+    margin: auto;
+    width: 80%;
+  }
+  .cancel {
+    padding: 1rem;
+    position: absolute;
+    right: 0;
+    cursor: pointer;
+    > svg {
+      width: 2rem;
+    }
+  }
+
+  .heading {
+    font-size: 3rem;
+    font-weight: 500;
+    padding: 1rem;
   }
 `;

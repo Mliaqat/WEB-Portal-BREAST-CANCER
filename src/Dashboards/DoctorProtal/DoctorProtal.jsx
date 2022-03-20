@@ -9,6 +9,7 @@ import { DashboardStyle } from '../CommnonStyle/Dashboard.style';
 
 function DoctorProtal() {
 
+
     const [isOpen, setIsOpen] = useState(false)
 
     const onclickactive = () => {
