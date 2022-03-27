@@ -1,12 +1,8 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import VideoPlayer from "react-background-video-player";
-import vedio from '../../Asset/vedio/signupvedio.mp4'
-import { Signupstyle } from "./SignUp.style";
-import Navbar from "../../Component/Navbar/Navbar";
-import Footer from "../../Component/Footer/Footer";
+import { AddDoctorStyle } from "./AddDoctor.style";
 
-function SignUp() {
+
+function AddDoctor() {
 
     const [data, setData] = useState({
         first_name: "",
@@ -32,19 +28,10 @@ function SignUp() {
     return (
 
         <>
-            <Navbar />
 
-            <Signupstyle >
+            <AddDoctorStyle >
                 <div id="signupbg">
-                    <article >
-                        <VideoPlayer
-                            style={{ width: "50%", height: "100%", top: "0%", left: "50%" }}
-                            src={vedio}
-                            autoPlay={true}
-                            muted={true}
-                            className="vedio"
-                        />
-                    </article>
+
 
                     <article className="container pb-5 pt-5">
                         <article className="card ">
@@ -177,21 +164,15 @@ function SignUp() {
 
 
 
-                            <article className="card-footer mt-3">
-                                <div className="d-flex justify-content-center links">
-                                    <Link to="/login">Login Now!</Link>
-                                </div>
 
-                            </article>
                         </article>
                     </article>
                 </div>
-            </Signupstyle>
-            <Footer />
+            </AddDoctorStyle>
         </>
     )
 }
 
-export default SignUp;
+export default AddDoctor;
 
 

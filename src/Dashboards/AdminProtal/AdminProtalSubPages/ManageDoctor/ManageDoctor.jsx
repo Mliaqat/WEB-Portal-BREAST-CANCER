@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { DeleteIcon, EditIcon } from '../../../../Asset/Icon/Icon';
 import { TableStyle } from '../../../CommnonStyle/Dashboard.style';
 
@@ -7,7 +8,7 @@ function ManageDoctor() {
         <TableStyle>
             <article className='btn_wrapper '>
                 <h2 className="title">Manage Doctor</h2>
-                <button className='btn'>Add Doctor</button>
+                <Link to="adddoctor" className='btn'>Add Doctor</Link>
 
             </article>
             <hr className='mb-5'></hr>

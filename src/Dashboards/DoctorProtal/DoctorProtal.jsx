@@ -39,7 +39,7 @@ function DoctorProtal() {
                 <div className="menu-bar">
                     <div className="menu">
                         <article >
-                            <NavLink to="" className={({ isActive }) => (isActive ? 'is-active' : 'link')}>
+                            <NavLink to="dashboard" className={({ isActive }) => (isActive ? 'is-active' : 'link')}>
                                 <article className='sidebaricon my-5' >
                                     <h2>
                                         <img src={dashboardicon}></img>

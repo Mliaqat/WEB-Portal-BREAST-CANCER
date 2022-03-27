@@ -8,7 +8,7 @@ import { Loginstyle } from "./Login.style";
 
 
 
-const Modal = ({ handleClose, data }) => {
+const Modal = ({ handleClose }) => {
 
 
 
@@ -51,16 +51,26 @@ const Modal = ({ handleClose, data }) => {
 
 function Login() {
     const [show, setShow] = useState(false);
-    const [selectedData, setSelectedData] = useState({});
 
 
-    const hanldeClick = (data) => {
-        setSelectedData(data);
+    const hanldeClick = () => {
         setShow(true);
     };
     const hideModal = () => {
         setShow(false);
     };
+
+    const [data, setData] = useState({
+        email: "",
+        password: ""
+    })
+
+    const handleInputChange = (e) => {
+        setData({
+            ...data,
+            [e.target.name]: e.target.value
+        })
+    }
 
 
 
@@ -87,10 +97,12 @@ function Login() {
                                                 </span>
                                             </div>
                                             <input
-                                                type="text"
+                                                type="email"
                                                 className="form-control"
                                                 placeholder="E-mail"
                                                 name="email"
+                                                required
+                                                onChange={(e) => handleInputChange(e)}
 
                                             />
                                         </div>
@@ -105,6 +117,8 @@ function Login() {
                                                 className="form-control"
                                                 name="password"
                                                 placeholder="Password"
+                                                onChange={(e) => handleInputChange(e)}
+                                                required
 
                                             />
                                         </div>
@@ -138,7 +152,7 @@ function Login() {
                         </div>
                     </div>
                 </article>
-                {show && <Modal data={selectedData} handleClose={hideModal} />}
+                {show && <Modal handleClose={hideModal} />}
             </Loginstyle>
             <Footer />
         </>

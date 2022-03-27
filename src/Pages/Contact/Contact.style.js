@@ -20,6 +20,14 @@ export const Contactstyle = styled.article`
     padding: 4rem;
   }
 
+  input:invalid,
+  textarea:invalid {
+    animation: shake 300ms;
+    &:focus {
+      border: red 0.3rem solid;
+    }
+  }
+
   .form-control {
     -webkit-appearance: none;
     -moz-appearance: none;

@@ -29,26 +29,35 @@ function Contact() {
                                                 className="form-control"
                                                 placeholder="User Name"
                                                 name="email"
+                                                pattern='[A-Za-z]*.{3,}'
+                                                title='Enter Valid Name'
+                                                required
 
                                             />
                                         </div>
                                         <div className="input-group form-group">
 
                                             <input
-                                                type="text"
+                                                type="email"
                                                 className="form-control"
                                                 placeholder="E-Mail"
                                                 name="email"
+                                                // pattern="^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$"
+                                                required
+                                                title='Enter Valid Email'
 
                                             />
                                         </div>
                                         <div className="input-group form-group">
 
                                             <input
-                                                type="text"
+                                                type="tel"
                                                 className="form-control"
                                                 placeholder="Phone No"
-                                                name="email"
+                                                name="phone no"
+                                                pattern='[0-9]{11}'
+                                                required
+                                                title='Enter Phone No'
 
                                             />
                                         </div>
@@ -61,6 +70,7 @@ function Contact() {
                                                 cols="30" rows="6"
                                                 placeholder="Enter your Message"
                                                 name="email"
+                                                required
                                             />
                                         </div>
                                     </div>

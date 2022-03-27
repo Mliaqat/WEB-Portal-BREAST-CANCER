@@ -77,6 +77,19 @@ function AdminProtal() {
                                     </article>
                                 </NavLink>
                             </article>
+
+                            <article>
+                                <NavLink to="adddoctor" className={({ isActive }) => (isActive ? 'is-active' : 'link')}>
+                                    <article className='sidebaricon my-5' >
+                                        <h2>
+                                            <img src={docicon}></img>
+                                        </h2>
+                                        <label className="text  nav-text mx-3" >Add Doctor</label>
+                                    </article>
+                                </NavLink>
+                            </article>
+
+
                             <article>
                                 <NavLink to="updateprofile" className={({ isActive }) => (isActive ? 'is-active' : 'link')}>
                                     <article className='sidebaricon my-5' >

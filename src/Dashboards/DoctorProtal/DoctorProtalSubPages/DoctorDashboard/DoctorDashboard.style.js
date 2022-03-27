@@ -77,4 +77,35 @@ export const DoctorDashboardStyle = styled.main`
       }
     }
   }
+
+  .modelbody {
+    background-color: white;
+    width: 90%;
+    margin: auto;
+    .forminputbtn {
+      justify-content: end !important;
+    }
+    /* .forminput,
+    .forminputbtn {
+      display: flex;
+      padding: 1rem;
+      align-items: end;
+      justify-content: start;
+      width: 90%;
+      margin: auto;
+    } */
+    textarea,
+    input {
+      padding: 0.5rem 1rem;
+      border: 0.1rem solid ${(p) => p.theme.colors.PRIMARY_COLOR};
+      font-size: 1.5rem;
+      width: 100%;
+    }
+    .btn {
+      ${CommonButton({
+        borderRadius: "1rem",
+        padding: ".5rem 3rem",
+      })}
+    }
+  }
 `;

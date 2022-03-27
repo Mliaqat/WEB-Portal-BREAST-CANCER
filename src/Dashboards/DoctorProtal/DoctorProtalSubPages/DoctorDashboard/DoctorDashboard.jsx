@@ -2,6 +2,60 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios'
 import icon from "../../../../Asset/images/uploadimage.png"
 import { DoctorDashboardStyle } from './DoctorDashboard.style';
+import { CrossIcon } from '../../../../Asset/Icon/Icon';
+import { Modelstyle } from '../../../../style/commomStyle';
+
+
+const Modal = ({ handleClose, data }) => {
+
+
+    return (
+        <Modelstyle>
+            <div className="modal display-block">
+                <section className="modal-main">
+
+                    <div className="container">
+                        <p className="heading">Add Report</p>
+                        <article className="cancel" onClick={handleClose}><CrossIcon /></article>
+                    </div>
+                    <hr className="mb-3"></hr>
+                    <DoctorDashboardStyle>
+
+                        <article className="modelbody">
+
+                            <h3 className='my-4'>Enter Patient Id:</h3>
+
+                            <input type="email"></input>
+
+                            <h3 className='my-4'>Test Result:</h3>
+
+                            <input type="text" value={data} readOnly></input>
+
+                            <h3 className='my-4'>Add description:</h3>
+
+                            <textarea type="text" row="5"></textarea>
+
+
+
+                            <article className="d-flex justify-content-end my-4">
+                                <label className="btn">Add Report</label>
+                            </article>
+
+
+                        </article>
+
+                    </DoctorDashboardStyle>
+
+
+
+
+                </section>
+            </div>
+        </Modelstyle >
+    );
+};
+
+
 
 function DoctorDashboard() {
 
@@ -9,6 +63,21 @@ function DoctorDashboard() {
     const [image, setImage] = useState();
     const [result, setResult] = useState();
     const [previewimage, setPreViewImage] = useState();
+
+    const [show, setShow] = useState(false);
+    const [reportdata, setReportdata] = useState("")
+
+
+    const hanldeClick = (data) => {
+        setShow(true);
+        setReportdata(data)
+    };
+    const hideModal = () => {
+        setShow(false);
+    };
+
+
+
     let confidence = 0;
 
     console.log(image)
@@ -78,8 +147,10 @@ function DoctorDashboard() {
                             <h4>{result?.class}</h4>
                             <h4 className='my-3'>{confidence}%</h4>
                         </article>
-                        <article>
-                            <button className='btn'>Add Report</button>
+                        <article className='d-flex flex-column'>
+                            <button className='btn' onClick={() => hanldeClick(result?.class)}>Add Report</button>
+
+
                         </article>
                     </>
 
@@ -105,6 +176,7 @@ function DoctorDashboard() {
                     <h2>Accuracy = {result?.confidence}</h2>
                 </>
             } */}
+            {show && <Modal data={reportdata} handleClose={hideModal} />}
         </DoctorDashboardStyle>
     )
 }

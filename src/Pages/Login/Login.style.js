@@ -17,6 +17,14 @@ export const Loginstyle = styled.article`
       padding: 1rem;
     }
 
+    input:invalid,
+    textarea:invalid {
+      animation: shake 300ms;
+      &:focus {
+        border: red 0.3rem solid;
+      }
+    }
+
     .card-body {
       padding: 4rem;
     }
@@ -52,8 +60,9 @@ export const Loginstyle = styled.article`
     .btn {
       ${CommonButton({
         borderRadius: "1rem",
-        padding: "1rem 12.6rem",
+        padding: "1rem",
       })}
+      width: 100%;
     }
     .card-footer {
       font-size: 1.8rem;

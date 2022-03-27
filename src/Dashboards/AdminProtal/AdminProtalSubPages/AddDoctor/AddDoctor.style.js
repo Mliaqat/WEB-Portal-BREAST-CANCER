@@ -1,20 +1,19 @@
 import styled from "styled-components";
-import { CommonButton, FlexboxStyle } from "../../style/commomStyle";
-// import img from "../../Asset/images/Login.png";
+import { CommonButton, FlexboxStyle } from "../../../../style/commomStyle";
 
-export const Signupstyle = styled.article`
-  background-size: 100% 100%;
+export const AddDoctorStyle = styled.article`
+  /* background-size: 100% 100%;
   background-color: #050d1f;
   width: 100%;
-  height: 150%;
+  height: 150%; */
 
   .card {
-    background-color: rgba(0, 0, 0, 0.4) !important;
-    margin: 12rem 0rem 4rem 0rem;
-    border-radius: 2rem;
+    /* background-color: rgba(0, 0, 0, 0.4) !important; */
+    margin: 0rem 0rem 4rem 0rem;
+    /* border-radius: 2rem; */
 
     .card-header {
-      color: white;
+      /* color: white; */
       font-weight: 800;
       text-align: center;
       padding: 1rem;
@@ -22,14 +21,6 @@ export const Signupstyle = styled.article`
 
     .card-body {
       padding: 4rem;
-    }
-
-    input:invalid,
-    textarea:invalid {
-      animation: shake 300ms;
-      &:focus {
-        border: red 0.3rem solid;
-      }
     }
 
     .form-layout {
@@ -46,7 +37,7 @@ export const Signupstyle = styled.article`
       margin-bottom: 2rem;
       text-align: center;
       label {
-        color: white;
+        /* color: white; */
         font-size: 2rem;
         padding: 0rem 0rem 1rem 0rem;
         float: left;
@@ -54,7 +45,7 @@ export const Signupstyle = styled.article`
     }
     .form-control {
       font-size: 2rem;
-      border-radius: 0.5rem !important;
+      /* border-radius: 0.5rem !important; */
       padding: 1rem;
       &:focus {
         border: ${(p) => p.theme.colors.PRIMARY_COLOR} 0.3rem solid;
@@ -75,10 +66,6 @@ export const Signupstyle = styled.article`
       height: 2rem;
       margin-right: 1rem;
     }
-    .remember-text {
-      font-size: 1.8rem;
-      color: ${(p) => p.theme.colors.WHITE_COLOR};
-    }
 
     .login-btn {
       margin-top: 4rem;
@@ -88,11 +75,6 @@ export const Signupstyle = styled.article`
         borderRadius: "1rem",
         padding: "1rem 5rem",
       })}
-    }
-    .card-footer {
-      font-size: 1.8rem;
-      padding: 1.5rem;
-      color: ${(p) => p.theme.colors.WHITE_COLOR};
     }
   }
 `;

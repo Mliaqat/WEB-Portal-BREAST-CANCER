@@ -17,7 +17,7 @@ function DocViewAllPatient() {
                         <tr>
                             <th scope="col">Patient ID</th>
                             <th scope="col">Name</th>
-                            <th scope="col">DOB</th>
+                            <th scope="col">Report Date</th>
                             <th scope="col">Action</th>
                         </tr>
                     </thead>
@@ -30,9 +30,9 @@ function DocViewAllPatient() {
 
                             <td data-label="Action">
                                 <article className="action-buttons-wrapper">
-                                    <button className="action-button">
+                                    {/* <button className="action-button">
                                         <EditIcon />
-                                    </button>
+                                    </button> */}
                                     <button
                                         className="action-button"
 
@@ -49,9 +49,9 @@ function DocViewAllPatient() {
 
                             <td data-label="Action">
                                 <article className="action-buttons-wrapper">
-                                    <button className="action-button">
+                                    {/* <button className="action-button">
                                         <EditIcon />
-                                    </button>
+                                    </button> */}
                                     <button
                                         className="action-button"
 
