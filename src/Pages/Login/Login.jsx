@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios"
 import { Link } from "react-router-dom";
 import { CrossIcon, PasswordIcon, UserIcon } from "../../Asset/Icon/Icon";
 import Footer from "../../Component/Footer/Footer";
@@ -72,6 +73,17 @@ function Login() {
         })
     }
 
+    let url = "http://localhost:5000/login";
+
+    const Submit = async () => {
+        await axios.post(url, data).then((res) => {
+            console.log(res)
+        }).catch((err) => {
+            console.log(err)
+        })
+
+    }
+
 
 
 
@@ -135,6 +147,7 @@ function Login() {
                                                 type="submit"
                                                 value="Login"
                                                 className="btn"
+                                                onClick={Submit}
 
                                             />
                                         </Link>

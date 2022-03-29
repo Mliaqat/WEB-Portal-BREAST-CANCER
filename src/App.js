@@ -49,7 +49,7 @@ function App() {
 
           <Route path="admin-protal" element={<AdminProtal />}>
             <Route index element={<AdminDashboard />} />
-            <Route index path="admin-dashboard" element={<AdminDashboard />} />
+            <Route excat path="admin-dashboard" element={<AdminDashboard />} />
             <Route path="managepatient" element={<ManagePatient />} />
             <Route path="managedoctor" element={<ManageDoctor />} />
             <Route path="updateprofile" element={<UpdateProfile />} />
@@ -62,7 +62,6 @@ function App() {
             <Route index element={<DoctorDashboard />} />
             <Route excat path="dashboard" element={<DoctorDashboard />} />
             <Route path="docview-all-patient" element={<DocViewAllPatient />} />
-
             <Route path="doc-profile" element={<DoctorProfile />} />
           </Route>
 

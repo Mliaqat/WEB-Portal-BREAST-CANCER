@@ -5,17 +5,23 @@ import vedio from '../../Asset/vedio/signupvedio.mp4'
 import { Signupstyle } from "./SignUp.style";
 import Navbar from "../../Component/Navbar/Navbar";
 import Footer from "../../Component/Footer/Footer";
+import { ToastContainer, toast } from 'react-toastify';
+import axios from "axios"
+import 'react-toastify/dist/ReactToastify.css';
 
 function SignUp() {
 
+    // const url = `${process.env.REACT_APP_BASE_URL}/signup`;
+    let url = "http://localhost:5000/signup";
     const [data, setData] = useState({
         first_name: "",
         last_name: "",
         email: "",
-        ph_no: "",
+        phone_no: "",
         address: "",
         dob: "",
-        password: ""
+        password: "",
+        role: "patient"
     })
 
 
@@ -27,6 +33,22 @@ function SignUp() {
 
     };
 
+    const submit = async () => {
+        console.log(data)
+        await axios
+            .post(url, data).then((res) => {
+                console.log(res)
+                toast.success("Signup Successfully", {
+                    theme: 'dark'
+                });
+            }).catch((err) => {
+                console.log(err)
+                toast.error("Invalid credentials", {
+                    theme: 'dark'
+                });
+            });
+    }
+
 
 
     return (
@@ -34,7 +56,10 @@ function SignUp() {
         <>
             <Navbar />
 
+
             <Signupstyle >
+                <ToastContainer
+                />
                 <div id="signupbg">
                     <article >
                         <VideoPlayer
@@ -95,7 +120,7 @@ function SignUp() {
                                         type="tel"
                                         className="form-control"
                                         placeholder="+9212345678"
-                                        name="ph_no"
+                                        name="phone_no"
                                         onChange={(e) => handleInputChange(e)}
                                         required
                                     />
@@ -171,7 +196,7 @@ function SignUp() {
 
 
                             <article className="d-flex justify-content-center mt-0">
-                                <input type="submit" value="SIGNUP" className="login-btn btn" />
+                                <input onClick={() => submit()} type="submit" value="SIGNUP" className="login-btn btn" />
 
                             </article>
 

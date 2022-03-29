@@ -119,7 +119,7 @@ function DoctorDashboard() {
             <article className="file">
                 <label>
                     <h4 className='mb-3'>Upload Only Histopathology Image:</h4>
-                    <input type="file" onChange={filehandler} />
+                    <input type="file" onChange={filehandler} accept=".jpeg , .png" />
                 </label>
                 <button className='btn mx-3' onClick={() => add()}>View Result</button>
             </article>

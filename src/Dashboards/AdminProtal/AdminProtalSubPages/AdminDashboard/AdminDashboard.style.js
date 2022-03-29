@@ -9,4 +9,11 @@ export const AdminDashboardStyle = styled.main`
     margin: auto;
     margin-top: 3rem;
   }
+  .chartlayouts {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .charts {
+    width: 30rem;
+  }
 `;

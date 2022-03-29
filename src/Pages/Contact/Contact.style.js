@@ -23,6 +23,7 @@ export const Contactstyle = styled.article`
   input:invalid,
   textarea:invalid {
     animation: shake 300ms;
+
     &:focus {
       border: red 0.3rem solid;
     }
