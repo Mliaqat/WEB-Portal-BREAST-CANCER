@@ -42,7 +42,7 @@ function DoctorProtal() {
                             <NavLink to="dashboard" className={({ isActive }) => (isActive ? 'is-active' : 'link')}>
                                 <article className='sidebaricon my-5' >
                                     <h2>
-                                        <img src={dashboardicon}></img>
+                                        <img src={dashboardicon} alt="icon"></img>
                                     </h2>
                                     <label className="text  nav-text mx-3" >Dashboard</label>
                                 </article>
@@ -53,7 +53,7 @@ function DoctorProtal() {
                                 <NavLink to="docview-all-patient" className={({ isActive }) => (isActive ? 'is-active' : 'link')}>
                                     <article className='sidebaricon my-5' >
                                         <h2>
-                                            <img src={patienticon}></img>
+                                            <img src={patienticon} alt="img"></img>
                                         </h2>
                                         <label className="text  nav-text mx-3" >Patients Reports</label>
                                     </article>
@@ -64,7 +64,7 @@ function DoctorProtal() {
                                 <NavLink to="doc-profile" className={({ isActive }) => (isActive ? 'is-active' : 'link')}>
                                     <article className='sidebaricon my-5' >
                                         <h2>
-                                            <img src={editicon}></img>
+                                            <img src={editicon} alt="icon"></img>
                                         </h2>
                                         <label className="text  nav-text mx-3" >Edit Profile</label>
                                     </article>
@@ -79,7 +79,7 @@ function DoctorProtal() {
                         <NavLink to="/" className={({ isActive }) => (isActive ? 'is-active' : 'link')}>
                             <article className='sidebaricon mb-5' >
                                 <h2>
-                                    <img src={logouticon}></img>
+                                    <img src={logouticon} alt="icon"></img>
                                 </h2>
                                 <label className="text  nav-text mx-3" >LogOut</label>
                             </article>
@@ -94,7 +94,7 @@ function DoctorProtal() {
                     <article className='profile-wrapper'>
                         <h4>Hi, Liaqat Welcome to our System</h4>
                         <article>
-                            <h4>profile</h4>
+                            <h4>Logout</h4>
                         </article>
 
                     </article>

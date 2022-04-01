@@ -10,10 +10,10 @@ export const AdminDashboardStyle = styled.main`
     margin-top: 3rem;
   }
   .chartlayouts {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    justify-content: center;
   }
   .charts {
-    width: 30rem;
+    width: 35rem;
   }
 `;

@@ -197,7 +197,7 @@ export const UserIcon = () => {
 
 export const PasswordIcon = () => {
   return (
-    <svg version="1.1" viewBox="0 0 24 24" height="24" version="1.1" width="24">
+    <svg version="1.1" viewBox="0 0 24 24" height="24" width="24">
       <g id="info" />
       <g id="icons">
         <path

@@ -1,5 +1,8 @@
 import React, { useState } from "react";
+import axios from "axios";
 import { AddDoctorStyle } from "./AddDoctor.style";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 function AddDoctor() {
@@ -8,11 +11,18 @@ function AddDoctor() {
         first_name: "",
         last_name: "",
         email: "",
-        ph_no: "",
+        phone_no: "",
+        cnic: "",
         address: "",
+        experince: "",
+        eduction: "",
+        gender: "",
         dob: "",
-        password: ""
+        password: "",
+        role: "doctor"
     })
+
+    const url = `${process.env.REACT_APP_BASE_URL}/users/signup`;
 
 
     const handleInputChange = (e) => {
@@ -23,11 +33,40 @@ function AddDoctor() {
 
     };
 
+    const submit = async (e) => {
+        e.preventDefault();
+        let formIsValid = true;
+        if (data.first_name == "" || data.email == "" || data.password == "" || data.phone_no == "") {
+            formIsValid = false
+            toast.error("Please Fill All field", {
+                theme: 'dark'
+            });
+        }
+        if (formIsValid) {
+            try {
+                const res = await axios.post(url, data)
+                console.log(res)
+                toast.success("Signup Successfully", {
+                    theme: 'dark'
+                });
+            } catch (error) {
+                console.log(error);
+                toast.error("Invalid credentials", {
+                    theme: 'dark'
+                });
+            }
+
+        }
+
+    }
+
 
 
     return (
 
         <>
+            <ToastContainer
+            />
 
             <AddDoctorStyle >
                 <div id="signupbg">
@@ -36,12 +75,12 @@ function AddDoctor() {
                     <article className="container pb-5 pt-5">
                         <article className="card ">
 
-                            <h2 className="card-header ">Registered Now</h2>
+                            <h2 className="card-header ">Add Doctor</h2>
 
                             <article className="form-layout" >
 
                                 <div className="form-group">
-                                    <label htmlFor="Fname"> First Name:</label>
+                                    <label> First Name:</label>
                                     <input
                                         type="text"
                                         className="form-control"
@@ -52,7 +91,7 @@ function AddDoctor() {
                                     />
                                 </div>
                                 <div className="form-group">
-                                    <label htmlFor="Lname">Last Name:</label>
+                                    <label>Last Name:</label>
                                     <input
                                         type="text"
                                         className="form-control"
@@ -64,7 +103,7 @@ function AddDoctor() {
                                 </div>
 
                                 <div className="form-group ">
-                                    <label htmlFor="Email">Email Address:</label>
+                                    <label>Email Address:</label>
                                     <input
                                         type="Email"
                                         className="form-control"
@@ -77,18 +116,64 @@ function AddDoctor() {
 
 
                                 <div className="form-group">
-                                    <label htmlFor="Phone_No">Phone Number:</label>
+                                    <label>Phone Number:</label>
                                     <input
                                         type="tel"
                                         className="form-control"
                                         placeholder="+9212345678"
-                                        name="ph_no"
+                                        name="phone_no"
                                         onChange={(e) => handleInputChange(e)}
                                         required
                                     />
                                 </div>
                                 <div className="form-group">
-                                    <label htmlFor="Address">Address:</label>
+                                    <label>CNIC:</label>
+                                    <input
+                                        type="dec"
+                                        className="form-control"
+                                        placeholder="3710580913371"
+                                        name="cnic"
+                                        onChange={(e) => handleInputChange(e)}
+                                        required
+                                    />
+                                </div>
+
+                                <div className="form-group">
+                                    <label>Experinces:</label>
+                                    <input
+                                        type="number"
+                                        className="form-control"
+                                        placeholder="5 year"
+                                        name="experince"
+                                        onChange={(e) => handleInputChange(e)}
+                                        required
+                                    />
+                                </div>
+                                <div className="form-group">
+                                    <label>Eduction:</label>
+                                    <input
+                                        type="text"
+                                        className="form-control"
+                                        placeholder="MBBS"
+                                        name="eduction"
+                                        onChange={(e) => handleInputChange(e)}
+                                        required
+                                    />
+                                </div>
+                                <div className="form-group">
+                                    <label>Gender:</label>
+                                    <select
+                                        className="select"
+                                        name="gender"
+                                        value={data.gender}
+                                        onChange={(e) => handleInputChange(e)}>
+                                        <option>Select Gender</option>
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
+                                    </select>
+                                </div>
+                                <div className="form-group">
+                                    <label>Address:</label>
                                     <input
                                         type="text"
                                         className="form-control"
@@ -102,7 +187,7 @@ function AddDoctor() {
 
 
                                 <div className="form-group">
-                                    <label htmlFor="DOB">DOB:</label>
+                                    <label>DOB:</label>
                                     <input
                                         type="date"
                                         className="form-control"
@@ -115,7 +200,7 @@ function AddDoctor() {
 
 
 
-                                <div className="form-group">
+                                {/* <div className="form-group">
                                     <label htmlFor="Password">Enter Password:</label>
                                     <input
                                         type="Password"
@@ -127,7 +212,7 @@ function AddDoctor() {
                                         minLength="8"
 
                                     />
-                                </div>
+                                </div> */}
                                 {/* <label className="checkbox" >
                                         <input
                                             type="checkbox"
@@ -141,7 +226,7 @@ function AddDoctor() {
                                     </label> */}
 
                                 <div className="form-group">
-                                    <label htmlFor="CPassword">Confirm Password:</label>
+                                    <label>Enter Password:</label>
                                     <input
                                         type="Password"
                                         className="form-control"
@@ -157,8 +242,10 @@ function AddDoctor() {
                             </article>
 
 
-                            <article className="d-flex justify-content-center mt-0">
-                                <input type="submit" value="SIGNUP" className="login-btn btn" />
+                            <article className="d-flex justify-content-center mt-0 mb-3">
+                                <button className="login-btn btn" onClick={(e) => submit(e)}>
+                                    Add Doctor
+                                </button>
 
                             </article>
 

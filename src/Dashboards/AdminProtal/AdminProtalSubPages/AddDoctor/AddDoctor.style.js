@@ -51,6 +51,12 @@ export const AddDoctorStyle = styled.article`
         border: ${(p) => p.theme.colors.PRIMARY_COLOR} 0.3rem solid;
       }
     }
+    .select {
+      width: 100%;
+      font-size: 2rem;
+      padding: 1rem;
+      border: #ced4da 0.01rem solid;
+    }
 
     .checkbox {
       ${FlexboxStyle({
@@ -67,9 +73,6 @@ export const AddDoctorStyle = styled.article`
       margin-right: 1rem;
     }
 
-    .login-btn {
-      margin-top: 4rem;
-    }
     .btn {
       ${CommonButton({
         borderRadius: "1rem",

@@ -20,7 +20,7 @@ function Navbar() {
         <Navbarstyle>
             <nav className="navbar fixed-top navbar-expand-lg navbar-dark p-md-3">
                 <div className="container">
-                    <img src={logo} width={200} />
+                    <img src={logo} width={200} alt="user-img" />
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
@@ -29,19 +29,19 @@ function Navbar() {
                     <div className="collapse navbar-collapse" id="navbarNav">
                         <div className="mx-auto"></div>
                         <ul className="navbar-nav">
-                            <NavLink className="nav-item" to="/" className={({ isActive }) => (isActive ? 'is-active' : '')}>
+                            <NavLink to="/" className={({ isActive }) => (isActive ? 'is-active' : 'nav-item')}>
                                 <a className="nav-link text-white" >Home</a>
                             </NavLink>
-                            <NavLink className="nav-item" to="/About" className={({ isActive }) => (isActive ? 'is-active' : '')}>
+                            <NavLink to="/About" className={({ isActive }) => (isActive ? 'is-active' : 'nav-item')}>
                                 <a className="nav-link text-white" href="#">About</a>
                             </NavLink>
-                            <NavLink className="nav-item" to="/Team" className={({ isActive }) => (isActive ? 'is-active' : '')}>
+                            <NavLink to="/Team" className={({ isActive }) => (isActive ? 'is-active' : 'nav-item')}>
                                 <a className="nav-link text-white" href="#">Team</a>
                             </NavLink>
-                            <NavLink className="nav-item" to="/Contact" className={({ isActive }) => (isActive ? 'is-active' : '')}>
+                            <NavLink to="/Contact" className={({ isActive }) => (isActive ? 'is-active' : 'nav-item')}>
                                 <a className="nav-link text-white" href="#">Contact Us</a>
                             </NavLink>
-                            <NavLink className="nav-item" to="/Login" className={({ isActive }) => (isActive ? 'is-active' : '')}>
+                            <NavLink to="/Login" className={({ isActive }) => (isActive ? 'is-active' : 'nav-item')}>
                                 <a className="nav-link text-white" href="#">Login</a>
                             </NavLink>
                         </ul>

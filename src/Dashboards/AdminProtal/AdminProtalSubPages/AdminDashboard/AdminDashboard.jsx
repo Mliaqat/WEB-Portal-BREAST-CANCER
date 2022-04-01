@@ -8,12 +8,6 @@ import { Doughnut } from 'react-chartjs-2'
 import 'chart.js/auto';
 
 
-
-
-
-
-
-
 function AdminDashboard() {
 
     const data = {
@@ -48,10 +42,12 @@ function AdminDashboard() {
             </article>
 
             <article className='chartlayouts'>
-                <article className='charts'>
+                <article className='charts mx-5'>
+                    <h2 className='text-center mb-5'>Number of User</h2>
                     <Doughnut data={data} options={options} />
                 </article>
-                <article className='charts'>
+                <article className='charts mx-5'>
+                    <h2 className='text-center mb-5'>Number of Cases</h2>
                     <Doughnut data={data} options={options} />
                 </article>
             </article>

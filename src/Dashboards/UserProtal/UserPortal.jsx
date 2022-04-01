@@ -47,7 +47,7 @@ function UserProtal() {
                             <NavLink to="user-dashboard" className={({ isActive }) => (isActive ? 'is-active' : 'link')}>
                                 <article className='sidebaricon my-5' >
                                     <h2>
-                                        <img src={dashboardicon}></img>
+                                        <img src={dashboardicon} alt="icon"></img>
                                     </h2>
                                     <label className="text  nav-text mx-3" >Dashboard</label>
                                 </article>
@@ -58,7 +58,7 @@ function UserProtal() {
                                 <NavLink to="view-report" className={({ isActive }) => (isActive ? 'is-active' : 'link')}>
                                     <article className='sidebaricon my-5' >
                                         <h2>
-                                            <img src={patienticon}></img>
+                                            <img src={patienticon} alt="icon"></img>
                                         </h2>
                                         <label className="text  nav-text mx-3" >View Report</label>
                                     </article>
@@ -69,7 +69,7 @@ function UserProtal() {
                                 <NavLink to="user-profile" className={({ isActive }) => (isActive ? 'is-active' : 'link')}>
                                     <article className='sidebaricon my-5' >
                                         <h2>
-                                            <img src={editicon}></img>
+                                            <img src={editicon} alt="icon"></img>
                                         </h2>
                                         <label className="text  nav-text mx-3" >Edit Profile</label>
                                     </article>
@@ -84,7 +84,7 @@ function UserProtal() {
                         <NavLink to="/" className={({ isActive }) => (isActive ? 'is-active' : 'link')}>
                             <article className='sidebaricon mb-5' >
                                 <h2>
-                                    <img src={logouticon}></img>
+                                    <img src={logouticon} alt="icon"></img>
                                 </h2>
                                 <label className="text  nav-text mx-3" >LogOut</label>
                             </article>

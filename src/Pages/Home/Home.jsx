@@ -1,10 +1,10 @@
 import React from 'react';
 import 'animate.css';
-import { Blockqotestyle, Futurestyle, Headerstyle, Headingstyle, Missionstyle } from './Home.style';
+import { Blockqotestyle, Headerstyle, Headingstyle, Missionstyle } from './Home.style';
 import img from '../../Asset/images/women.png';
 import VideoPlayer from "react-background-video-player";
 import vedio from '../../Asset/vedio/vedio.webm'
-import { Help, Message, Ribbion, Support } from '../../Asset/Icon/Icon';
+import { Ribbion } from '../../Asset/Icon/Icon';
 import Navbar from '../../Component/Navbar/Navbar';
 import Footer from '../../Component/Footer/Footer';
 

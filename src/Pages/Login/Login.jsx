@@ -73,14 +73,17 @@ function Login() {
         })
     }
 
-    let url = "http://localhost:5000/login";
+    const url = `${process.env.REACT_APP_BASE_URL}/users/login`;
 
     const Submit = async () => {
-        await axios.post(url, data).then((res) => {
+        try {
+            const res = await axios.post(url, data)
             console.log(res)
-        }).catch((err) => {
-            console.log(err)
-        })
+        } catch (error) {
+            console.log(error)
+
+        }
+
 
     }
 
@@ -101,57 +104,55 @@ function Login() {
                                 </div>
 
                                 <div className="card-body">
-                                    <form method="POST">
-                                        <div className="input-group form-group">
-                                            <div className="input-group-prepend">
-                                                <span className="input-group-text">
-                                                    <UserIcon />
-                                                </span>
-                                            </div>
-                                            <input
-                                                type="email"
-                                                className="form-control"
-                                                placeholder="E-mail"
-                                                name="email"
-                                                required
-                                                onChange={(e) => handleInputChange(e)}
 
-                                            />
+                                    <div className="input-group form-group">
+                                        <div className="input-group-prepend">
+                                            <span className="input-group-text">
+                                                <UserIcon />
+                                            </span>
                                         </div>
-                                        <div className="input-group form-group">
-                                            <div className="input-group-prepend">
-                                                <span className="input-group-text">
-                                                    <PasswordIcon />
-                                                </span>
-                                            </div>
-                                            <input
-                                                type="password"
-                                                className="form-control"
-                                                name="password"
-                                                placeholder="Password"
-                                                onChange={(e) => handleInputChange(e)}
-                                                required
+                                        <input
+                                            type="email"
+                                            className="form-control"
+                                            placeholder="E-mail"
+                                            name="email"
+                                            required
+                                            onChange={(e) => handleInputChange(e)}
 
-                                            />
+                                        />
+                                    </div>
+                                    <div className="input-group form-group">
+                                        <div className="input-group-prepend">
+                                            <span className="input-group-text">
+                                                <PasswordIcon />
+                                            </span>
                                         </div>
-                                        <div className="d-flex my-5">
-                                            <article >
-                                                <input type="checkbox" className="checkboxinput" />
-                                            </article>
-                                            <article>
-                                                <label className="remember-text"> Remember Me</label>
-                                            </article>
-                                        </div>
-                                        <Link to="/doctor-protal" className="form-group login-btn" >
-                                            <input
-                                                type="submit"
-                                                value="Login"
-                                                className="btn"
-                                                onClick={Submit}
+                                        <input
+                                            type="password"
+                                            className="form-control"
+                                            name="password"
+                                            placeholder="Password"
+                                            onChange={(e) => handleInputChange(e)}
+                                            required
 
-                                            />
-                                        </Link>
-                                    </form>
+                                        />
+                                    </div>
+                                    <div className="d-flex my-5">
+                                        <article >
+                                            <input type="checkbox" className="checkboxinput" />
+                                        </article>
+                                        <article>
+                                            <label className="remember-text"> Remember Me</label>
+                                        </article>
+                                    </div>
+                                    <article
+                                        className="form-group login-btn" >
+                                        <button className="btn" onClick={Submit}>
+                                            Login
+
+                                        </button>
+                                    </article>
+
                                 </div>
                                 <div className="card-footer">
                                     <div className="d-flex justify-content-center links">

@@ -171,7 +171,7 @@ export const DashboardStyle = styled.main`
     width: calc(100% - 25rem);
     background-color: ${(p) => p.theme.colors.BACKGROUND_COLOR};
     height: auto;
-    min-height: 100vh;
+    min-height: 100%;
   }
   .home .text {
     font-size: 3rem;

@@ -1,17 +1,11 @@
 import React, { useState } from "react";
-import axios from "axios"
-import { Link } from "react-router-dom";
-import VideoPlayer from "react-background-video-player";
-import vedio from '../../Asset/vedio/signupvedio.mp4'
-import { Signupstyle } from "./SignUp.style";
-import Navbar from "../../Component/Navbar/Navbar";
-import Footer from "../../Component/Footer/Footer";
+import axios from "axios";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { AddDoctorStyle } from "../AddDoctor/AddDoctor.style";
 
-function SignUp() {
 
-    const url = `${process.env.REACT_APP_BASE_URL}/users/signup`;
+function AddAdmin() {
 
     const [data, setData] = useState({
         first_name: "",
@@ -22,8 +16,10 @@ function SignUp() {
         address: "",
         dob: "",
         password: "",
-        role: "user"
+        role: "admin"
     })
+
+    const url = `${process.env.REACT_APP_BASE_URL}/users/signup`;
 
 
     const handleInputChange = (e) => {
@@ -34,11 +30,10 @@ function SignUp() {
 
     };
 
-
-
-    const submit = async () => {
+    const submit = async (e) => {
+        e.preventDefault();
         let formIsValid = true;
-        if (data.first_name === "" || data.email === "" || data.password === "" || data.phone_no === "") {
+        if (data.first_name == "" || data.email == "" || data.password == "" || data.phone_no == "") {
             formIsValid = false
             toast.error("Please Fill All field", {
                 theme: 'dark'
@@ -67,27 +62,17 @@ function SignUp() {
     return (
 
         <>
-            <Navbar />
+            <ToastContainer
+            />
 
-
-            <Signupstyle >
-                <ToastContainer
-                />
+            <AddDoctorStyle >
                 <div id="signupbg">
-                    <article >
-                        <VideoPlayer
-                            style={{ width: "50%", height: "100%", top: "0%", left: "50%" }}
-                            src={vedio}
-                            autoPlay={true}
-                            muted={true}
-                            className="vedio"
-                        />
-                    </article>
+
 
                     <article className="container pb-5 pt-5">
                         <article className="card ">
 
-                            <h2 className="card-header ">Registered Now</h2>
+                            <h2 className="card-header ">Add Admin</h2>
 
                             <article className="form-layout" >
 
@@ -149,6 +134,8 @@ function SignUp() {
                                         required
                                     />
                                 </div>
+
+
                                 <div className="form-group">
                                     <label>Address:</label>
                                     <input
@@ -219,28 +206,24 @@ function SignUp() {
                             </article>
 
 
-                            <article className="d-flex justify-content-center mt-0">
-                                <input onClick={() => submit()} type="submit" value="SIGNUP" className="login-btn btn" />
+                            <article className="d-flex justify-content-center mt-0 mb-3">
+                                <button className="login-btn btn" onClick={(e) => submit(e)}>
+                                    Add Admin
+                                </button>
 
                             </article>
 
 
 
-                            <article className="card-footer mt-3">
-                                <div className="d-flex justify-content-center links">
-                                    <Link to="/login">Login Now!</Link>
-                                </div>
 
-                            </article>
                         </article>
                     </article>
                 </div>
-            </Signupstyle>
-            <Footer />
+            </AddDoctorStyle>
         </>
     )
 }
 
-export default SignUp;
+export default AddAdmin;
 
 

@@ -1,5 +1,4 @@
 import "./App.css";
-import * as ReactDOM from "react-dom";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import THEMES from "./style/theme";
 import { GlobalStyle } from "./style/globalStyle";
@@ -27,6 +26,7 @@ import ManageDoctor from "./Dashboards/AdminProtal/AdminProtalSubPages/ManageDoc
 import DoctorProfile from "./Dashboards/DoctorProtal/DoctorProtalSubPages/DoctorProfile/DoctorProfile";
 import UserProfile from "./Dashboards/UserProtal/UserProtalSubPages/UserProfile/UserProfile";
 import AddDoctor from "./Dashboards/AdminProtal/AdminProtalSubPages/AddDoctor/AddDoctor";
+import AddAdmin from "./Dashboards/AdminProtal/AdminProtalSubPages/AddAdmin/AddAdmin";
 
 function App() {
   useEffect(() => {
@@ -54,6 +54,7 @@ function App() {
             <Route path="managedoctor" element={<ManageDoctor />} />
             <Route path="updateprofile" element={<UpdateProfile />} />
             <Route path="adddoctor" element={<AddDoctor />} />
+            <Route path="addadmin" element={<AddAdmin />} />
           </Route>
 
           {/* ################Doctor Protal##################### */}
