@@ -19,7 +19,7 @@ const Header = () => {
                     <button className="btn">More Information!</button>
                 </article>
                 <picture className="animate__animated animate__fadeInRight">
-                    <img src={img} alt="" />
+                    <img src={img} className="img-fluid" alt="" />
                 </picture>
             </article>
         </Headerstyle>

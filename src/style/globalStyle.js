@@ -13,6 +13,7 @@ export const GlobalStyle = createGlobalStyle`
 
         body {
             font-family: 'Lato', sans-serif;
+            background-color: ${(p) => p.theme.colors.BACKGROUND_COLOR};
 
             h1 {
                 font-size: 6rem;
@@ -35,6 +36,20 @@ export const GlobalStyle = createGlobalStyle`
             }
 
         }
+    }
+
+    @media (max-width:580px) {
+        h1{
+            font-size: 3rem !important;
+        }
+        h4{
+            font-size: 1rem !important;
+        }
+        
+    }
+
+    .Toastify__toast-body{
+        font-size: 1.5rem !important;
     }
 
 `;

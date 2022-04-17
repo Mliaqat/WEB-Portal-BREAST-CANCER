@@ -52,6 +52,10 @@ export const CommonButton = ({ padding, borderRadius }) => css`
     background: ${(p) => p.theme.colors.WHITE_COLOR};
     color: ${(p) => p.theme.colors.PRIMARY_COLOR};
   }
+
+  @media (max-width: 580px) {
+    font-size: 1rem;
+  }
 `;
 
 export const Modelstyle = styled.main`

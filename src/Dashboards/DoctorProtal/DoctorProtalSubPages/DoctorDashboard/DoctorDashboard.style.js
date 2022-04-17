@@ -10,6 +10,8 @@ export const DoctorDashboardStyle = styled.main`
     align-content: center;
     justify-content: center;
     align-items: end;
+    flex-wrap: wrap;
+    row-gap: 1rem;
     input {
       border: 0.1rem solid;
       padding: 0.3rem;
@@ -19,6 +21,9 @@ export const DoctorDashboardStyle = styled.main`
       ${CommonButton}
       border-radius: 0.5rem;
       padding: 0.3rem;
+      @media (max-width: 580px) {
+        font-size: 1rem;
+      }
     }
     .btn {
       ${CommonButton}

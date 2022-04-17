@@ -56,6 +56,9 @@ export const Missionstyle = styled.h1`
     .btn {
       ${CommonButton}
     }
+    @media (max-width: 580px) {
+      width: 100%;
+    }
   }
 `;
 
@@ -156,6 +159,11 @@ export const Headingstyle = styled.section`
     z-index: -1;
     margin-top: -5rem;
     > svg {
+    }
+
+    @media (max-width: 580px) {
+      width: 100%;
+      margin-bottom: 1rem;
     }
   }
 `;

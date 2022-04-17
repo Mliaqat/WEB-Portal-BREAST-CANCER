@@ -6,6 +6,8 @@ import Footer from "../../Component/Footer/Footer";
 import Navbar from "../../Component/Navbar/Navbar";
 import { Modelstyle } from "../../style/commomStyle";
 import { Loginstyle } from "./Login.style";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 
@@ -76,12 +78,27 @@ function Login() {
     const url = `${process.env.REACT_APP_BASE_URL}/users/login`;
 
     const Submit = async () => {
-        try {
-            const res = await axios.post(url, data)
-            console.log(res)
-        } catch (error) {
-            console.log(error)
+        let formIsValid = true;
+        if (data.first_name === "" || data.email === "" || data.password === "" || data.phone_no === "") {
+            formIsValid = false
+            toast.error("Please Fill All field", {
+                theme: 'dark'
+            });
+        }
+        if (formIsValid) {
+            try {
+                const res = await axios.post(url, data)
+                console.log(res)
+                toast.success("Signup Successfully", {
+                    theme: 'dark'
+                });
+            } catch (error) {
+                console.log(error)
+                toast.error("Network Error Try Letter", {
+                    theme: 'dark'
+                });
 
+            }
         }
 
 
@@ -94,6 +111,8 @@ function Login() {
     return (
         <>
             <Navbar />
+            <ToastContainer
+            />
             <Loginstyle>
                 <article className="loginbackground">
                     <div className="loginbody container">
@@ -104,54 +123,68 @@ function Login() {
                                 </div>
 
                                 <div className="card-body">
+                                    <article class="needs-validation" novalidate>
 
-                                    <div className="input-group form-group">
-                                        <div className="input-group-prepend">
-                                            <span className="input-group-text">
-                                                <UserIcon />
-                                            </span>
-                                        </div>
-                                        <input
-                                            type="email"
-                                            className="form-control"
-                                            placeholder="E-mail"
-                                            name="email"
-                                            required
-                                            onChange={(e) => handleInputChange(e)}
+                                        <form >
+                                            <div className="input-group form-group">
 
-                                        />
-                                    </div>
-                                    <div className="input-group form-group">
-                                        <div className="input-group-prepend">
-                                            <span className="input-group-text">
-                                                <PasswordIcon />
-                                            </span>
-                                        </div>
-                                        <input
-                                            type="password"
-                                            className="form-control"
-                                            name="password"
-                                            placeholder="Password"
-                                            onChange={(e) => handleInputChange(e)}
-                                            required
+                                                <span className="input-group-text">
+                                                    <UserIcon />
+                                                </span>
+                                                <input
+                                                    type="email"
+                                                    className="form-control"
+                                                    placeholder="E-mail"
+                                                    name="email"
+                                                    onChange={(e) => handleInputChange(e)}
+                                                    required
+                                                    title='Enter Phone No'
 
-                                        />
-                                    </div>
-                                    <div className="d-flex my-5">
-                                        <article >
-                                            <input type="checkbox" className="checkboxinput" />
-                                        </article>
-                                        <article>
-                                            <label className="remember-text"> Remember Me</label>
-                                        </article>
-                                    </div>
-                                    <article
-                                        className="form-group login-btn" >
-                                        <button className="btn" onClick={Submit}>
-                                            Login
+                                                />
+                                                <div class="valid-feedback">
+                                                    Looks good!
+                                                </div>
 
-                                        </button>
+                                            </div>
+
+                                            <div className="input-group form-group">
+                                                <span className="input-group-text">
+                                                    <PasswordIcon />
+                                                </span>
+                                                <input
+                                                    type="password"
+                                                    className="form-control"
+                                                    name="password"
+                                                    placeholder="Password"
+                                                    onChange={(e) => handleInputChange(e)}
+                                                    required
+
+                                                />
+                                            </div>
+
+                                            <div className="d-flex my-5">
+                                                <article >
+                                                    <input type="checkbox" className="checkboxinput" />
+                                                </article>
+                                                <article>
+                                                    <label className="remember-text"> Remember Me</label>
+                                                </article>
+                                            </div>
+
+                                            <article
+                                                className="form-group login-btn" >
+                                                <button type="submit " className="btn" onClick={Submit}>
+                                                    Login
+
+                                                </button>
+                                            </article>
+                                        </form>
+
                                     </article>
+
+
+
+
 
                                 </div>
                                 <div className="card-footer">

@@ -88,96 +88,97 @@ function SignUp() {
                         <article className="card ">
 
                             <h2 className="card-header ">Registered Now</h2>
+                            <form>
+                                <article className="form-layout" >
 
-                            <article className="form-layout" >
+                                    <div className="form-group">
+                                        <label> First Name:</label>
+                                        <input
+                                            type="text"
+                                            className="form-control"
+                                            placeholder="Enter First name"
+                                            name="first_name"
+                                            title='Enter Valid Name'
+                                            onChange={(e) => handleInputChange(e)}
+                                            required
+                                        />
+                                    </div>
+                                    <div className="form-group">
+                                        <label>Last Name:</label>
+                                        <input
+                                            type="text"
+                                            className="form-control"
+                                            placeholder="Enter Last name"
+                                            name="last_name"
+                                            onChange={(e) => handleInputChange(e)}
+                                            required
+                                        />
+                                    </div>
 
-                                <div className="form-group">
-                                    <label> First Name:</label>
-                                    <input
-                                        type="text"
-                                        className="form-control"
-                                        placeholder="Enter First name"
-                                        name="first_name"
-                                        onChange={(e) => handleInputChange(e)}
-                                        required
-                                    />
-                                </div>
-                                <div className="form-group">
-                                    <label>Last Name:</label>
-                                    <input
-                                        type="text"
-                                        className="form-control"
-                                        placeholder="Enter Last name"
-                                        name="last_name"
-                                        onChange={(e) => handleInputChange(e)}
-                                        required
-                                    />
-                                </div>
-
-                                <div className="form-group ">
-                                    <label>Email Address:</label>
-                                    <input
-                                        type="Email"
-                                        className="form-control"
-                                        placeholder="abcd@gmail.com"
-                                        name="email"
-                                        onChange={(e) => handleInputChange(e)}
-                                        required
-                                    />
-                                </div>
-
-
-                                <div className="form-group">
-                                    <label>Phone Number:</label>
-                                    <input
-                                        type="tel"
-                                        className="form-control"
-                                        placeholder="+9212345678"
-                                        name="phone_no"
-                                        onChange={(e) => handleInputChange(e)}
-                                        required
-                                    />
-                                </div>
-                                <div className="form-group">
-                                    <label>CNIC:</label>
-                                    <input
-                                        type="dec"
-                                        className="form-control"
-                                        placeholder="3710580913371"
-                                        name="cnic"
-                                        onChange={(e) => handleInputChange(e)}
-                                        required
-                                    />
-                                </div>
-                                <div className="form-group">
-                                    <label>Address:</label>
-                                    <input
-                                        type="text"
-                                        className="form-control"
-                                        placeholder="Enter Address"
-                                        name="address"
-                                        onChange={(e) => handleInputChange(e)}
-                                        required
-                                    />
-
-                                </div>
+                                    <div className="form-group ">
+                                        <label>Email Address:</label>
+                                        <input
+                                            type="Email"
+                                            className="form-control"
+                                            placeholder="abcd@gmail.com"
+                                            name="email"
+                                            onChange={(e) => handleInputChange(e)}
+                                            required
+                                        />
+                                    </div>
 
 
-                                <div className="form-group">
-                                    <label>DOB:</label>
-                                    <input
-                                        type="date"
-                                        className="form-control"
-                                        placeholder="Enter DOB"
-                                        name="dob"
-                                        onChange={(e) => handleInputChange(e)}
-                                        required
-                                    />
-                                </div>
+                                    <div className="form-group">
+                                        <label>Phone Number:</label>
+                                        <input
+                                            type="tel"
+                                            className="form-control"
+                                            placeholder="+9212345678"
+                                            name="phone_no"
+                                            onChange={(e) => handleInputChange(e)}
+                                            required
+                                        />
+                                    </div>
+                                    <div className="form-group">
+                                        <label>CNIC:</label>
+                                        <input
+                                            type="dec"
+                                            className="form-control"
+                                            placeholder="3710580913371"
+                                            name="cnic"
+                                            onChange={(e) => handleInputChange(e)}
+                                            required
+                                        />
+                                    </div>
+                                    <div className="form-group">
+                                        <label>Address:</label>
+                                        <input
+                                            type="text"
+                                            className="form-control"
+                                            placeholder="Enter Address"
+                                            name="address"
+                                            onChange={(e) => handleInputChange(e)}
+                                            required
+                                        />
+
+                                    </div>
+
+
+                                    <div className="form-group">
+                                        <label>DOB:</label>
+                                        <input
+                                            type="date"
+                                            className="form-control"
+                                            placeholder="Enter DOB"
+                                            name="dob"
+                                            onChange={(e) => handleInputChange(e)}
+                                            required
+                                        />
+                                    </div>
 
 
 
-                                {/* <div className="form-group">
+                                    {/* <div className="form-group">
                                     <label htmlFor="Password">Enter Password:</label>
                                     <input
                                         type="Password"
@@ -190,7 +191,7 @@ function SignUp() {
 
                                     />
                                 </div> */}
-                                {/* <label className="checkbox" >
+                                    {/* <label className="checkbox" >
                                         <input
                                             type="checkbox"
                                             required="required"
@@ -202,27 +203,28 @@ function SignUp() {
                                         </article>
                                     </label> */}
 
-                                <div className="form-group">
-                                    <label>Enter Password:</label>
-                                    <input
-                                        type="Password"
-                                        className="form-control"
-                                        id="CPassword"
-                                        placeholder="*******"
-                                        name="password"
-                                        onChange={(e) => handleInputChange(e)}
-                                        required
-                                        minLength="8"
-                                    />
-                                    <span id="message"></span>
-                                </div>
-                            </article>
+                                    <div className="form-group">
+                                        <label>Enter Password:</label>
+                                        <input
+                                            type="Password"
+                                            className="form-control"
+                                            id="CPassword"
+                                            placeholder="*******"
+                                            name="password"
+                                            onChange={(e) => handleInputChange(e)}
+                                            required
+                                            minLength="8"
+                                        />
+                                        <span id="message"></span>
+                                    </div>
+                                </article>
 
 
-                            <article className="d-flex justify-content-center mt-0">
-                                <input onClick={() => submit()} type="submit" value="SIGNUP" className="login-btn btn" />
+                                <article className="d-flex justify-content-center mt-0">
+                                    <input onClick={() => submit()} type="submit" value="SIGNUP" className="login-btn btn" />
 
-                            </article>
+                                </article>
+                            </form>
 
 
 

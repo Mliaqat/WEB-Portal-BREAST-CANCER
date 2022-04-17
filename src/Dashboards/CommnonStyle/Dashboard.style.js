@@ -169,9 +169,6 @@ export const DashboardStyle = styled.main`
     position: absolute;
     left: 25rem;
     width: calc(100% - 25rem);
-    background-color: ${(p) => p.theme.colors.BACKGROUND_COLOR};
-    height: auto;
-    min-height: 100%;
   }
   .home .text {
     font-size: 3rem;
