@@ -4,13 +4,70 @@ import icon from "../../../../Asset/images/uploadimage.png"
 import { DoctorDashboardStyle } from './DoctorDashboard.style';
 import { CrossIcon } from '../../../../Asset/Icon/Icon';
 import { Modelstyle } from '../../../../style/commomStyle';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
-const Modal = ({ handleClose, data }) => {
+
+const Modal = ({ handleClose, type }) => {
+
+    const url = `${process.env.REACT_APP_BASE_URL}/reports/report`;
+
+
+    const [data, setData] = useState({
+        doctor_name: "Ali",
+        cnic: "",
+        type_of_cancer: type,
+        description: "",
+
+    })
+
+
+    const handleInputChange = (e) => {
+        setData({
+            ...data,
+            [e.target.name]: e.target.value
+        });
+
+    };
+
+
+
+    const submit = async (e) => {
+        e.preventDefault();
+
+        console.log(data)
+
+        let formIsValid = true;
+        if (data.doctor_name === "" || data.cnic === "" || data.type_of_cancer === "" || data.description === "") {
+            formIsValid = false
+            toast.error("Please Fill All field", {
+                theme: 'dark'
+            });
+        }
+        if (formIsValid) {
+            try {
+                const res = await axios.post(url, data)
+                console.log(res)
+                toast.success("Signup Successfully", {
+                    theme: 'dark'
+                });
+            } catch (error) {
+                console.log(error);
+                toast.error("Invalid credentials", {
+                    theme: 'dark'
+                });
+            }
+
+        }
+
+    }
 
 
     return (
         <Modelstyle>
+            <ToastContainer
+            />
             <div className="modal display-block">
                 <section className="modal-main">
 
@@ -25,20 +82,34 @@ const Modal = ({ handleClose, data }) => {
 
                             <h3 className='my-4'>Enter Patient Id:</h3>
 
-                            <input type="email"></input>
+                            <input
+                                type="number"
+                                name="cnic"
+                                onChange={(e) => handleInputChange(e)}
+                            ></input>
 
                             <h3 className='my-4'>Test Result:</h3>
 
-                            <input type="text" value={data} readOnly></input>
+                            <input type="text"
+                                value={type}
+                                readOnly
+                                name="type_of_cancer"
+                                onChange={(e) => handleInputChange(e)}
+                            ></input>
 
                             <h3 className='my-4'>Add description:</h3>
 
-                            <textarea type="text" row="5"></textarea>
+                            <textarea
+                                type="text"
+                                row="5"
+                                name="description"
+                                onChange={(e) => handleInputChange(e)}
+                            ></textarea>
 
 
 
                             <article className="d-flex justify-content-end my-4">
-                                <label className="btn">Add Report</label>
+                                <label className="btn" onClick={(e) => submit(e)}>Add Report</label>
                             </article>
 
 
@@ -80,7 +151,7 @@ function DoctorDashboard() {
 
     let confidence = 0;
 
-    console.log(image)
+
 
     const add = async () => {
 
@@ -88,7 +159,7 @@ function DoctorDashboard() {
         formData.append("file", image);
         await axios({
             method: "post",
-            url: "http://localhost:8000/predict",
+            url: "http://localhost:5000/predict",
             data: formData,
         }).then(response => {
             setResult(response.data)
@@ -176,7 +247,7 @@ function DoctorDashboard() {
                     <h2>Accuracy = {result?.confidence}</h2>
                 </>
             } */}
-            {show && <Modal data={reportdata} handleClose={hideModal} />}
+            {show && <Modal type={reportdata} handleClose={hideModal} />}
         </DoctorDashboardStyle>
     )
 }
