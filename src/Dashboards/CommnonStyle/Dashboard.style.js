@@ -488,4 +488,58 @@ export const ProfileModalStyle = styled.main`
       }
     }
   }
+
+  .datalayout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .profiledata {
+    width: 80%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+  }
+
+  h6 {
+    font-size: 1.6rem;
+    font-weight: 500;
+    line-height: 1.2;
+    margin-left: 1rem;
+  }
+
+  .card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #e2e2e2;
+    background-clip: border-box;
+    border: 0 solid rgba(0, 0, 0, 0.125);
+    border-radius: 0.25rem;
+  }
+
+  .card-body {
+    flex: 1 1 auto;
+    min-height: 1px;
+    padding: 1rem;
+  }
+
+  .gutters-sm {
+    margin-right: -8px;
+    margin-left: -8px;
+  }
+
+  .text-secondary {
+    font-size: 1.5rem;
+  }
+
+  .editbtn {
+    ${CommonButton}
+    padding: 0.5rem 2rem;
+    border-radius: 1rem;
+    font-weight: 600;
+  }
 `;

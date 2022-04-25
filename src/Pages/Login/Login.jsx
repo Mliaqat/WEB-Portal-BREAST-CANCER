@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios"
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { CrossIcon, PasswordIcon, UserIcon } from "../../Asset/Icon/Icon";
 import Footer from "../../Component/Footer/Footer";
 import Navbar from "../../Component/Navbar/Navbar";
@@ -8,6 +8,9 @@ import { Modelstyle } from "../../style/commomStyle";
 import { Loginstyle } from "./Login.style";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { setUserSession } from "../../MockData/Common";
+
+
 
 
 
@@ -52,7 +55,9 @@ const Modal = ({ handleClose }) => {
     );
 };
 
-function Login() {
+function Login(props) {
+    let navigate = useNavigate();
+
     const [show, setShow] = useState(false);
 
 
@@ -77,7 +82,8 @@ function Login() {
 
     const url = `${process.env.REACT_APP_BASE_URL}/users/login`;
 
-    const Submit = async () => {
+    const Submit = async (e) => {
+        e.preventDefault();
         let formIsValid = true;
         if (data.first_name === "" || data.email === "" || data.password === "" || data.phone_no === "") {
             formIsValid = false
@@ -88,12 +94,43 @@ function Login() {
         if (formIsValid) {
             try {
                 const res = await axios.post(url, data)
-                console.log(res)
-                toast.success("Signup Successfully", {
-                    theme: 'dark'
-                });
+
+                console.log(res.data)
+                if (res.status === 200) {
+                    setUserSession(
+                        res.data.token,
+                        res.data.fname,
+                        res.data.lname,
+                        res.data.user_id,
+                        res.data.email,
+                        res.data.mobile,
+                        res.data.role,
+
+                    );
+
+
+                    let path = res.data.role;
+                    console.log(path + "pathd")
+
+                    switch (path) {
+                        case "user":
+                            return navigate("/user-protal");
+
+                        case "doctor":
+                            return navigate("/doctor-protal");
+
+                        case "admin":
+                            return navigate("/admin-protal");
+
+                        default:
+                            return navigate("/");
+
+                    }
+                }
+
+
             } catch (error) {
-                console.log(error)
+                console.log(error.message)
                 toast.error("Network Error Try Letter", {
                     theme: 'dark'
                 });
@@ -123,62 +160,62 @@ function Login() {
                                 </div>
 
                                 <div className="card-body">
-                                    <article class="needs-validation" novalidate>
+                                    <article className="needs-validation" novalidate>
 
-                                        <form >
-                                            <div className="input-group form-group">
 
-                                                <span className="input-group-text">
-                                                    <UserIcon />
-                                                </span>
-                                                <input
-                                                    type="email"
-                                                    className="form-control"
-                                                    placeholder="E-mail"
-                                                    name="email"
-                                                    onChange={(e) => handleInputChange(e)}
-                                                    required
-                                                    title='Enter Phone No'
+                                        <div className="input-group form-group">
 
-                                                />
-                                                <div class="valid-feedback">
-                                                    Looks good!
-                                                </div>
+                                            <span className="input-group-text">
+                                                <UserIcon />
+                                            </span>
+                                            <input
+                                                type="email"
+                                                className="form-control"
+                                                placeholder="E-mail"
+                                                name="email"
+                                                onChange={(e) => handleInputChange(e)}
+                                                required
+                                                title='Enter Phone No'
 
+                                            />
+                                            <div className="valid-feedback">
+                                                Looks good!
                                             </div>
 
-                                            <div className="input-group form-group">
-                                                <span className="input-group-text">
-                                                    <PasswordIcon />
-                                                </span>
-                                                <input
-                                                    type="password"
-                                                    className="form-control"
-                                                    name="password"
-                                                    placeholder="Password"
-                                                    onChange={(e) => handleInputChange(e)}
-                                                    required
+                                        </div>
 
-                                                />
-                                            </div>
+                                        <div className="input-group form-group">
+                                            <span className="input-group-text">
+                                                <PasswordIcon />
+                                            </span>
+                                            <input
+                                                type="password"
+                                                className="form-control"
+                                                name="password"
+                                                placeholder="Password"
+                                                onChange={(e) => handleInputChange(e)}
+                                                required
 
-                                            <div className="d-flex my-5">
-                                                <article >
-                                                    <input type="checkbox" className="checkboxinput" />
-                                                </article>
-                                                <article>
-                                                    <label className="remember-text"> Remember Me</label>
-                                                </article>
-                                            </div>
+                                            />
+                                        </div>
 
-                                            <article
-                                                className="form-group login-btn" >
-                                                <button type="submit " className="btn" onClick={Submit}>
-                                                    Login
-
-                                                </button>
+                                        <div className="d-flex my-5">
+                                            <article >
+                                                <input type="checkbox" className="checkboxinput" />
                                             </article>
-                                        </form>
+                                            <article>
+                                                <label className="remember-text"> Remember Me</label>
+                                            </article>
+                                        </div>
+
+                                        <article
+                                            className="form-group login-btn" >
+                                            <button type="submit " className="btn" onClick={(e) => Submit(e)}>
+                                                Login
+
+                                            </button>
+                                        </article>
+
 
                                     </article>
 

@@ -69,6 +69,7 @@ function App() {
           {/* ################User Protal##################### */}
 
           <Route path="user-protal" element={<UserProtal />}>
+            <Route index element={<UserDashboard />} />
             <Route path="user-dashboard" element={<UserDashboard />} />
             <Route path="view-report" element={<ViewReport />} />
             <Route path="user-profile" element={<UserProfile />} />

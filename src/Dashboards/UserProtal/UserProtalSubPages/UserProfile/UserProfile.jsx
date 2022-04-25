@@ -1,9 +1,12 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import axios from 'axios';
 import { ProfileModalStyle } from '../../../CommnonStyle/Dashboard.style';
 
 function UserProfile() {
-    const [image, setImage] = useState([]);
-    const [postimage, setpostimage] = useState();
+    const [user, setuser] = useState("");
+
+    const url = `${process.env.REACT_APP_BASE_URL}/users/62660f0f7afc0fdd7cb277cd`;
+
     const [userData, setUserData] = useState({
         first_name: "",
         last_name: "",
@@ -19,115 +22,104 @@ function UserProfile() {
         });
     };
 
-    const filehandler = (e) => {
-        setImage(e.target.files[0]);
 
-        if (e.target.files.length !== 0) {
-            setpostimage(URL.createObjectURL(e.target.files[0]));
-        }
-    };
+    useEffect(() => {
+        getUser();
+    }, [])
+
+    const getUser = async () => {
+        await axios.get(url).then((res) => {
+            setuser(res.data);
+            console.log(res.data);
+
+        })
+    }
+
+    console.log(user.first_name)
+
+
 
     return (
         <ProfileModalStyle>
-            <h2 className="title">Update Profile</h2>
+
+            <h2 className="title">Profile</h2>
             <hr className='mb-5'></hr>
-            <form className="profile-form">
-                {/* <article className="profile-detail-wrapper">
-                    <label htmlFor="upload-image" className="user-profile-image-wrapper">
-                        {postimage ? (
-                            (
-                                <img
-                                    src={postimage}
-                                    alt="Select Image"
-                                    className="image-placeholder"
-                                />
-                            )
-                        ) : (
-                            <img
-                                // src={picture}
-                                alt="User Proifle"
-                                className="image-placeholder"
-                            />
-                        )}
-
-                    </label>
-
-                    <h2 className="profile-name">Liaqat</h2>
-                </article> */}
-
-                <article className="profile-form-data">
 
 
-                    <article className="form-details">
-                        <article className="form-content">
-                            <label>First Name</label>
-                            <input
-                                type="text"
-                                name="first_name"
-                                onChange={(e) => onInputSubmit(e)}
-                                className="custom-input"
-                            />
-                        </article>
-                        <article className="form-content">
-                            <label>Last Name</label>
-                            <input
-                                type="text"
-                                name="last_name"
-                                onChange={(e) => onInputSubmit(e)}
-                                className="custom-input"
-                            />
-                        </article>
-                        <article className="form-content">
-                            <label>Mobile</label>
-                            <input
-                                type="tel"
-                                name="email"
-                                onChange={(e) => onInputSubmit(e)}
-                                className="custom-input"
-                            />
-                        </article>
-                        <article className="form-content">
-                            <label>Password</label>
-                            <input
-                                type="password"
-                                name="password"
-                                onChange={(e) => onInputSubmit(e)}
-                                className="custom-input"
-                            />
-                        </article>
-                        {/* <article className="form-content">
-                            <label>Profile Image</label>
-                            <input
-                                type="file"
-                                onChange={(e) => filehandler(e)}
-                                className="custom-input"
-                            />
-                        </article> */}
-                        <article className="form-content">
-                            <label>Description</label>
-                            <textarea
-                                name="status"
-                                className="custom-input"
-                                onChange={(e) => onInputSubmit(e)}
-                                cols="30"
-                                rows="5"
-                            ></textarea>
-                        </article>
-                    </article>
+            <div class="container">
+                <div class="main-body">
 
-                    <article className="form-footer mb-5">
-                        <button className="update-button mx-3">
-                            Update
-                        </button>
-                        <button
-                            className="cancel-button mx-3"
 
-                        >
-                            Cancel
-                        </button>
-                    </article>
-                </article>
-            </form>
+
+
+                    <div class="row gutters-sm">
+
+                        <div class="offset-lg-2 col-8">
+                            <div class="card mb-3">
+                                <div class="card-body">
+                                    <div class="row my-3">
+                                        <div class="col-sm-3">
+                                            <h6 class="mb-0">Full Name</h6>
+                                        </div>
+                                        <div class="col-sm-9 text-secondary">
+                                            Kenneth Valdez
+                                        </div>
+                                    </div>
+                                    <hr></hr>
+                                    <div class="row my-3">
+                                        <div class="col-sm-3">
+                                            <h6 class="mb-0">Email</h6>
+                                        </div>
+                                        <div class="col-sm-9 text-secondary">
+                                            fip@jukmuh.al
+                                        </div>
+                                    </div>
+                                    <hr></hr>
+                                    <div class="row my-3">
+                                        <div class="col-sm-3">
+                                            <h6 class="mb-0">Phone</h6>
+                                        </div>
+                                        <div class="col-sm-9 text-secondary">
+                                            (239) 816-9029
+                                        </div>
+                                    </div>
+                                    <hr></hr>
+                                    <div class="row my-3">
+                                        <div class="col-sm-3">
+                                            <h6 class="mb-0">Mobile</h6>
+                                        </div>
+                                        <div class="col-sm-9 text-secondary">
+                                            (320) 380-4539
+                                        </div>
+                                    </div>
+                                    <hr></hr>
+                                    <div class="row my-3">
+                                        <div class="col-sm-3">
+                                            <h6 class="mb-0">Address</h6>
+                                        </div>
+                                        <div class="col-sm-9 text-secondary">
+                                            Bay Area, San Francisco, CA
+                                        </div>
+                                    </div>
+                                    <hr></hr>
+                                    <div class="row my-3">
+                                        <div class="col-sm-12">
+                                            <button class="editbtn" >Edit</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+
         </ProfileModalStyle>
     )
 }

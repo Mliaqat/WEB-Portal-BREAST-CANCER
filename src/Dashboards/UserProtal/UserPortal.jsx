@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import './UserPortal'
-import { NavLink, Link, Outlet } from 'react-router-dom';
+import { NavLink, Link, Outlet, useNavigate } from 'react-router-dom';
 import { DashboardStyle } from '../CommnonStyle/Dashboard.style';
 import dashboardicon from "../../Asset/dashboard/dashboard.png"
 import patienticon from "../../Asset/dashboard/patient.png"
-import docicon from "../../Asset/dashboard/doctor.png"
 import logouticon from "../../Asset/dashboard/logout.png"
 import editicon from "../../Asset/dashboard/editprofile.png"
+import { removeUserSession } from '../../MockData/Common';
+
 
 function UserProtal() {
+    let navigate = useNavigate();
 
     const [isOpen, setIsOpen] = useState(false)
 
@@ -18,6 +20,13 @@ function UserProtal() {
     useEffect(() => {
         window.scrollTo(0, 0)
     }, [])
+
+
+    const handleLogout = () => {
+        removeUserSession();
+
+        navigate("/");
+    };
 
 
 
@@ -86,7 +95,7 @@ function UserProtal() {
                                 <h2>
                                     <img src={logouticon} alt="icon"></img>
                                 </h2>
-                                <label className="text  nav-text mx-3" >LogOut</label>
+                                <label className="text  nav-text mx-3" onClick={handleLogout} >LogOut</label>
                             </article>
                         </NavLink>
                     </div>

@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import { Link, NavLink, Outlet } from 'react-router-dom';
-import { DashboardIcon, PatientIcon, ReportIcon } from '../../Asset/Icon/Icon';
+import { Link, useNavigate, NavLink, Outlet } from 'react-router-dom';
+// import { DashboardIcon, PatientIcon, ReportIcon } from '../../Asset/Icon/Icon';
 import dashboardicon from "../../Asset/dashboard/dashboard.png"
 import patienticon from "../../Asset/dashboard/patient.png"
 import logouticon from "../../Asset/dashboard/logout.png"
 import editicon from "../../Asset/dashboard/editprofile.png"
 import { DashboardStyle } from '../CommnonStyle/Dashboard.style';
+import { removeUserSession } from '../../MockData/Common';
 
 function DoctorProtal() {
 
+    let navigate = useNavigate();
 
     const [isOpen, setIsOpen] = useState(false)
 
@@ -18,6 +20,12 @@ function DoctorProtal() {
     useEffect(() => {
         window.scrollTo(0, 0)
     }, [])
+
+    const handleLogout = () => {
+        removeUserSession();
+
+        navigate("/");
+    };
 
     return (
         <DashboardStyle>
@@ -81,7 +89,7 @@ function DoctorProtal() {
                                 <h2>
                                     <img src={logouticon} alt="icon"></img>
                                 </h2>
-                                <label className="text  nav-text mx-3" >LogOut</label>
+                                <label className="text  nav-text mx-3" onClick={handleLogout} >LogOut</label>
                             </article>
                         </NavLink>
                     </div>
