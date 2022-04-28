@@ -1,25 +1,38 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios';
 import { ProfileModalStyle } from '../../../CommnonStyle/Dashboard.style';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function UserProfile() {
     const [user, setuser] = useState("");
 
-    const url = `${process.env.REACT_APP_BASE_URL}/users/62660f0f7afc0fdd7cb277cd`;
+    const id = sessionStorage.getItem("userId")
+    console.log(id)
 
-    const [userData, setUserData] = useState({
+    const url = `${process.env.REACT_APP_BASE_URL}/users/${id}`;
+
+
+
+    const [data, setData] = useState({
         first_name: "",
         last_name: "",
-        mobile: "",
+        email: "",
+        phone_no: "",
+        cnic: "",
+        address: "",
+        dob: "",
         password: "",
-        status: "",
-    });
+        role: "user"
+    })
 
-    const onInputSubmit = (e) => {
-        setUserData({
-            ...userData,
-            [e.target.name]: e.target.value,
+
+    const handleInputChange = (e) => {
+        setData({
+            ...data,
+            [e.target.name]: e.target.value
         });
+
     };
 
 
@@ -30,17 +43,35 @@ function UserProfile() {
     const getUser = async () => {
         await axios.get(url).then((res) => {
             setuser(res.data);
+            setData(res.data)
             console.log(res.data);
 
         })
     }
 
-    console.log(user.first_name)
+    const update = async () => {
+        await axios.put(url, data).then((res) => {
+            console.log(res)
+            toast.success("Signup Successfully", {
+                theme: 'dark'
+            });
+
+        }).catch((err) => {
+            console.log(err)
+            toast.error("Network Error", {
+                theme: 'dark'
+            });
+        })
+
+    }
 
 
 
     return (
         <ProfileModalStyle>
+
+            <ToastContainer
+            />
 
             <h2 className="title">Profile</h2>
             <hr className='mb-5'></hr>
@@ -59,10 +90,19 @@ function UserProfile() {
                                 <div class="card-body">
                                     <div class="row my-3">
                                         <div class="col-sm-3">
-                                            <h6 class="mb-0">Full Name</h6>
+                                            <h6 class="mb-0">First Name</h6>
                                         </div>
                                         <div class="col-sm-9 text-secondary">
-                                            Kenneth Valdez
+                                            {user.first_name}
+                                        </div>
+                                    </div>
+                                    <hr></hr>
+                                    <div class="row my-3">
+                                        <div class="col-sm-3">
+                                            <h6 class="mb-0">Last Name</h6>
+                                        </div>
+                                        <div class="col-sm-9 text-secondary">
+                                            {user.last_name}
                                         </div>
                                     </div>
                                     <hr></hr>
@@ -71,16 +111,7 @@ function UserProfile() {
                                             <h6 class="mb-0">Email</h6>
                                         </div>
                                         <div class="col-sm-9 text-secondary">
-                                            fip@jukmuh.al
-                                        </div>
-                                    </div>
-                                    <hr></hr>
-                                    <div class="row my-3">
-                                        <div class="col-sm-3">
-                                            <h6 class="mb-0">Phone</h6>
-                                        </div>
-                                        <div class="col-sm-9 text-secondary">
-                                            (239) 816-9029
+                                            {user.email}
                                         </div>
                                     </div>
                                     <hr></hr>
@@ -89,22 +120,24 @@ function UserProfile() {
                                             <h6 class="mb-0">Mobile</h6>
                                         </div>
                                         <div class="col-sm-9 text-secondary">
-                                            (320) 380-4539
+                                            {user.phone_no}
                                         </div>
                                     </div>
                                     <hr></hr>
+
+
                                     <div class="row my-3">
                                         <div class="col-sm-3">
                                             <h6 class="mb-0">Address</h6>
                                         </div>
                                         <div class="col-sm-9 text-secondary">
-                                            Bay Area, San Francisco, CA
+                                            {user.address}
                                         </div>
                                     </div>
                                     <hr></hr>
                                     <div class="row my-3">
                                         <div class="col-sm-12">
-                                            <button class="editbtn" >Edit</button>
+                                            <button class="editbtn" data-bs-toggle="modal" data-bs-target="#staticBackdrop" >Edit</button>
                                         </div>
                                     </div>
                                 </div>
@@ -115,6 +148,97 @@ function UserProfile() {
                         </div>
                     </div>
 
+                </div>
+            </div>
+
+
+
+
+
+
+
+            {/* <!-- Modal --> */}
+            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="staticBackdropLabel">Update Profile</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="container-fluid">
+                                <div class="main-body">
+                                    <div class="row">
+
+                                        <div class="col-12">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <div class="row mb-3 align-items-center">
+                                                        <div class="col-sm-3">
+                                                            <h6 class="mb-0">First Name</h6>
+                                                        </div>
+                                                        <div class="col-sm-9 text-secondary">
+                                                            <input type="text" class="form-control" value={data.first_name}
+                                                                name="first_name"
+                                                                onChange={(e) => handleInputChange(e)} />
+                                                        </div>
+                                                    </div>
+                                                    <div class="row mb-3 align-items-center">
+                                                        <div class="col-sm-3">
+                                                            <h6 class="mb-0">Last Name</h6>
+                                                        </div>
+                                                        <div class="col-sm-9 text-secondary">
+                                                            <input type="text" class="form-control" value={data.last_name}
+                                                                name="last_name"
+                                                                onChange={(e) => handleInputChange(e)} />
+                                                        </div>
+                                                    </div>
+                                                    <div class="row mb-3 align-items-center">
+                                                        <div class="col-sm-3">
+                                                            <h6 class="mb-0">Email</h6>
+                                                        </div>
+                                                        <div class="col-sm-9 text-secondary">
+                                                            <input type="text" class="form-control" value={data.email}
+                                                                name="email"
+                                                                onChange={(e) => handleInputChange(e)} />
+                                                        </div>
+                                                    </div>
+                                                    <div class="row mb-3 align-items-center">
+                                                        <div class="col-sm-3">
+                                                            <h6 class="mb-0">Mobile</h6>
+                                                        </div>
+                                                        <div class="col-sm-9 text-secondary">
+                                                            <input type="text" class="form-control" value={data.phone_no}
+                                                                name="phone_no"
+                                                                onChange={(e) => handleInputChange(e)} />
+                                                        </div>
+                                                    </div>
+                                                    <div class="row mb-3 align-items-center">
+                                                        <div class="col-sm-3">
+                                                            <h6 class="mb-0">Address</h6>
+                                                        </div>
+                                                        <div class="col-sm-9 text-secondary">
+                                                            <input type="text" class="form-control" value={data.address}
+                                                                name="address"
+                                                                onChange={(e) => handleInputChange(e)} />
+                                                        </div>
+                                                    </div>
+
+
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+
+                            <button type="button" class="editbtn" onClick={() => update()}>Update</button>
+                        </div>
+                    </div>
                 </div>
             </div>
 
