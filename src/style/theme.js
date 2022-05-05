@@ -24,10 +24,7 @@ const THEMES = {
     MEDIUM_GRAY_COLOR: "#CECFD3",
     LIGHT_GRAY_COLOR: "#f9f9f9",
     DULL_GRAY_COLOR: "#f8f8f8",
-    SPANISH_GRAY_COLOR: "#999999",
-    CADET_GREY_COLOR: "#969FA8",
-    GRAY_COLOR: "#b7b7b7",
-    DIM_GRAY_COLOR: "#f6f6f6",
+   
   },
 
   fontWeights: {

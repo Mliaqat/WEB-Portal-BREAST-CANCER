@@ -1,5 +1,5 @@
 import React from 'react';
-import { DeleteIcon, EditIcon } from '../../../../Asset/Icon/Icon';
+import img from '../../../../Asset/images/download.png'
 import { TableStyle } from '../../../CommnonStyle/Dashboard.style';
 
 function ViewReport() {
@@ -14,8 +14,7 @@ function ViewReport() {
                         <th scope="col">Patient ID</th>
                         <th scope="col">Name</th>
                         <th scope="col">DOB</th>
-                        <th scope="col">Status</th>
-                        <th scope="col">Action</th>
+                        <th scope="col">Download</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -24,45 +23,22 @@ function ViewReport() {
                         <td data-label="Patient ID">#123</td>
                         <td data-label="Name">Liaqat</td>
                         <td data-label="Date">03/01/2016 </td>
-                        <td data-label="Status">
-                            <span className="pending">Unblock</span>
+                        <td className='icon'>
+                            <img  src={img} alt="download" />
+                            <p>Download</p>
                         </td>
 
-                        <td data-label="Action">
-                            <article className="action-buttons-wrapper">
-                                <button className="action-button">
-                                    <EditIcon />
-                                </button>
-                                <button
-                                    className="action-button"
-
-                                >
-                                    <DeleteIcon />
-                                </button>
-                            </article>
-                        </td>
                     </tr>
                     <tr>
                         <td data-label="Patient ID">#123</td>
                         <td data-label="Name">Liaqat</td>
                         <td data-label="Date">03/01/2016 </td>
-                        <td data-label="Status">
-                            <span className="pending">Unblock</span>
+
+                        <td className='icon'>
+                            <img  src={img} alt="download" />
+                            <p>Download</p>
                         </td>
 
-                        <td data-label="Action">
-                            <article className="action-buttons-wrapper">
-                                <button className="action-button">
-                                    <EditIcon />
-                                </button>
-                                <button
-                                    className="action-button"
-
-                                >
-                                    <DeleteIcon />
-                                </button>
-                            </article>
-                        </td>
                     </tr>
 
                 </tbody>

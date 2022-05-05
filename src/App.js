@@ -27,6 +27,7 @@ import DoctorProfile from "./Dashboards/DoctorProtal/DoctorProtalSubPages/Doctor
 import UserProfile from "./Dashboards/UserProtal/UserProtalSubPages/UserProfile/UserProfile";
 import AddDoctor from "./Dashboards/AdminProtal/AdminProtalSubPages/AddDoctor/AddDoctor";
 import AddAdmin from "./Dashboards/AdminProtal/AdminProtalSubPages/AddAdmin/AddAdmin";
+import ForgetPassword from "./Pages/ForgetPassword/ForgetPassword";
 
 function App() {
   useEffect(() => {
@@ -44,6 +45,10 @@ function App() {
           <Route path="Contact" element={<Contact />} />
           <Route path="About" element={<About />} />
           <Route path="signup" element={<SignUp />} />
+          <Route
+            path="resetpassword/:email/:token"
+            element={<ForgetPassword/>}
+          />
 
           {/* ################Admin Protal##################### */}
 

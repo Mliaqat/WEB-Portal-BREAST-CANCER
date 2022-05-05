@@ -16,7 +16,7 @@ const Header = () => {
             <article className="header">
                 <article className="animate__animated animate__fadeInLeft">
                     <h1 >Helping Women Now!</h1>
-                    <button className="btn">More Information!</button>
+                    <button className="btn" href="https://www.facebook.com/">More Information!</button>
                 </article>
                 <picture className="animate__animated animate__fadeInRight">
                     <img src={img} className="img-fluid" alt="" />

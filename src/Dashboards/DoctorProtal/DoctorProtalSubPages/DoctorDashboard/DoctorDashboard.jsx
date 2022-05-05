@@ -13,9 +13,11 @@ const Modal = ({ handleClose, type }) => {
 
     const url = `${process.env.REACT_APP_BASE_URL}/reports/report`;
 
+    const docName = sessionStorage.getItem("fname")
+
 
     const [data, setData] = useState({
-        doctor_name: "Ali",
+        doctor_name: docName,
         cnic: "",
         type_of_cancer: type,
         description: "",
@@ -35,8 +37,6 @@ const Modal = ({ handleClose, type }) => {
 
     const submit = async (e) => {
         e.preventDefault();
-
-        console.log(data)
 
         let formIsValid = true;
         if (data.doctor_name === "" || data.cnic === "" || data.type_of_cancer === "" || data.description === "") {

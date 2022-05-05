@@ -247,6 +247,15 @@ export const TableStyle = styled.main`
     font-size: 1.5rem;
   }
 
+  .icon{
+    display: flex;    
+    align-items: center;
+    gap:1rem;
+    img{
+      width:4rem
+    }
+  }
+
   table {
     border: 1px solid ${(p) => p.theme.colors.PRIMARY_COLOR};
     border-collapse: collapse;

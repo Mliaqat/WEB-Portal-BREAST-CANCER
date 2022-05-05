@@ -102,7 +102,8 @@ export const DoctorDashboardStyle = styled.main`
     textarea,
     input {
       padding: 0.5rem 1rem;
-      border: 0.1rem solid ${(p) => p.theme.colors.PRIMARY_COLOR};
+      border: 0.01rem solid #000000;
+      /* border: 0.1rem solid ${(p) => p.theme.colors.PRIMARY_COLOR}; */
       font-size: 1.5rem;
       width: 100%;
     }
