@@ -7,14 +7,13 @@ import { useState } from 'react/cjs/react.development';
 import { ForgetPasswordstyle } from './ForgetPassword.style';
 
 function ForgetPassword(props) {
-    let { email, token } = useParams();
-    const url = `${process.env.REACT_APP_BASE_URL}/users/updatePassword`;
+    let { token } = useParams();
+    const url = `${process.env.REACT_APP_BASE_URL}/users/new-password`;
     const [conforimpassword, setconforimpassword] = useState();
     const data = {
         password: conforimpassword,
         token: token,
-        email: email
-    }
+         }
     const submit = () => {
         axios.post(url, data).then((res) => {
             toast.success("Password Updated Successfully", {

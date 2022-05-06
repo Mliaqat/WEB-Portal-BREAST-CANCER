@@ -31,6 +31,16 @@ export const Signupstyle = styled.article`
         border: red 0.3rem solid;
       }
     }
+    .eyeicon {
+      > svg {
+        color: black;
+      }
+      position: absolute;
+      right: 1.5rem;
+      top: 5rem;
+      font-size: 2.5rem;
+      cursor: pointer;
+    }
 
     .form-layout {
       display: grid;

@@ -139,9 +139,9 @@ function UserProfile() {
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="staticBackdropLabel">
+              <h4 class="modal-title" id="staticBackdropLabel">
                 Update Profile
-              </h5>
+              </h4>
               <button
                 type="button"
                 class="btn-close"
@@ -180,20 +180,6 @@ function UserProfile() {
                                 class="form-control"
                                 value={data.last_name}
                                 name="last_name"
-                                onChange={(e) => handleInputChange(e)}
-                              />
-                            </div>
-                          </div>
-                          <div class="row mb-3 align-items-center">
-                            <div class="col-sm-3">
-                              <h6 class="mb-0">Email</h6>
-                            </div>
-                            <div class="col-sm-9 text-secondary">
-                              <input
-                                type="text"
-                                class="form-control"
-                                value={data.email}
-                                name="email"
                                 onChange={(e) => handleInputChange(e)}
                               />
                             </div>

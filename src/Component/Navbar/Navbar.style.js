@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { CommonButton } from "../../style/commomStyle";
 
 export const Navbarstyle = styled.nav`
   .navbar {
@@ -28,5 +29,13 @@ export const Navbarstyle = styled.nav`
     background: ${(p) => p.theme.colors.PRIMARY_COLOR};
     padding: 0.3rem;
     border-radius: 1rem;
+  }
+
+  .acctbtn{
+    ${CommonButton}
+    padding: 0.7rem 1rem;
+    border-radius: 1rem;
+    background-color: white;
+    color: black;
   }
 `;

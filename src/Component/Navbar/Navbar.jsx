@@ -1,21 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom';
-import { Link } from "react-router-dom";
 import logo from "../../Asset/images/Logo.png"
 import { Navbarstyle } from './Navbar.style';
 
 function Navbar() {
-    // var nav = document.querySelector('nav');
+    const [role, setrole] = useState("")
 
-    // window.addEventListener('scroll', function () {
-    //     if (window.pageYOffset > 100) {
-    //         nav.classList.add('bg-dark', 'shadow');
-    //     }
-    //     else {
-    //         nav.classList.remove('bg-dark', 'shadow');
-    //     }
-    // });
 
+    // setrole(sessionStorage.getItem("userrole"))
     return (
         <Navbarstyle>
             <nav className="navbar fixed-top navbar-expand-lg navbar-dark p-md-3">
@@ -33,18 +25,24 @@ function Navbar() {
                                 <a className="nav-link text-white" >Home</a>
                             </NavLink>
                             <NavLink to="/About" className={({ isActive }) => (isActive ? 'is-active' : 'nav-item')}>
-                                <a className="nav-link text-white" href="#">About</a>
+                                <a className="nav-link text-white">About</a>
                             </NavLink>
                             <NavLink to="/Team" className={({ isActive }) => (isActive ? 'is-active' : 'nav-item')}>
-                                <a className="nav-link text-white" href="#">Team</a>
+                                <a className="nav-link text-white">Team</a>
                             </NavLink>
                             <NavLink to="/Contact" className={({ isActive }) => (isActive ? 'is-active' : 'nav-item')}>
-                                <a className="nav-link text-white" href="#">Contact Us</a>
+                                <a className="nav-link text-white">Contact Us</a>
                             </NavLink>
                             <NavLink to="/Login" className={({ isActive }) => (isActive ? 'is-active' : 'nav-item')}>
-                                <a className="nav-link text-white" href="#">Login</a>
+                                <a className="nav-link text-white">Login</a>
                             </NavLink>
+
+
                         </ul>
+                        {role &&
+                            <h3 className='text-white'>Account</h3>
+                        }
+
                     </div>
                 </div>
             </nav>

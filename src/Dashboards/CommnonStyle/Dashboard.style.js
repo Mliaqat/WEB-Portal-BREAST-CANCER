@@ -262,7 +262,7 @@ export const TableStyle = styled.main`
     margin: 0;
     padding: 0;
     width: 100%;
-    table-layout: fixed;
+    table-layout: auto;
 
     @media (max-width: ${(p) => p.theme.breakPoints.mobiles}) {
       border: 0;
@@ -336,7 +336,7 @@ export const TableStyle = styled.main`
       }
 
       .action-buttons-wrapper {
-        ${FlexboxStyle({ justify: "center" })};
+       
 
         .action-button {
           border: none;

@@ -1,8 +1,32 @@
-import React from 'react';
-import { DeleteIcon, EditIcon } from '../../../../Asset/Icon/Icon';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { DeleteIcon } from '../../../../Asset/Icon/Icon';
 import { TableStyle } from '../../../CommnonStyle/Dashboard.style';
 
 function ManagePatient() {
+  const url = `${process.env.REACT_APP_BASE_URL}/users`
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    getuser();
+  }, []);
+
+  const getuser = async () => {
+    await axios.get(url).then((res) => {
+      setData(res.data);
+      console.log(res.data);
+    });
+  };
+
+  const deleteuser=(id)=>{
+ axios.delete(`${url}/${id}`).then((res)=>{
+   console.log(res)
+   getuser();
+ }).catch((err)=>{
+   console.log(err)
+ })
+
+  }
   return (
     <TableStyle>
       <h2 className="title">Manage Patient</h2>
@@ -11,59 +35,43 @@ function ManagePatient() {
       <table>
         <thead>
           <tr>
+            <th scope="col">Sr#</th>
             <th scope="col">Patient ID</th>
             <th scope="col">Name</th>
             <th scope="col">DOB</th>
-            <th scope="col">Status</th>
             <th scope="col">Action</th>
           </tr>
         </thead>
         <tbody>
 
-          <tr>
-            <td data-label="Patient ID">#123</td>
-            <td data-label="Name">Liaqat</td>
-            <td data-label="Date">03/01/2016 </td>
-            <td data-label="Status">
-              <span className="pending">Unblock</span>
-            </td>
 
-            <td data-label="Action">
-              <article className="action-buttons-wrapper">
-                <button className="action-button">
-                  <EditIcon />
-                </button>
-                <button
-                  className="action-button"
+          {data &&
+            data.filter(data => data.role === "user").map((data, index) => {
+              return (
+                <tr key={index}>
+                  <td data-label="Sr#">{index + 1}</td>
+                  <td data-label="Patient ID">{data?.cnic}</td>
+                  <td data-label="Name">{data?.first_name}</td>
+                  <td data-label="Date">{data?.dob} </td>
+                  <td data-label="Action">
+                    <article className="action-buttons-wrapper">
+                      <button
+                        className="action-button"
+                        onClick={()=>deleteuser(data?._id)}
 
-                >
-                  <DeleteIcon />
-                </button>
-              </article>
-            </td>
-          </tr>
-          <tr>
-            <td data-label="Patient ID">#123</td>
-            <td data-label="Name">Liaqat</td>
-            <td data-label="Date">03/01/2016 </td>
-            <td data-label="Status">
-              <span className="pending">Unblock</span>
-            </td>
+                      >
+                        <DeleteIcon />
+                      </button>
+                    </article>
+                  </td>
+                </tr>
+              )
+            }
+            )
+          }
 
-            <td data-label="Action">
-              <article className="action-buttons-wrapper">
-                <button className="action-button">
-                  <EditIcon />
-                </button>
-                <button
-                  className="action-button"
 
-                >
-                  <DeleteIcon />
-                </button>
-              </article>
-            </td>
-          </tr>
+
 
         </tbody>
       </table>

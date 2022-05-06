@@ -121,6 +121,12 @@ function Login(props) {
           theme: "dark",
         });
     }
+    // if(data.password.length < 4){
+    //     formIsValid = false;
+    //     toast.error("Please Enter a correct Password", {
+    //       theme: "dark",
+    //     });
+    // }
 
     if (formIsValid) {
       try {
@@ -163,11 +169,9 @@ function Login(props) {
       }
     }
   };
-
+// Show Password
   const togglePassword = () => {
-    // When the handler is invoked
-    // inverse the boolean state of passwordShown
-    setPasswordShown(!passwordShown);
+      setPasswordShown(!passwordShown);
   };
 
   return (
@@ -213,7 +217,7 @@ function Login(props) {
                         required
                       />
                       <label className="eyeicon" onClick={togglePassword}>
-                      {passwordShown ?   <BsFillEyeFill  /> :   <BsFillEyeSlashFill  />}
+                      {passwordShown ?    <BsFillEyeSlashFill  /> :  <BsFillEyeFill  /> }
                       
                       </label>
                     </div>
