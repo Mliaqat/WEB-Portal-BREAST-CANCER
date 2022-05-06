@@ -1,51 +1,65 @@
-import React from 'react';
-import img from '../../../../Asset/images/download.png'
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { PDFDownloadLink } from "@react-pdf/renderer";
 import { TableStyle } from '../../../CommnonStyle/Dashboard.style';
+import PdfDocument from "../../../../Component/PdfReport/Report";
 
 function ViewReport() {
-    return (
-        <TableStyle>
-            <h2 className="title">View Report</h2>
-            <hr className='mb-5'></hr>
+    const url = `${process.env.REACT_APP_BASE_URL}/reports`;
+  const [data, setData] = useState([]);
 
-            <table>
-                <thead>
-                    <tr>
-                        <th scope="col">Patient ID</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">DOB</th>
-                        <th scope="col">Download</th>
-                    </tr>
-                </thead>
-                <tbody>
+  useEffect(() => {
+    getreports();
+  }, []);
 
-                    <tr>
-                        <td data-label="Patient ID">#123</td>
-                        <td data-label="Name">Liaqat</td>
-                        <td data-label="Date">03/01/2016 </td>
-                        <td className='icon'>
-                            <img  src={img} alt="download" />
-                            <p>Download</p>
-                        </td>
+  const getreports = async () => {
+    await axios.get(url).then((res) => {
+      setData(res.data);
+    });
+  };
 
-                    </tr>
-                    <tr>
-                        <td data-label="Patient ID">#123</td>
-                        <td data-label="Name">Liaqat</td>
-                        <td data-label="Date">03/01/2016 </td>
+  return (
+    <TableStyle>
+      <h2 className="title">View Report</h2>
+      <hr className="mb-5"></hr>
 
-                        <td className='icon'>
-                            <img  src={img} alt="download" />
-                            <p>Download</p>
-                        </td>
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">Patient ID</th>
+            <th scope="col">Report Date</th>
+            <th scope="col">Result</th>
+            <th scope="col">Download</th>
+          </tr>
+        </thead>
+        <tbody>
+          {data &&
+            data.map((data, index) => {
+              return (
+                <tr>
+                  <td data-label="Patient ID">{data?.cnic}</td>
+                  <td data-label="Date">03/01/2016 </td>
+                  <td data-label="Result">{data?.type_of_cancer}</td>
 
-                    </tr>
-
-                </tbody>
-            </table>
-        </TableStyle>
-    );
-
+                  <td>
+                    <div className="download-link">
+                      <PDFDownloadLink
+                        document={<PdfDocument data={data} />}
+                        fileName="report"
+                      >
+                        {({ loading }) =>
+                          loading ? "Loading..." : "Download Report"
+                        }
+                      </PDFDownloadLink>
+                    </div>
+                  </td>
+                </tr>
+              );
+            })}
+        </tbody>
+      </table>
+    </TableStyle>
+  );
 }
 
 export default ViewReport;

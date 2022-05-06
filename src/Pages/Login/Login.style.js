@@ -25,6 +25,12 @@ export const Loginstyle = styled.article`
       }
     }
 
+    .eyeicon{
+      position: absolute;
+      right: 1.5rem;
+      font-size: 2.5rem;
+      cursor: pointer;
+    }
     .card-body {
       padding: 4rem;
     }
