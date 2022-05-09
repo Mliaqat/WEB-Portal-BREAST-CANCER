@@ -28,6 +28,7 @@ import UserProfile from "./Dashboards/UserProtal/UserProtalSubPages/UserProfile/
 import AddDoctor from "./Dashboards/AdminProtal/AdminProtalSubPages/AddDoctor/AddDoctor";
 import AddAdmin from "./Dashboards/AdminProtal/AdminProtalSubPages/AddAdmin/AddAdmin";
 import ForgetPassword from "./Pages/ForgetPassword/ForgetPassword";
+import NotFound from "./Pages/NotFound/NotFound";
 
 function App() {
   useEffect(() => {
@@ -39,6 +40,7 @@ function App() {
       <GlobalStyle />
       <BrowserRouter>
         <Routes>
+        <Route path='*' element={<NotFound />} />
           <Route path="/" element={<Home />} />
           <Route path="Login" element={<Login />} />
           <Route path="Team" element={<Team />} />

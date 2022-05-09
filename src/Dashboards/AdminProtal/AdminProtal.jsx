@@ -155,60 +155,7 @@ function AdminProtal() {
                         </NavLink>
                     </div>
 
-                    {/* <div className="menu">
-                        <ul className="menu-links">
-                            <li className="nav-link">
-                                <a href="#">
-                                    <i className='svgicon' >
-                                        <DashboardIcon />
-                                    </i>
-                                    <Link className="text  nav-text" to="admin-dashboard">Dashboard</Link>
-                                </a>
-                            </li>
-
-                            <li className="nav-link">
-                                <a href="#">
-                                    <i className='svgicon' >
-                                        <PatientIcon />
-                                    </i>
-                                    <Link className="text nav-text" to="managepatient">Manage Patient</Link>
-                                </a>
-                            </li>
-
-                            <li className="nav-link">
-                                <a href="#">
-                                    <i className='svgicon' >
-                                        <DoctorIcon />
-                                    </i>
-                                    <Link to="managedoctor" className="text nav-text">Manage Doctor</Link>
-                                </a>
-                            </li>
-
-                            <li className="nav-link">
-                                <a href="#">
-                                    <i className='svgicon' >
-                                        <UpdateProfileIcon />
-                                    </i>
-                                    <Link to="updateprofile" className="text nav-text">Update Profile</Link>
-                                </a>
-                            </li>
-
-                        </ul>
-                    </div>
-
-                    <div className="bottom-content">
-                        <li className="">
-                            <a href="#">
-                                <i className='svgicon' >
-                                    <LogOutIcon />
-                                </i>
-                                <span className="text nav-text">Logout</span>
-                            </a>
-                        </li>
-
-
-
-                    </div> */}
+                   
                 </div>
 
             </nav>
@@ -218,9 +165,9 @@ function AdminProtal() {
 
                 <article className='header-nav'>
                     <article className='profile-wrapper'>
-                        <h4>Hi, Liaqat Welcome to our System</h4>
+                        <h4>Hi, {sessionStorage.getItem("lname")} Welcome to our System</h4>
                         <article>
-                            <h4>profile</h4>
+                        <h4 onClick={handleLogout} className="logouttxt">Logout</h4>
                         </article>
 
                     </article>

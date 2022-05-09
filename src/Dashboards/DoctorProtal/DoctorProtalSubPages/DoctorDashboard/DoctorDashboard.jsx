@@ -2,45 +2,42 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { DoctorDashboardStyle } from "./DoctorDashboard.style";
 import { CrossIcon } from "../../../../Asset/Icon/Icon";
+import Select from 'react-select';
 import { Modelstyle } from "../../../../style/commomStyle";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const Modal = ({ handleClose, type }) => {
+const Modal = ({ handleClose, type, userdata }) => {
     const url = `${process.env.REACT_APP_BASE_URL}/reports/report`;
 
+ 
+
     const docName = sessionStorage.getItem("fname");
-
-    const [data, setData] = useState({
+    const [selectedValue, setSelectedValue] = useState();
+    const [desc, setdesc] = useState();
+    console.log(selectedValue)
+    const data = {
         doctor_name: docName,
-        cnic: "",
-        type_of_cancer: type,
-        description: "",
-    });
-
-    const handleInputChange = (e) => {
-        setData({
-            ...data,
-            [e.target.name]: e.target.value,
-        });
+        cnic: selectedValue,
+        type_of_cancer: type, 
+        description:desc       
     };
+
 
     const submit = async (e) => {
         e.preventDefault();
+        
 
-        let formIsValid = true;
-        if (
-            data.doctor_name === "" ||
-            data.cnic === "" ||
-            data.type_of_cancer === "" ||
-            data.description === ""
-        ) {
-            formIsValid = false;
-            toast.error("Please Fill All field", {
-                theme: "dark",
-            });
-        }
-        if (formIsValid) {
+        // let formIsValid = true;
+        // if (
+        //    selectedValue.length() < 0
+        // ) {
+        //     formIsValid = false;
+        //     toast.error("Please Fill All field", {
+        //         theme: "dark",
+        //     });
+        // }
+        if (selectedValue) {
             try {
                 const res = await axios.post(url, data);
                 console.log(res);
@@ -54,7 +51,18 @@ const Modal = ({ handleClose, type }) => {
                 });
             }
         }
+        else{
+            toast.error("Please Select Cnic No", {
+                        theme: "dark",
+                    });
+        }
     };
+
+
+
+    const handleChange = e => {
+        setSelectedValue(e.value);
+    }
 
     return (
         <Modelstyle>
@@ -72,11 +80,18 @@ const Modal = ({ handleClose, type }) => {
                         <article className="modelbody">
                             <h3 className="my-4">Enter Patient Id:</h3>
 
-                            <input
+
+                            <Select
+                                value={userdata.find(obj => obj.value === selectedValue)}
+                                onChange={handleChange}
+                                options={userdata.map((x, i) => { return { value: x.cnic, label: x.cnic } })}
+                            />
+
+                            {/* <input
                                 type="number"
                                 name="cnic"
                                 onChange={(e) => handleInputChange(e)}
-                            ></input>
+                            ></input> */}
 
                             <h3 className="my-4">Test Result:</h3>
 
@@ -85,7 +100,7 @@ const Modal = ({ handleClose, type }) => {
                                 value={type}
                                 readOnly
                                 name="type_of_cancer"
-                                onChange={(e) => handleInputChange(e)}
+                               
                             ></input>
 
                             <h3 className="my-4">Add description:</h3>
@@ -94,7 +109,7 @@ const Modal = ({ handleClose, type }) => {
                                 type="text"
                                 row="5"
                                 name="description"
-                                onChange={(e) => handleInputChange(e)}
+                                onChange={(e) => setdesc(e.target.value)}
                             ></textarea>
 
                             <article className="d-flex justify-content-end my-4">
@@ -111,11 +126,12 @@ const Modal = ({ handleClose, type }) => {
 };
 
 function DoctorDashboard() {
-    const [selectedFile, setSelectedFile] = useState();
+
+    const url = `${process.env.REACT_APP_BASE_URL}/users`;
+    const [data, setData] = useState([]);
     const [image, setImage] = useState();
     const [result, setResult] = useState();
     const [previewimage, setPreViewImage] = useState();
-
     const [show, setShow] = useState(false);
     const [reportdata, setReportdata] = useState("");
 
@@ -156,6 +172,19 @@ function DoctorDashboard() {
         if (e.target.files.length !== 0) {
             setPreViewImage(URL.createObjectURL(e.target.files[0]));
         }
+    };
+
+
+
+
+    useEffect(() => {
+        getuser();
+    }, []);
+
+    const getuser = async () => {
+        await axios.get(url).then((res) => {
+            setData(res.data);
+        });
     };
 
     return (
@@ -211,7 +240,7 @@ function DoctorDashboard() {
                 )}
 
             </article>
-            {show && <Modal type={reportdata} handleClose={hideModal} />}
+            {show && <Modal type={reportdata} userdata={data} handleClose={hideModal} />}
         </DoctorDashboardStyle>
     );
 }

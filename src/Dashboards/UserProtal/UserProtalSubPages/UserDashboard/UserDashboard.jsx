@@ -7,6 +7,7 @@ import PdfDocument from "../../../../Component/PdfReport/Report";
 function UserDashboard() {
   const url = `${process.env.REACT_APP_BASE_URL}/reports`;
   const [data, setData] = useState([]);
+  const cnic=sessionStorage.getItem("cnic")
 
   useEffect(() => {
     getreports();
@@ -34,9 +35,9 @@ function UserDashboard() {
         </thead>
         <tbody>
           {data &&
-            data.map((data, index) => {
+            data.filter(data=>data.cnic==cnic).map((data, index) => {
               return (
-                <tr>
+                <tr key={index}>
                   <td data-label="Patient ID">{data?.cnic}</td>
                   <td data-label="Date">03/01/2016 </td>
                   <td data-label="Result">{data?.type_of_cancer}</td>

@@ -117,7 +117,7 @@ function DoctorProtal() {
                     <article className='profile-wrapper'>
                         <h4>Hi, {sessionStorage.getItem("lname")} Welcome to our System</h4>
                         <article>
-                            <h4>Logout</h4>
+                            <h4 onClick={handleLogout} className="logouttxt">Logout</h4>
                         </article>
 
                     </article>

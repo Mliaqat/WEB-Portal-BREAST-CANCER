@@ -40,6 +40,9 @@ export const DashboardStyle = styled.main`
     justify-content: center;
     font-size: 2rem;
   }
+  .logouttxt{
+    cursor:pointer;
+  }
 
   header {
     background: ${(p) => p.theme.colors.BRICK_RED};

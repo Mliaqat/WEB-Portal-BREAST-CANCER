@@ -8,7 +8,7 @@ import { Modelstyle } from "../../style/commomStyle";
 import { Loginstyle } from "./Login.style";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { BsFillEyeFill,BsFillEyeSlashFill } from "react-icons/bs";
+import { BsFillEyeFill, BsFillEyeSlashFill } from "react-icons/bs";
 import { setUserSession } from "../../MockData/Common";
 
 const Modal = ({ handleClose }) => {
@@ -115,11 +115,11 @@ function Login(props) {
         theme: "dark",
       });
     }
-    if(reg.test(data.email) === false){
-        formIsValid = false;
-        toast.error("Please Enter a Valid Email", {
-          theme: "dark",
-        });
+    if (reg.test(data.email) === false) {
+      formIsValid = false;
+      toast.error("Please Enter a Valid Email", {
+        theme: "dark",
+      });
     }
     // if(data.password.length < 4){
     //     formIsValid = false;
@@ -141,11 +141,12 @@ function Login(props) {
             res.data.user_id,
             res.data.email,
             res.data.mobile,
+            res.data.cnic,
             res.data.role
           );
 
           let path = res.data.role;
-            switch (path) {
+          switch (path) {
             case "user":
               return navigate("/user-protal");
 
@@ -160,16 +161,15 @@ function Login(props) {
           }
         }
       } catch (error) {
-        console.log(error.error);
-        toast.error("Please Try Letter", {
+        toast.error(error.response.data.message, {
           theme: "dark",
         });
       }
     }
   };
-// Show Password
+  // Show Password
   const togglePassword = () => {
-      setPasswordShown(!passwordShown);
+    setPasswordShown(!passwordShown);
   };
 
   return (
@@ -207,7 +207,7 @@ function Login(props) {
                         <PasswordIcon />
                       </span>
                       <input
-                       type={passwordShown ? "text" : "password"}
+                        type={passwordShown ? "text" : "password"}
                         className="form-control"
                         name="password"
                         placeholder="Password"
@@ -215,8 +215,8 @@ function Login(props) {
                         required
                       />
                       <label className="eyeicon" onClick={togglePassword}>
-                      {passwordShown ?    <BsFillEyeSlashFill  /> :  <BsFillEyeFill  /> }
-                      
+                        {passwordShown ? <BsFillEyeSlashFill /> : <BsFillEyeFill />}
+
                       </label>
                     </div>
 

@@ -7,6 +7,7 @@ import PdfDocument from "../../../../Component/PdfReport/Report";
 function ViewReport() {
     const url = `${process.env.REACT_APP_BASE_URL}/reports`;
   const [data, setData] = useState([]);
+  const cnic=sessionStorage.getItem("cnic")
 
   useEffect(() => {
     getreports();
@@ -34,7 +35,7 @@ function ViewReport() {
         </thead>
         <tbody>
           {data &&
-            data.map((data, index) => {
+            data.filter(data=>data.cnic==cnic).map((data, index) => {
               return (
                 <tr>
                   <td data-label="Patient ID">{data?.cnic}</td>

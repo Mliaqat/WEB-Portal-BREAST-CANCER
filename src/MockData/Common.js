@@ -18,6 +18,7 @@ export const setUserSession = (
   userId,
   email,
   mobile,
+  cnic,
   role
 ) => {
   //set user infromation in session storage
@@ -28,6 +29,7 @@ export const setUserSession = (
   // sessionStorage.setItem("lname", JSON.stringify(lname));
   sessionStorage.setItem("userId", userId);
   sessionStorage.setItem("email", email);
+  sessionStorage.setItem("cnic", cnic);
   sessionStorage.setItem("mobile", mobile);
   sessionStorage.setItem("userrole", JSON.stringify(role));
 };
