@@ -4,57 +4,33 @@ import styled from "styled-components";
 export const NotFoundStyle = styled.article`
 
 
-.mainbox {
-  background-color: #95c2de;
-  margin: auto;
-  height: 600px;
-  width: 600px;
-  position: relative;
+.page_404{ padding:40px 0; background:#fff; font-family: 'Arvo', serif;
+height: 100vh;
 }
 
-  .err {
-    color: #ffffff;
-    font-family: 'Nunito Sans', sans-serif;
-    font-size: 11rem;
-    position:absolute;
-    left: 20%;
-    top: 8%;
-  }
+.page_404  img{ width:100%;}
 
-.far {
-  position: absolute;
-  font-size: 8.5rem;
-  left: 42%;
-  top: 15%;
-  color: #ffffff;
-}
-
- .err2 {
-    color: #ffffff;
-    font-family: 'Nunito Sans', sans-serif;
-    font-size: 11rem;
-    position:absolute;
-    left: 68%;
-    top: 8%;
-  }
-
-.msg {
-    text-align: center;
-    font-family: 'Nunito Sans', sans-serif;
-    font-size: 1.6rem;
-    position:absolute;
-    left: 16%;
-    top: 45%;
-    width: 75%;
-  }
-
-a {
-  text-decoration: none;
-  color: white;
-}
-
-a:hover {
-  text-decoration: underline;
-}
+.four_zero_four_bg{
  
+ background-image: url(https://cdn.dribbble.com/users/285475/screenshots/2083086/dribbble_1.gif);
+    height: 400px;
+    background-position: center;
+ }
+ 
+ 
+ .four_zero_four_bg h1{
+ font-size:80px;
+ }
+ 
+  .four_zero_four_bg h3{
+			 font-size:80px;
+			 }
+			 
+			 .link_404{			 
+	color: #fff!important;
+    padding: 10px 20px;
+    background: #39ac31;
+    margin: 20px 0;
+    display: inline-block;}
+	.contant_box_404{ margin-top:-50px;}
 `;

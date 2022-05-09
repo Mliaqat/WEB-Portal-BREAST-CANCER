@@ -78,6 +78,8 @@ function Login(props) {
 
   const [show, setShow] = useState(false);
   const [passwordShown, setPasswordShown] = useState(false);
+  const [error, seterror] = useState("")
+  const [passworderror, setpassworderror] = useState("")
 
   const hanldeClick = () => {
     setShow(true);
@@ -92,6 +94,8 @@ function Login(props) {
   });
 
   const handleInputChange = (e) => {
+    seterror(null)
+    setpassworderror(null)
     setData({
       ...data,
       [e.target.name]: e.target.value,
@@ -104,33 +108,34 @@ function Login(props) {
     e.preventDefault();
     let formIsValid = true;
     const reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-    if (     
+    if (
       data.email === "" ||
-      data.password === ""     
+      data.password === ""
     ) {
       formIsValid = false;
       toast.error("Please Fill All field", {
         theme: "dark",
       });
     }
-    if (reg.test(data.email) === false) {
+    else if (reg.test(data.email) === false) {
+      seterror("Please Enter a Correct Email")
       formIsValid = false;
-      toast.error("Please Enter a Valid Email", {
+      toast.error("Please Enter a Correct Email", {
         theme: "dark",
       });
     }
-    // if(data.password.length < 4){
-    //     formIsValid = false;
-    //     toast.error("Please Enter a correct Password", {
-    //       theme: "dark",
-    //     });
-    // }
+    else if (data.password.length < 4) {
+      setpassworderror("Please Enter a Correct Password")
+      formIsValid = false;
+      toast.error("Please Enter a correct Password", {
+        theme: "dark",
+      });
+    }
 
     if (formIsValid) {
       try {
         const res = await axios.post(url, data);
 
-        console.log(res.data);
         if (res.status === 200) {
           setUserSession(
             res.data.token,
@@ -170,6 +175,7 @@ function Login(props) {
     setPasswordShown(!passwordShown);
   };
 
+
   return (
     <>
       <Navbar />
@@ -198,7 +204,13 @@ function Login(props) {
                         required
                         title="Enter Phone No"
                       />
+
+
                     </div>
+                    {error &&
+                      <label className="error">{error}</label>
+                    }
+
 
                     <div className="input-group form-group">
                       <span className="input-group-text">
@@ -217,6 +229,9 @@ function Login(props) {
 
                       </label>
                     </div>
+                    {passworderror &&
+                      <label className="error">{passworderror}</label>
+                    }
 
                     {/* <div className="d-flex my-5">
                       <article>

@@ -25,18 +25,8 @@ const Modal = ({ handleClose, type, userdata }) => {
 
 
     const submit = async (e) => {
-        e.preventDefault();
-        
+        e.preventDefault();      
 
-        // let formIsValid = true;
-        // if (
-        //    selectedValue.length() < 0
-        // ) {
-        //     formIsValid = false;
-        //     toast.error("Please Fill All field", {
-        //         theme: "dark",
-        //     });
-        // }
         if (selectedValue) {
             try {
                 const res = await axios.post(url, data);
@@ -158,7 +148,11 @@ function DoctorDashboard() {
                 setResult(response.data);
             })
             .catch((error) => {
-                console.log(error.response);
+             
+                toast.error("Please Try Letter Api Error", {
+                    theme: "dark",
+                  });
+
             });
     };
 
@@ -189,6 +183,7 @@ function DoctorDashboard() {
 
     return (
         <DoctorDashboardStyle>
+               <ToastContainer />
             <article className="file">
                 <label>
                     <h4 className="mb-3">Upload Only Histopathology Image:</h4>

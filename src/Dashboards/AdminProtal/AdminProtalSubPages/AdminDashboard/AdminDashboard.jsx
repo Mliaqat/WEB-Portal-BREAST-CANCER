@@ -23,6 +23,19 @@ function AdminDashboard() {
             }
         ]
     }
+    const data2 = {
+        labels: ['Benign', 'Miglanant'],
+        datasets: [
+            {
+                label: 'Sales 2020 (M)',
+                data: [2, 8],
+                backgroundColor: [
+                    '#ff63b9',
+                    '#ff6f56'
+                ]
+            }
+        ]
+    }
 
 
     const options = {
@@ -48,7 +61,7 @@ function AdminDashboard() {
                 </article>
                 <article className='charts mx-5'>
                     <h2 className='text-center mb-5'>Number of Cases</h2>
-                    <Doughnut data={data} options={options} />
+                    <Doughnut data={data2} options={options} />
                 </article>
             </article>
 

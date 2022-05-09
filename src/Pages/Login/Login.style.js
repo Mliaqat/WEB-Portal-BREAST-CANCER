@@ -31,8 +31,16 @@ export const Loginstyle = styled.article`
       font-size: 2.5rem;
       cursor: pointer;
     }
+
+    .error{
+      color: red;
+      margin-top: -1rem;
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+    
+    }
     .card-body {
-      padding: 4rem;
+      padding: 4rem ;
     }
     .form-group {
       margin-bottom: 1rem;

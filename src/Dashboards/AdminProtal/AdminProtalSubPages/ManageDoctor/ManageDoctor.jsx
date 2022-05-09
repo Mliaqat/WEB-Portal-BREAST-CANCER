@@ -48,7 +48,7 @@ function ManageDoctor() {
         <tbody>
           {data &&
             data
-              .filter((data) => data.role === "doctor")
+              .filter((data) => data.role === "doctor").slice(0).reverse()
               .map((data, index) => {
                 return (
                   <tr key={index}>

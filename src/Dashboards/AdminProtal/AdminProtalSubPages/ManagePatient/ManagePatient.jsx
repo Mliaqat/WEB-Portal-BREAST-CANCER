@@ -46,7 +46,7 @@ function ManagePatient() {
 
 
           {data &&
-            data.filter(data => data.role === "user").map((data, index) => {
+            data.filter(data => data.role === "user").slice(0).reverse().map((data, index) => {
               return (
                 <tr key={index}>
                   <td data-label="Sr#">{index + 1}</td>

@@ -50,27 +50,25 @@ function SignUp() {
         theme: "dark",
       });
     }
-    if(reg.test(data.email) === false){
+   else if(reg.test(data.email) === false){
         formIsValid = false;
         toast.error("Please Enter a Valid Email", {
           theme: "dark",
         });
     }
-    if(data.password.length < 4){
+    else if(data.password.length < 4){
         formIsValid = false;
         toast.error("Please Enter a correct Password", {
           theme: "dark",
         });
     }
-
-    if(reg.test(data.email) === false){
+    else if(reg.test(data.email) === false){
       formIsValid = false;
       toast.error("Please Enter a Valid Email", {
         theme: "dark",
       });
   }
-
-  if (!regexp.test(data.cnic)) {
+  else if (!regexp.test(data.cnic)) {
 
     formIsValid = false;
     toast.error("Please Enter a Valid Cnic", {

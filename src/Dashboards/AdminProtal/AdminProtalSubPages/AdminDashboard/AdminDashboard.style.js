@@ -7,7 +7,7 @@ export const AdminDashboardStyle = styled.main`
     column-gap: 1rem;
     width: 95%;
     margin: auto;
-    margin-top: 3rem;
+    margin-top: 0rem;
     @media (max-width: 900px) {
       grid-template-columns: repeat(2, 1fr);
     }
