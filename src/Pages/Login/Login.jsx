@@ -104,11 +104,9 @@ function Login(props) {
     e.preventDefault();
     let formIsValid = true;
     const reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-    if (
-      data.first_name === "" ||
+    if (     
       data.email === "" ||
-      data.password === "" ||
-      data.phone_no === ""
+      data.password === ""     
     ) {
       formIsValid = false;
       toast.error("Please Fill All field", {
