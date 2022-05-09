@@ -145,9 +145,7 @@ function Login(props) {
           );
 
           let path = res.data.role;
-          console.log(path + "pathd");
-
-          switch (path) {
+            switch (path) {
             case "user":
               return navigate("/user-protal");
 
@@ -162,8 +160,8 @@ function Login(props) {
           }
         }
       } catch (error) {
-        console.log(error.message);
-        toast.error("Network Error Try Letter", {
+        console.log(error.error);
+        toast.error("Please Try Letter", {
           theme: "dark",
         });
       }

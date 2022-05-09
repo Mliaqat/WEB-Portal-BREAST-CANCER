@@ -1,135 +1,234 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { ProfileModalStyle } from '../../../CommnonStyle/Dashboard.style';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function DoctorProfile() {
-    const [image, setImage] = useState([]);
-    const [postimage, setpostimage] = useState();
-    const [userData, setUserData] = useState({
-        first_name: "",
-        last_name: "",
-        mobile: "",
-        password: "",
-        status: "",
-    });
+    const [user, setuser] = useState("");
 
-    const onInputSubmit = (e) => {
-        setUserData({
-            ...userData,
-            [e.target.name]: e.target.value,
+    const id = sessionStorage.getItem("userId");
+  
+    const url = `${process.env.REACT_APP_BASE_URL}/users/${id}`;
+  
+    const [data, setData] = useState({
+      first_name: "",
+      last_name: "",
+      email: "",
+      phone_no: "",
+      cnic: "",
+      address: "",
+      dob: "",
+      password: "",
+      role: "user",
+    });
+  
+    const handleInputChange = (e) => {
+      setData({
+        ...data,
+        [e.target.name]: e.target.value,
+      });
+    };
+  
+    useEffect(() => {
+      getUser();
+    }, []);
+  
+    const getUser = async () => {
+      await axios.get(url).then((res) => {
+        setuser(res.data);
+        setData(res.data);
+        console.log(res.data);
+      });
+    };
+  
+    const update = async () => {
+      await axios
+        .put(url, data)
+        .then((res) => {
+          console.log(res);
+          toast.success("Signup Successfully", {
+            theme: "dark",
+          });
+          getUser();
+        })
+        .catch((err) => {
+          console.log(err);
+          toast.error("Network Error", {
+            theme: "dark",
+          });
         });
     };
-
-    const filehandler = (e) => {
-        setImage(e.target.files[0]);
-
-        if (e.target.files.length !== 0) {
-            setpostimage(URL.createObjectURL(e.target.files[0]));
-        }
-    };
-
+  
     return (
-        <ProfileModalStyle>
-            <h2 className="title">Update Profile</h2>
-            <hr className='mb-5'></hr>
-            <form className="profile-form">
-                {/* <article className="profile-detail-wrapper">
-                    <label htmlFor="upload-image" className="user-profile-image-wrapper">
-                        {postimage ? (
-                            (
-                                <img
-                                    src={postimage}
-                                    alt="Select Image"
-                                    className="image-placeholder"
-                                />
-                            )
-                        ) : (
-                            <img
-                                // src={picture}
-                                alt="User Proifle"
-                                className="image-placeholder"
-                            />
-                        )}
-
-                    </label>
-
-                    <h2 className="profile-name">Liaqat</h2>
-                </article> */}
-
-                <article className="profile-form-data">
-
-
-                    <article className="form-details">
-                        <article className="form-content">
-                            <label>First Name</label>
-                            <input
-                                type="text"
-                                name="first_name"
-                                onChange={(e) => onInputSubmit(e)}
-                                className="custom-input"
-                            />
-                        </article>
-                        <article className="form-content">
-                            <label>Last Name</label>
-                            <input
-                                type="text"
-                                name="last_name"
-                                onChange={(e) => onInputSubmit(e)}
-                                className="custom-input"
-                            />
-                        </article>
-                        <article className="form-content">
-                            <label>Mobile</label>
-                            <input
-                                type="tel"
-                                name="email"
-                                onChange={(e) => onInputSubmit(e)}
-                                className="custom-input"
-                            />
-                        </article>
-                        <article className="form-content">
-                            <label>Password</label>
-                            <input
-                                type="password"
-                                name="password"
-                                onChange={(e) => onInputSubmit(e)}
-                                className="custom-input"
-                            />
-                        </article>
-                        {/* <article className="form-content">
-                            <label>Profile Image</label>
-                            <input
-                                type="file"
-                                onChange={(e) => filehandler(e)}
-                                className="custom-input"
-                            />
-                        </article> */}
-                        <article className="form-content">
-                            <label>Description</label>
-                            <textarea
-                                name="status"
-                                className="custom-input"
-                                onChange={(e) => onInputSubmit(e)}
-                                cols="30"
-                                rows="5"
-                            ></textarea>
-                        </article>
-                    </article>
-
-                    <article className="form-footer mb-5">
-                        <button className="update-button mx-3">
-                            Update
-                        </button>
+      <ProfileModalStyle>
+        <ToastContainer />
+  
+        <h2 className="title">Profile</h2>
+        <hr className="mb-5"></hr>
+  
+        <div class="container">
+          <div class="main-body">
+            <div class="row gutters-sm">
+              <div class="offset-lg-2 col-8">
+                <div class="card mb-3">
+                  <div class="card-body">
+                    <div class="row my-3">
+                      <div class="col-sm-3">
+                        <h6 class="mb-0">First Name</h6>
+                      </div>
+                      <div class="col-sm-9 text-secondary">{user.first_name}</div>
+                    </div>
+                    <hr></hr>
+                    <div class="row my-3">
+                      <div class="col-sm-3">
+                        <h6 class="mb-0">Last Name</h6>
+                      </div>
+                      <div class="col-sm-9 text-secondary">{user.last_name}</div>
+                    </div>
+                    <hr></hr>
+                    <div class="row my-3">
+                      <div class="col-sm-3">
+                        <h6 class="mb-0">Email</h6>
+                      </div>
+                      <div class="col-sm-9 text-secondary">{user.email}</div>
+                    </div>
+                    <hr></hr>
+                    <div class="row my-3">
+                      <div class="col-sm-3">
+                        <h6 class="mb-0">Mobile</h6>
+                      </div>
+                      <div class="col-sm-9 text-secondary">{user.phone_no}</div>
+                    </div>
+                    <hr></hr>
+  
+                    <div class="row my-3">
+                      <div class="col-sm-3">
+                        <h6 class="mb-0">Address</h6>
+                      </div>
+                      <div class="col-sm-9 text-secondary">{user.address}</div>
+                    </div>
+                    <hr></hr>
+                    <div class="row my-3">
+                      <div class="col-sm-12">
                         <button
-                            className="cancel-button mx-3"
-
+                          class="editbtn"
+                          data-bs-toggle="modal"
+                          data-bs-target="#staticBackdrop"
                         >
-                            Cancel
+                          Edit
                         </button>
-                    </article>
-                </article>
-            </form>
-        </ProfileModalStyle>
-    )
-}
-
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        {/* <!-- Modal --> */}
+        <div
+          class="modal fade"
+          id="staticBackdrop"
+          data-bs-backdrop="static"
+          data-bs-keyboard="false"
+          tabindex="-1"
+          aria-labelledby="staticBackdropLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title" id="staticBackdropLabel">
+                  Update Profile
+                </h4>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="modal-body">
+                <div class="container-fluid">
+                  <div class="main-body">
+                    <div class="row">
+                      <div class="col-12">
+                        <div class="card">
+                          <div class="card-body">
+                            <div class="row mb-3 align-items-center">
+                              <div class="col-sm-3">
+                                <h6 class="mb-0">First Name</h6>
+                              </div>
+                              <div class="col-sm-9 text-secondary">
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  value={data.first_name}
+                                  name="first_name"
+                                  onChange={(e) => handleInputChange(e)}
+                                />
+                              </div>
+                            </div>
+                            <div class="row mb-3 align-items-center">
+                              <div class="col-sm-3">
+                                <h6 class="mb-0">Last Name</h6>
+                              </div>
+                              <div class="col-sm-9 text-secondary">
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  value={data.last_name}
+                                  name="last_name"
+                                  onChange={(e) => handleInputChange(e)}
+                                />
+                              </div>
+                            </div>
+                            <div class="row mb-3 align-items-center">
+                              <div class="col-sm-3">
+                                <h6 class="mb-0">Mobile</h6>
+                              </div>
+                              <div class="col-sm-9 text-secondary">
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  value={data.phone_no}
+                                  name="phone_no"
+                                  onChange={(e) => handleInputChange(e)}
+                                />
+                              </div>
+                            </div>
+                            <div class="row mb-3 align-items-center">
+                              <div class="col-sm-3">
+                                <h6 class="mb-0">Address</h6>
+                              </div>
+                              <div class="col-sm-9 text-secondary">
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  value={data.address}
+                                  name="address"
+                                  onChange={(e) => handleInputChange(e)}
+                                />
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="editbtn" onClick={() => update()}>
+                  Update
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ProfileModalStyle>
+    );
+  }
 export default DoctorProfile;

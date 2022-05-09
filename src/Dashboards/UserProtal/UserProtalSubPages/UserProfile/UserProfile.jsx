@@ -50,6 +50,7 @@ function UserProfile() {
         toast.success("Signup Successfully", {
           theme: "dark",
         });
+        getUser();
       })
       .catch((err) => {
         console.log(err);

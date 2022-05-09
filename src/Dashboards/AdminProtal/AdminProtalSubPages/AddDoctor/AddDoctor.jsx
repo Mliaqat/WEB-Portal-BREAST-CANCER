@@ -23,6 +23,8 @@ function AddDoctor() {
     })
 
     const url = `${process.env.REACT_APP_BASE_URL}/users/signup`;
+    const reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    var regexp = new RegExp('^[0-9+]{5}-[0-9+]{7}-[0-9]{1}$');  
 
 
     const handleInputChange = (e) => {
@@ -42,6 +44,26 @@ function AddDoctor() {
                 theme: 'dark'
             });
         }
+
+        if(reg.test(data.email) === false){
+            formIsValid = false;
+            toast.error("Please Enter a Valid Email", {
+              theme: "dark",
+            });
+        }
+      
+        if (!regexp.test(data.cnic)) {
+      
+          formIsValid = false;
+          toast.error("Please Enter a Valid Cnic", {
+            theme: "dark",
+          });
+      
+      
+        }
+
+        // ------------Post Api-----------------
+
         if (formIsValid) {
             try {
                 const res = await axios.post(url, data)
@@ -127,11 +149,14 @@ function AddDoctor() {
                                     />
                                 </div>
                                 <div className="form-group">
-                                    <label>CNIC:</label>
+                                <div className="d-flex justify-content-between">
+                  <label>CNIC:</label>
+                  <p><small>Please Enter with Dash(-)</small></p>
+                  </div>
                                     <input
                                         type="dec"
                                         className="form-control"
-                                        placeholder="3710580913371"
+                                        placeholder="37105-8091337-1"
                                         name="cnic"
                                         onChange={(e) => handleInputChange(e)}
                                         required

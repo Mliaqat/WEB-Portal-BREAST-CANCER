@@ -13,6 +13,7 @@ import { removeUserSession } from '../../MockData/Common';
 function AdminProtal() {
 
     let navigate = useNavigate();
+
     const [isOpen, setIsOpen] = useState(false);
     const [user, setUser] = useState();
 
@@ -22,6 +23,21 @@ function AdminProtal() {
 
     useEffect(() => {
         window.scrollTo(0, 0)
+        const path = JSON.parse(sessionStorage.getItem('userrole'));
+
+        switch (path) {
+            case "user":
+                return navigate("/user-protal");
+
+            case "doctor":
+                return navigate("/doctor-protal");
+
+            case "admin":
+                return navigate("/admin-protal");
+
+            default:
+                return navigate("/");
+        }
     }, [])
 
 

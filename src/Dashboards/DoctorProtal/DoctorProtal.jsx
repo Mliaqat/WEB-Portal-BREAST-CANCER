@@ -19,6 +19,21 @@ function DoctorProtal() {
     }
     useEffect(() => {
         window.scrollTo(0, 0)
+        const path = JSON.parse(sessionStorage.getItem('userrole'));
+
+        switch (path) {
+            case "user":
+                return navigate("/user-protal");
+
+            case "doctor":
+                return navigate("/doctor-protal");
+
+            case "admin":
+                return navigate("/admin-protal");
+
+            default:
+                return navigate("/");
+        }
     }, [])
 
     const handleLogout = () => {
@@ -100,7 +115,7 @@ function DoctorProtal() {
             <section className="home">
                 <article className='header-nav'>
                     <article className='profile-wrapper'>
-                        <h4>Hi, Liaqat Welcome to our System</h4>
+                        <h4>Hi, {sessionStorage.getItem("lname")} Welcome to our System</h4>
                         <article>
                             <h4>Logout</h4>
                         </article>

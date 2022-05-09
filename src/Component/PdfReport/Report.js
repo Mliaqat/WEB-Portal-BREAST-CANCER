@@ -4,6 +4,7 @@ import logo from "../../Asset/images/Logo.png";
 import ReportTitle from "./ReportTitle";
 import ReportThankYouMsg from "./ReportThankYouMsg";
 import ReportItemsTable from "./ReportTable";
+import DoctorName from "./DoctorName";
 
 const styles = StyleSheet.create({
   page: {
@@ -30,6 +31,7 @@ const PdfDocument = ({ data }) => {
       <Page size="A4" style={styles.page}>
         <Image style={styles.logo} src={logo} />
         <ReportTitle title={"Medical Report"} />
+        <DoctorName data={data} />
         <ReportItemsTable data={data} />
         <ReportThankYouMsg />
       </Page>
