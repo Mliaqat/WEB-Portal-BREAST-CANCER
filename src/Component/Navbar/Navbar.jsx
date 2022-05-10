@@ -1,10 +1,32 @@
-import React, { useState } from 'react'
-import { NavLink } from 'react-router-dom';
+import React, { useEffect, useState } from 'react'
+import { NavLink ,useNavigate} from 'react-router-dom';
 import logo from "../../Asset/images/Logo.png"
 import { Navbarstyle } from './Navbar.style';
 
 function Navbar() {
     const [role, setrole] = useState("")
+    let navigate = useNavigate();
+
+   
+        let login = JSON.parse(sessionStorage.getItem("userrole")) 
+        
+        const handlelogin=()=>{
+            console.log(login)
+            switch (login) {
+                case "user":
+                  return navigate("/user-protal");
+    
+                case "doctor":
+                  return navigate("/doctor-protal");
+    
+                case "admin":
+                  return navigate("/admin-protal");
+    
+                default:
+                  return navigate("/");
+              }
+        }
+  
 
 
     // setrole(sessionStorage.getItem("userrole"))
@@ -33,9 +55,19 @@ function Navbar() {
                             <NavLink to="/Contact" className={({ isActive }) => (isActive ? 'is-active' : 'nav-item')}>
                                 <a className="nav-link text-white">Contact Us</a>
                             </NavLink>
-                            <NavLink to="/Login" className={({ isActive }) => (isActive ? 'is-active' : 'nav-item')}>
-                                <a className="nav-link text-white">Login</a>
-                            </NavLink>
+                            {
+                                login ? (
+
+                                    <a onClick={handlelogin} className='nav-item'>
+                                    <a className="nav-link text-white">Account</a>
+                                </a>
+                                ):(
+                                    <NavLink to="/Login" className={({ isActive }) => (isActive ? 'is-active' : 'nav-item')}>
+                                    <a className="nav-link text-white">Login</a>
+                                </NavLink>
+                                )
+                           
+}
 
 
                         </ul>
