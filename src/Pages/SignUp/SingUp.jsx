@@ -15,6 +15,7 @@ function SignUp() {
   const reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
   var regexp = new RegExp('^[0-9+]{5}-[0-9+]{7}-[0-9]{1}$');              
   const [passwordShown, setPasswordShown] = useState(false);
+  const [error, seterror] = useState("")
   const [data, setData] = useState({
     first_name: "",
     last_name: "",
@@ -28,6 +29,7 @@ function SignUp() {
   });
 
   const handleInputChange = (e) => {
+    seterror(null)
     setData({
       ...data,
       [e.target.name]: e.target.value,
@@ -52,22 +54,18 @@ function SignUp() {
     }
    else if(reg.test(data.email) === false){
         formIsValid = false;
+        seterror("Enter a Valid Email")
         toast.error("Please Enter a Valid Email", {
           theme: "dark",
         });
     }
-    else if(data.password.length < 4){
+     else if(data.password.length < 8){
         formIsValid = false;
-        toast.error("Please Enter a correct Password", {
+        toast.error("Please Enter a Correct Password Minimum 8 charter", {
           theme: "dark",
         });
     }
-    else if(reg.test(data.email) === false){
-      formIsValid = false;
-      toast.error("Please Enter a Valid Email", {
-        theme: "dark",
-      });
-  }
+  
   else if (!regexp.test(data.cnic)) {
 
     formIsValid = false;
@@ -137,6 +135,7 @@ function SignUp() {
                     onChange={(e) => handleInputChange(e)}
                     required
                   />
+                  
                 </div>
                 <div className="form-group">
                   <label>Last Name:</label>
@@ -160,6 +159,9 @@ function SignUp() {
                     onChange={(e) => handleInputChange(e)}
                     required
                   />
+                   {error &&
+                      <label className="error">{error}</label>
+                    }
                 </div>
 
                 <div className="form-group">

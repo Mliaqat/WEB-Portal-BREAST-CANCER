@@ -134,7 +134,7 @@ function DoctorDashboard() {
         setShow(false);
     };
 
-    let confidence = 0;
+    
 
     const add = async () => {
         let formData = new FormData();
@@ -156,9 +156,7 @@ function DoctorDashboard() {
             });
     };
 
-    if (result) {
-        confidence = (parseFloat(result?.confidence) * 100).toFixed(2);
-    }
+   
 
     const filehandler = (e) => {
         setImage(e.target.files[0]);
@@ -167,9 +165,6 @@ function DoctorDashboard() {
             setPreViewImage(URL.createObjectURL(e.target.files[0]));
         }
     };
-
-
-
 
     useEffect(() => {
         getuser();
@@ -221,7 +216,6 @@ function DoctorDashboard() {
                     <>
                         <article>
                             <h4>{result?.class}</h4>
-                            <h4 className="my-3">{confidence}%</h4>
                         </article>
                         <article className="d-flex flex-column">
                             <button

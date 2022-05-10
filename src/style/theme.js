@@ -3,7 +3,6 @@ const THEMES = {
     PRIMARY_COLOR: "#ffb602",
     JASMINE_COLOR: "#FFE79A",
     LIGHT_ORANGE_COLOR: "#f7ecd2",
-
     DARK_COLOR: "#222222",
     WHITE_COLOR: "#fff",
     BRICK_RED: "#C23B57",
@@ -16,14 +15,9 @@ const THEMES = {
     RICH_BLACK_COLOR: "#0a0a0a",
     BLACK_COLOR: "#000",
     PLATINUM_COLOR: "#e7e7e7",
-
     SECONDARY_COLOR: "#777777",
     ALTO_COLOR: "#dddddd",
-    DARK_GRAY_COLOR: "#333333",
-    CULTURED_GRAY_COLOR: "#f2f2f2",
-    MEDIUM_GRAY_COLOR: "#CECFD3",
-    LIGHT_GRAY_COLOR: "#f9f9f9",
-    DULL_GRAY_COLOR: "#f8f8f8",
+   
    
   },
 

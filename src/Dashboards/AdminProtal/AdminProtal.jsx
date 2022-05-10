@@ -96,24 +96,13 @@ function AdminProtal() {
                                 </NavLink>
                             </article>
 
-                            <article>
-                                <NavLink to="managedoctor" className={({ isActive }) => (isActive ? 'is-active' : 'link')}>
-                                    <article className='sidebaricon my-5' >
-                                        <h2>
-                                            <img src={docicon} alt="icon"></img>
-                                        </h2>
-                                        <label className="text  nav-text mx-3" >Manage Doctor</label>
-                                    </article>
-                                </NavLink>
-                            </article>
-
-                            <article>
+                                     <article>
                                 <NavLink to="adddoctor" className={({ isActive }) => (isActive ? 'is-active' : 'link')}>
                                     <article className='sidebaricon my-5' >
                                         <h2>
                                             <img src={docicon} alt="icon"></img>
                                         </h2>
-                                        <label className="text  nav-text mx-3" >Add Doctor</label>
+                                        <label className="text  nav-text mx-3" >Manage Doctor</label>
                                     </article>
                                 </NavLink>
                             </article>
@@ -123,7 +112,17 @@ function AdminProtal() {
                                         <h2>
                                             <img src={adminicon} alt="icon"></img>
                                         </h2>
-                                        <label className="text  nav-text mx-3" >Add Admin</label>
+                                        <label className="text  nav-text mx-3" >Manage Admin</label>
+                                    </article>
+                                </NavLink>
+                            </article>
+                            <article>
+                                <NavLink to="usercontact" className={({ isActive }) => (isActive ? 'is-active' : 'link')}>
+                                    <article className='sidebaricon my-5' >
+                                        <h2>
+                                            <img src={patienticon} alt="icon"></img>
+                                        </h2>
+                                        <label className="text  nav-text mx-3" >User Contacts</label>
                                     </article>
                                 </NavLink>
                             </article>
@@ -155,7 +154,7 @@ function AdminProtal() {
                         </NavLink>
                     </div>
 
-                   
+
                 </div>
 
             </nav>
@@ -165,9 +164,9 @@ function AdminProtal() {
 
                 <article className='header-nav'>
                     <article className='profile-wrapper'>
-                        <h4>Hi, {sessionStorage.getItem("lname")} Welcome to our System</h4>
+                        <h4>Hi, {sessionStorage.getItem("fname")} Welcome to our System</h4>
                         <article>
-                        <h4 onClick={handleLogout} className="logouttxt">Logout</h4>
+                            <h4 onClick={handleLogout} className="logouttxt">Logout</h4>
                         </article>
 
                     </article>

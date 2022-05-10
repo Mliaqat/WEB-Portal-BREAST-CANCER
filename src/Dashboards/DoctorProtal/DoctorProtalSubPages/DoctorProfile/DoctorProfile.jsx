@@ -38,7 +38,7 @@ function DoctorProfile() {
       await axios.get(url).then((res) => {
         setuser(res.data);
         setData(res.data);
-        console.log(res.data);
+        sessionStorage.setItem("fname",res.data.first_name)
       });
     };
   

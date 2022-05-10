@@ -22,13 +22,14 @@ import { useEffect } from "react";
 
 import UpdateProfile from "./Dashboards/AdminProtal/AdminProtalSubPages/UpdateProfile/UpdateProfile";
 import ManagePatient from "./Dashboards/AdminProtal/AdminProtalSubPages/ManagePatient/ManagePatient";
-import ManageDoctor from "./Dashboards/AdminProtal/AdminProtalSubPages/ManageDoctor/ManageDoctor";
 import DoctorProfile from "./Dashboards/DoctorProtal/DoctorProtalSubPages/DoctorProfile/DoctorProfile";
 import UserProfile from "./Dashboards/UserProtal/UserProtalSubPages/UserProfile/UserProfile";
 import AddDoctor from "./Dashboards/AdminProtal/AdminProtalSubPages/AddDoctor/AddDoctor";
 import AddAdmin from "./Dashboards/AdminProtal/AdminProtalSubPages/AddAdmin/AddAdmin";
 import ForgetPassword from "./Pages/ForgetPassword/ForgetPassword";
 import NotFound from "./Pages/NotFound/NotFound";
+import ManageAdmin from "./Dashboards/AdminProtal/AdminProtalSubPages/ManageAdmin/ManageAdmin";
+import Contactus from "./Dashboards/AdminProtal/AdminProtalSubPages/ContactUs/Contactus";
 
 function App() {
   useEffect(() => {
@@ -40,17 +41,14 @@ function App() {
       <GlobalStyle />
       <BrowserRouter>
         <Routes>
-        <Route path='*' element={<NotFound />} />
+          <Route path="*" element={<NotFound />} />
           <Route path="/" element={<Home />} />
           <Route path="Login" element={<Login />} />
           <Route path="Team" element={<Team />} />
           <Route path="Contact" element={<Contact />} />
           <Route path="About" element={<About />} />
           <Route path="signup" element={<SignUp />} />
-          <Route
-            path="resetpassword/:email/:token"
-            element={<ForgetPassword/>}
-          />
+          <Route path="resetpassword/:token" element={<ForgetPassword />} />
 
           {/* ################Admin Protal##################### */}
 
@@ -58,7 +56,8 @@ function App() {
             <Route index element={<AdminDashboard />} />
             <Route excat path="admin-dashboard" element={<AdminDashboard />} />
             <Route path="managepatient" element={<ManagePatient />} />
-            <Route path="managedoctor" element={<ManageDoctor />} />
+            <Route path="manageadmin" element={<ManageAdmin />} />
+            <Route path="usercontact" element={<Contactus />} />
             <Route path="updateprofile" element={<UpdateProfile />} />
             <Route path="adddoctor" element={<AddDoctor />} />
             <Route path="addadmin" element={<AddAdmin />} />

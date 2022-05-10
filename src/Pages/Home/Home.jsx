@@ -16,7 +16,7 @@ const Header = () => {
             <article className="header">
                 <article className="animate__animated animate__fadeInLeft">
                     <h1 >Helping Women Now!</h1>
-                    <button className="btn" href="https://www.facebook.com/">More Information!</button>
+                    <a className="btn" href="https://www.facebook.com/">More Information!</a>
                 </article>
                 <picture className="animate__animated animate__fadeInRight">
                     <img src={img} className="img-fluid" alt="" />
@@ -36,41 +36,13 @@ const Mission = () => {
             >
                 <h1>OUR Mission</h1>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum nulla alias modi deserunt nihil rerum aspernatur eius omnis cumque quam eum eveniet blanditiis accusantium sunt quod, laudantium voluptatem quos iste.</p>
-                <button className="btn">Click Here!</button>
+                <a href="https://www.facebook.com" className="btn">Click Here!</a>
             </article>
         </Missionstyle>
     )
 }
 
-// const Futureservice = () => {
-//     return (
-//         <Futurestyle>
-//             <article className="container future">
-//                 <article>
-//                     <span className="icon"><Message /></span>
-//                     <h3>What is Breast Cancer?</h3>
-//                     <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptates, illum ducimus. Veniam obcaecati cum praesentium repudiandae nulla nostrum quasi </p>
-//                     <button className="btn">Click Here!</button>
 
-//                 </article>
-//                 <article>
-//                     <span className="icon"><Help /></span>
-//                     <h3>Get Help Now</h3>
-//                     <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptates, illum ducimus. Veniam obcaecati cum praesentium repudiandae nulla nostrum quasi </p>
-//                     <button className="btn">Click Here!</button>
-//                 </article>
-//                 <article>
-//                     <span className="icon"><Support /></span>
-//                     <h3>Support the Cause</h3>
-//                     <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptates, illum ducimus. Veniam obcaecati cum praesentium repudiandae nulla nostrum quasi </p>
-//                     <button className="btn">Click Here!</button>
-//                 </article>
-
-//             </article>
-//         </Futurestyle>
-
-//     )
-// }
 
 const Blockquote = () => {
 
@@ -107,7 +79,7 @@ const Heading = () => {
             </article>
             <article>
                 <span className="iconribbon"><Ribbion /></span>
-                <button className="btn">Click Here!</button>
+                <a href="https://www.facebook.com" className="btn">Click Here!</a>
 
             </article>
 

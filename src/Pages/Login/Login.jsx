@@ -124,10 +124,10 @@ function Login(props) {
         theme: "dark",
       });
     }
-    else if (data.password.length < 4) {
-      setpassworderror("Please Enter a Correct Password")
+    else if (data.password.length < 8) {
+      setpassworderror("Please Enter Minimum 8 charter")
       formIsValid = false;
-      toast.error("Please Enter a correct Password", {
+      toast.error("Please Enter a Correct Password Minimum 8 charter", {
         theme: "dark",
       });
     }

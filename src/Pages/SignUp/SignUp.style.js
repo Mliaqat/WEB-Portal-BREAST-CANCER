@@ -8,6 +8,11 @@ export const Signupstyle = styled.article`
   width: 100%;
   height: 150%;
 
+  .error {
+    color: red !important;
+     font-size: 1.5rem;
+  }
+
   .card {
     background-color: rgba(0, 0, 0, 0.4) !important;
     margin: 12rem 0rem 4rem 0rem;

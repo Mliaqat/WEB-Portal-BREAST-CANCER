@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import VerticalCard from '../../../CommnonStyle/Card/VerticalCard';
 import { AdminDashboardStyle } from './AdminDashboard.style';
 import cancerimg from "../../../../Asset/images/cancer.png"
@@ -9,6 +10,23 @@ import 'chart.js/auto';
 
 
 function AdminDashboard() {
+
+
+    const usercount = `${process.env.REACT_APP_BASE_URL}/users/get/count`;
+    const [ucount, setucount] = useState();
+
+    useEffect(() => {
+        getuser();
+    }, []);
+
+    const getuser = async () => {
+        await axios.get(usercount).then((res) => {
+            setucount(res.data.userCount);
+          
+        });
+    };
+
+
 
     const data = {
         labels: ['Patient', 'Doctor'],
@@ -36,8 +54,6 @@ function AdminDashboard() {
             }
         ]
     }
-
-
     const options = {
         title: {
             display: true,
@@ -46,12 +62,14 @@ function AdminDashboard() {
     }
 
 
+
+
     return (
         <AdminDashboardStyle>
             <article className='Cards'>
-                <VerticalCard icon={cancerimg} label="Total Cases" count="324" />
-                <VerticalCard icon={patentimg} label="Total Patient" count="324" />
-                <VerticalCard icon={doctorimg} label="Total Doctor" count="324" />
+                <VerticalCard icon={cancerimg} label="Total Cases" count={ucount} />
+                <VerticalCard icon={patentimg} label="Total Patient" count="23" />
+                <VerticalCard icon={doctorimg} label="Total Doctor" count="12" />
             </article>
 
             <article className='chartlayouts'>

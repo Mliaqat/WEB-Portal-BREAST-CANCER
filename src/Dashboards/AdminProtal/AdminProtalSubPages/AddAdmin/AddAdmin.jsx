@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { DeleteIcon } from "../../../../Asset/Icon/Icon";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { AddDoctorStyle } from "../AddDoctor/AddDoctor.style";
+import { TableStyle } from "../../../CommnonStyle/Dashboard.style";
 
 function AddAdmin() {
   const [data, setData] = useState({
@@ -18,6 +20,9 @@ function AddAdmin() {
   });
 
   const url = `${process.env.REACT_APP_BASE_URL}/users/signup`;
+  const geturl = `${process.env.REACT_APP_BASE_URL}/users`;
+  const [userdata, setuserData] = useState([]);
+
   const reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
   var regexp = new RegExp("^[0-9+]{5}-[0-9+]{7}-[0-9]{1}$");
 
@@ -76,6 +81,32 @@ function AddAdmin() {
     }
   };
 
+
+ 
+  useEffect(() => {
+    getuser();
+  }, []);
+
+  const getuser = async () => {
+    await axios.get(geturl).then((res) => {
+      setuserData(res.data);
+      console.log(res.data);
+    });
+  };
+
+  const deleteuser = (id) => {
+    axios
+      .delete(`${geturl}/${id}`)
+      .then((res) => {
+        console.log(res);
+        getuser();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+
  
 
   return (
@@ -83,10 +114,98 @@ function AddAdmin() {
       <ToastContainer />
 
       <AddDoctorStyle>
+
+      <button type="button" className="openbtn" data-bs-toggle="modal" data-bs-target="#myModal">
+    Add Admin
+  </button>
+
+      <TableStyle>
+      <h2 className="title">Manage Admin</h2>
+      <hr className="mb-5"></hr>
+
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">Sr#</th>
+            <th scope="col">Patient ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">DOB</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {userdata &&
+            userdata
+              .filter((userdata) => userdata.role === "admin").slice(0).reverse()
+              .map((userdata, index) => {
+                return (
+                  <tr key={index}>
+                    <td data-label="Sr#">{index + 1}</td>
+                    <td data-label="Patient ID">{userdata?.cnic}</td>
+                    <td data-label="Name">{userdata?.first_name}</td>
+                    <td data-label="Date">{userdata?.dob} </td>
+                    <td data-label="Action">
+                    <article className="action-buttons-wrapper">
+                      <button
+                        className="action-button"
+                        data-bs-toggle="modal" data-bs-target="#myModal1"                
+                      >
+                        <DeleteIcon />
+                      </button>
+                    </article>
+                    <div class="modal" id="myModal1">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                
+                      <div class="modal-header">
+                        <h4 class="modal-title">Delete Item</h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                      </div>
+                
+                     
+                      <div class="modal-body">
+                        Are you sure?
+                      </div>
+                
+                     
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" onClick={()=>deleteuser(userdata?._id)} data-bs-dismiss="modal">Delete</button>
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                      </div>
+                
+                    </div>
+                  </div>
+                </div>
+                
+                  </td>
+                  </tr>
+                );
+              })}
+        </tbody>
+      </table>
+    </TableStyle>
+
+    
+{/* <!-- The Modal --> */}
+<div className="modal" id="myModal">
+  <div className="modal-dialog w-100">
+    <div className="modal-content">
+
+
+   
+      {/* <!-- Modal Header --> */}
+      <div className="modal-header">
+        <h4 className="modal-title">Add Admin</h4>
+        <button type="button" className="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      {/* <!-- Modal body --> */}
+      <div className="modal-body">
+      
         <div id="signupbg">
-          <article className="container pb-5 pt-5">
+          <article className="container pb-1 pt-1">
             <article className="card ">
-              <h2 className="card-header ">Add Admin</h2>
+             
 
               <article className="form-layout">
                 <div className="form-group">
@@ -225,7 +344,19 @@ function AddAdmin() {
             </article>
           </article>
         </div>
-      </AddDoctorStyle>
+      
+      </div>     
+
+     
+
+    </div>
+    
+   
+  </div>
+
+</div>
+</AddDoctorStyle>
+
     </>
   );
 }

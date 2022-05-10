@@ -3,7 +3,7 @@ import axios from "axios";
 import { DeleteIcon } from "../../../../Asset/Icon/Icon";
 import { TableStyle } from "../../../CommnonStyle/Dashboard.style";
 
-function ManageDoctor() {
+function ManageAdmin() {
   const url = `${process.env.REACT_APP_BASE_URL}/users`;
   const [data, setData] = useState([]);
 
@@ -75,4 +75,4 @@ function ManageDoctor() {
   );
 }
 
-export default ManageDoctor;
+export default ManageAdmin;

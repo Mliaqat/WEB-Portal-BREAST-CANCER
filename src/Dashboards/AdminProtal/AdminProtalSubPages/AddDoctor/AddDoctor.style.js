@@ -7,6 +7,24 @@ export const AddDoctorStyle = styled.article`
   width: 100%;
   height: 150%; */
 
+  .modal-content {
+    
+    width: 800px !important;
+
+    @media (max-with:1000px) {
+      width: 100%;
+    }
+  }
+
+  .openbtn{
+    ${CommonButton}
+    border-radius: 1rem;
+    padding: .5rem;
+    position: absolute;
+    right: 2rem;
+
+  }
+
   .card {
     /* background-color: rgba(0, 0, 0, 0.4) !important; */
     margin: 0rem 0rem 4rem 0rem;

@@ -1,231 +1,347 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { DeleteIcon } from "../../../../Asset/Icon/Icon";
 import { AddDoctorStyle } from "./AddDoctor.style";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { TableStyle } from "../../../CommnonStyle/Dashboard.style";
 
 
 function AddDoctor() {
 
-    const [data, setData] = useState({
-        first_name: "",
-        last_name: "",
-        email: "",
-        phone_no: "",
-        cnic: "",
-        address: "",
-        experince: "",
-        eduction: "",
-        gender: "",
-        dob: "",
-        password: "",
-        role: "doctor"
-    })
+  const [data, setData] = useState({
+    first_name: "",
+    last_name: "",
+    email: "",
+    phone_no: "",
+    cnic: "",
+    address: "",
+    experince: "",
+    eduction: "",
+    gender: "",
+    dob: "",
+    password: "",
+    role: "doctor"
+  })
 
-    const url = `${process.env.REACT_APP_BASE_URL}/users/signup`;
-    const reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-    var regexp = new RegExp('^[0-9+]{5}-[0-9+]{7}-[0-9]{1}$');  
+  const url = `${process.env.REACT_APP_BASE_URL}/users/signup`;
+  const userurl = `${process.env.REACT_APP_BASE_URL}/users`;
+  const [userdata, setuserData] = useState([]);
+  const reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+  var regexp = new RegExp('^[0-9+]{5}-[0-9+]{7}-[0-9]{1}$');
 
 
-    const handleInputChange = (e) => {
-        setData({
-            ...data,
-            [e.target.name]: e.target.value
-        });
+  const handleInputChange = (e) => {
+    setData({
+      ...data,
+      [e.target.name]: e.target.value
+    });
 
-    };
+  };
 
-    const submit = async (e) => {
-        e.preventDefault();
-        let formIsValid = true;
-        if (data.first_name == "" || data.email == "" || data.password == "" || data.phone_no == "") {
-            formIsValid = false
-            toast.error("Please Fill All field", {
-                theme: 'dark'
-            });
-        }
+  const submit = async (e) => {
+    e.preventDefault();
+    let formIsValid = true;
+    if (data.first_name == "" || data.email == "" || data.password == "" || data.phone_no == "") {
+      formIsValid = false
+      toast.error("Please Fill All field", {
+        theme: 'dark'
+      });
+    }
 
-        if(reg.test(data.email) === false){
-            formIsValid = false;
-            toast.error("Please Enter a Valid Email", {
-              theme: "dark",
-            });
-        }
-      
-        if (!regexp.test(data.cnic)) {
-      
-          formIsValid = false;
-          toast.error("Please Enter a Valid Cnic", {
-            theme: "dark",
-          });
-      
-      
-        }
+    if (reg.test(data.email) === false) {
+      formIsValid = false;
+      toast.error("Please Enter a Valid Email", {
+        theme: "dark",
+      });
+    }
 
-        // ------------Post Api-----------------
+    if (!regexp.test(data.cnic)) {
 
-        if (formIsValid) {
-            try {
-                const res = await axios.post(url, data)
-                console.log(res)
-                toast.success("Signup Successfully", {
-                    theme: 'dark'
-                });
-            } catch (error) {
-                console.log(error);
-                toast.error("Invalid credentials", {
-                    theme: 'dark'
-                });
-            }
+      formIsValid = false;
+      toast.error("Please Enter a Valid Cnic", {
+        theme: "dark",
+      });
 
-        }
 
     }
 
+    // ------------Post Api-----------------
+
+    if (formIsValid) {
+      try {
+        const res = await axios.post(url, data)
+        console.log(res)
+        toast.success("Signup Successfully", {
+          theme: 'dark'
+        });
+      } catch (error) {
+        console.log(error);
+        toast.error("Invalid credentials", {
+          theme: 'dark'
+        });
+      }
+
+    }
+
+  }
 
 
-    return (
 
-        <>
-            <ToastContainer
-            />
+  useEffect(() => {
+    getuser();
+  }, []);
 
-            <AddDoctorStyle >
+  const getuser = async () => {
+    await axios.get(userurl).then((res) => {
+      setuserData(res.data);
+      console.log(res.data);
+    });
+  };
+
+  const deleteuser = (id) => {
+    axios
+      .delete(`${userurl}/${id}`)
+      .then((res) => {
+        console.log(res);
+        getuser();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+
+
+  return (
+
+    <>
+      <ToastContainer
+      />
+      <AddDoctorStyle >
+
+        <button type="button" className="openbtn" data-bs-toggle="modal" data-bs-target="#myModal">
+          Add doctor
+        </button>
+
+        <TableStyle>
+          <h2 className="title">Manage Doctor</h2>
+          <hr className="mb-5"></hr>
+
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Sr#</th>
+                <th scope="col">Patient ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">DOB</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {userdata &&
+                userdata.filter((userdata) => userdata.role === "doctor").slice(0).reverse()
+                  .map((userdata, index) => {
+                    return (
+                      <tr key={index}>
+                        <td data-label="Sr#">{index + 1}</td>
+                        <td data-label="Patient ID">{userdata?.cnic}</td>
+                        <td data-label="Name">{userdata?.first_name}</td>
+                        <td data-label="Date">{userdata?.dob} </td>
+                        <td data-label="Action">
+                    <article className="action-buttons-wrapper">
+                      <button
+                        className="action-button"
+                        data-bs-toggle="modal" data-bs-target="#myModal1"                
+                      >
+                        <DeleteIcon />
+                      </button>
+                    </article>
+                    <div class="modal" id="myModal1">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                
+                      <div class="modal-header">
+                        <h4 class="modal-title">Delete Item</h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                      </div>
+                
+                     
+                      <div class="modal-body">
+                        Are you sure?
+                      </div>
+                
+                     
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" onClick={()=>deleteuser(userdata?._id)} data-bs-dismiss="modal">Delete</button>
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                      </div>
+                
+                    </div>
+                  </div>
+                </div>
+                
+                  </td>
+                      </tr>
+                    );
+                  })
+               
+              }
+            </tbody>
+          </table>
+        </TableStyle>
+
+
+
+
+
+
+
+        <div className="modal" id="myModal">
+          <div className="modal-dialog">
+            <div className="modal-content">
+
+              <div className="modal-header">
+                <h4 className="modal-title">Add Doctor</h4>
+                <button type="button" className="btn-close" data-bs-dismiss="modal"></button>
+              </div>
+
+              <div className="modal-body">
+
                 <div id="signupbg">
 
 
-                    <article className="container pb-5 pt-5">
-                        <article className="card ">
-
-                            <h2 className="card-header ">Add Doctor</h2>
-
-                            <article className="form-layout" >
-
-                                <div className="form-group">
-                                    <label> First Name:</label>
-                                    <input
-                                        type="text"
-                                        className="form-control"
-                                        placeholder="Enter First name"
-                                        name="first_name"
-                                        onChange={(e) => handleInputChange(e)}
-                                        required
-                                    />
-                                </div>
-                                <div className="form-group">
-                                    <label>Last Name:</label>
-                                    <input
-                                        type="text"
-                                        className="form-control"
-                                        placeholder="Enter Last name"
-                                        name="last_name"
-                                        onChange={(e) => handleInputChange(e)}
-                                        required
-                                    />
-                                </div>
-
-                                <div className="form-group ">
-                                    <label>Email Address:</label>
-                                    <input
-                                        type="Email"
-                                        className="form-control"
-                                        placeholder="abcd@gmail.com"
-                                        name="email"
-                                        onChange={(e) => handleInputChange(e)}
-                                        required
-                                    />
-                                </div>
+                  <article className="container pb-1 pt-1">
+                    <article className="card ">
 
 
-                                <div className="form-group">
-                                    <label>Phone Number:</label>
-                                    <input
-                                        type="tel"
-                                        className="form-control"
-                                        placeholder="+9212345678"
-                                        name="phone_no"
-                                        onChange={(e) => handleInputChange(e)}
-                                        required
-                                    />
-                                </div>
-                                <div className="form-group">
-                                <div className="d-flex justify-content-between">
-                  <label>CNIC:</label>
-                  <p><small>Please Enter with Dash(-)</small></p>
-                  </div>
-                                    <input
-                                        type="dec"
-                                        className="form-control"
-                                        placeholder="37105-8091337-1"
-                                        name="cnic"
-                                        onChange={(e) => handleInputChange(e)}
-                                        required
-                                    />
-                                </div>
+                      <article className="form-layout" >
 
-                                <div className="form-group">
-                                    <label>Experinces:</label>
-                                    <input
-                                        type="number"
-                                        className="form-control"
-                                        placeholder="5 year"
-                                        name="experince"
-                                        onChange={(e) => handleInputChange(e)}
-                                        required
-                                    />
-                                </div>
-                                <div className="form-group">
-                                    <label>Eduction:</label>
-                                    <input
-                                        type="text"
-                                        className="form-control"
-                                        placeholder="MBBS"
-                                        name="eduction"
-                                        onChange={(e) => handleInputChange(e)}
-                                        required
-                                    />
-                                </div>
-                                <div className="form-group">
-                                    <label>Gender:</label>
-                                    <select
-                                        className="select"
-                                        name="gender"
-                                        value={data.gender}
-                                        onChange={(e) => handleInputChange(e)}>
-                                        <option>Select Gender</option>
-                                        <option value="Male">Male</option>
-                                        <option value="Female">Female</option>
-                                    </select>
-                                </div>
-                                <div className="form-group">
-                                    <label>Address:</label>
-                                    <input
-                                        type="text"
-                                        className="form-control"
-                                        placeholder="Enter Address"
-                                        name="address"
-                                        onChange={(e) => handleInputChange(e)}
-                                        required
-                                    />
+                        <div className="form-group">
+                          <label> First Name:</label>
+                          <input
+                            type="text"
+                            className="form-control"
+                            placeholder="Enter First name"
+                            name="first_name"
+                            onChange={(e) => handleInputChange(e)}
+                            required
+                          />
+                        </div>
+                        <div className="form-group">
+                          <label>Last Name:</label>
+                          <input
+                            type="text"
+                            className="form-control"
+                            placeholder="Enter Last name"
+                            name="last_name"
+                            onChange={(e) => handleInputChange(e)}
+                            required
+                          />
+                        </div>
 
-                                </div>
+                        <div className="form-group ">
+                          <label>Email Address:</label>
+                          <input
+                            type="Email"
+                            className="form-control"
+                            placeholder="abcd@gmail.com"
+                            name="email"
+                            onChange={(e) => handleInputChange(e)}
+                            required
+                          />
+                        </div>
 
 
-                                <div className="form-group">
-                                    <label>DOB:</label>
-                                    <input
-                                        type="date"
-                                        className="form-control"
-                                        placeholder="Enter DOB"
-                                        name="dob"
-                                        onChange={(e) => handleInputChange(e)}
-                                        required
-                                    />
-                                </div>
+                        <div className="form-group">
+                          <label>Phone Number:</label>
+                          <input
+                            type="tel"
+                            className="form-control"
+                            placeholder="+9212345678"
+                            name="phone_no"
+                            onChange={(e) => handleInputChange(e)}
+                            required
+                          />
+                        </div>
+                        <div className="form-group">
+                          <div className="d-flex justify-content-between">
+                            <label>CNIC:</label>
+                            <p><small>Please Enter with Dash(-)</small></p>
+                          </div>
+                          <input
+                            type="dec"
+                            className="form-control"
+                            placeholder="37105-8091337-1"
+                            name="cnic"
+                            onChange={(e) => handleInputChange(e)}
+                            required
+                          />
+                        </div>
+
+                        <div className="form-group">
+                          <label>Experinces:</label>
+                          <input
+                            type="number"
+                            className="form-control"
+                            placeholder="5 year"
+                            name="experince"
+                            onChange={(e) => handleInputChange(e)}
+                            required
+                          />
+                        </div>
+                        <div className="form-group">
+                          <label>Eduction:</label>
+                          <input
+                            type="text"
+                            className="form-control"
+                            placeholder="MBBS"
+                            name="eduction"
+                            onChange={(e) => handleInputChange(e)}
+                            required
+                          />
+                        </div>
+                        <div className="form-group">
+                          <label>Gender:</label>
+                          <select
+                            className="select"
+                            name="gender"
+                            value={data.gender}
+                            onChange={(e) => handleInputChange(e)}>
+                            <option>Select Gender</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                          </select>
+                        </div>
+                        <div className="form-group">
+                          <label>Address:</label>
+                          <input
+                            type="text"
+                            className="form-control"
+                            placeholder="Enter Address"
+                            name="address"
+                            onChange={(e) => handleInputChange(e)}
+                            required
+                          />
+
+                        </div>
+
+
+                        <div className="form-group">
+                          <label>DOB:</label>
+                          <input
+                            type="date"
+                            className="form-control"
+                            placeholder="Enter DOB"
+                            name="dob"
+                            onChange={(e) => handleInputChange(e)}
+                            required
+                          />
+                        </div>
 
 
 
-                                {/* <div className="form-group">
+                        {/* <div className="form-group">
                                     <label htmlFor="Password">Enter Password:</label>
                                     <input
                                         type="Password"
@@ -238,7 +354,7 @@ function AddDoctor() {
 
                                     />
                                 </div> */}
-                                {/* <label className="checkbox" >
+                        {/* <label className="checkbox" >
                                         <input
                                             type="checkbox"
                                             required="required"
@@ -250,39 +366,52 @@ function AddDoctor() {
                                         </article>
                                     </label> */}
 
-                                <div className="form-group">
-                                    <label>Enter Password:</label>
-                                    <input
-                                        type="Password"
-                                        className="form-control"
-                                        id="CPassword"
-                                        placeholder="*******"
-                                        name="password"
-                                        onChange={(e) => handleInputChange(e)}
-                                        required
-                                        minLength="8"
-                                    />
-                                    <span id="message"></span>
-                                </div>
-                            </article>
+                        <div className="form-group">
+                          <label>Enter Password:</label>
+                          <input
+                            type="Password"
+                            className="form-control"
+                            id="CPassword"
+                            placeholder="*******"
+                            name="password"
+                            onChange={(e) => handleInputChange(e)}
+                            required
+                            minLength="8"
+                          />
+                          <span id="message"></span>
+                        </div>
+                      </article>
 
 
-                            <article className="d-flex justify-content-center mt-0 mb-3">
-                                <button className="login-btn btn" onClick={(e) => submit(e)}>
-                                    Add Doctor
-                                </button>
+                      <article className="d-flex justify-content-center mt-0 mb-3">
+                        <button className="login-btn btn" onClick={(e) => submit(e)}>
+                          Add Doctor
+                        </button>
 
-                            </article>
-
-
+                      </article>
 
 
-                        </article>
+
+
                     </article>
+                  </article>
                 </div>
-            </AddDoctorStyle>
-        </>
-    )
+
+              </div>
+
+
+
+            </div>
+          </div>
+        </div>
+
+
+
+
+      </AddDoctorStyle>
+
+    </>
+  )
 }
 
 export default AddDoctor;

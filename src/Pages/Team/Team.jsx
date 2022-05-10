@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from "react-router-dom";
 import { Facebook, Instagram, Linkedin, Twitter } from '../../Asset/Icon/Icon';
 import { Teamstyle } from './Team.style';
 import Breaker from "../../Asset/images/breaker.png";
@@ -47,24 +46,24 @@ function Team() {
                                             </h5>
                                             <ul className=" mb-2list-inline mt-3">
                                                 <li className="list-inline-item">
-                                                    <label href="#" className="icon">
+                                                    <a href="https://www.facebook.com" className="icon">
                                                         <Facebook />
-                                                    </label>
+                                                    </a>
                                                 </li>
                                                 <li className="list-inline-item">
-                                                    <label href="#" className="icon">
+                                                    <a href="https://twitter.com/" className="icon">
                                                         <Twitter />
-                                                    </label>
+                                                    </a>
                                                 </li>
                                                 <li className="list-inline-item">
-                                                    <label href="#" className="icon">
+                                                    <a href="https://www.instagram.com/" className="icon">
                                                         <Instagram />
-                                                    </label>
+                                                    </a>
                                                 </li>
                                                 <li className="list-inline-item">
-                                                    <label href="#" className="icon">
+                                                    <a href="https://www.linkedin.com/feed/" className="icon">
                                                         <Linkedin />
-                                                    </label>
+                                                    </a>
                                                 </li>
                                             </ul>
                                         </div>

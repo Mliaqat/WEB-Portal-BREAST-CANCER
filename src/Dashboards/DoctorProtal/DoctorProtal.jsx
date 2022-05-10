@@ -115,7 +115,7 @@ function DoctorProtal() {
             <section className="home">
                 <article className='header-nav'>
                     <article className='profile-wrapper'>
-                        <h4>Hi, {sessionStorage.getItem("lname")} Welcome to our System</h4>
+                        <h4>Hi, {sessionStorage.getItem("fname")} Welcome to our System</h4>
                         <article>
                             <h4 onClick={handleLogout} className="logouttxt">Logout</h4>
                         </article>

@@ -44,26 +44,26 @@ function Navbar() {
                         <div className="mx-auto"></div>
                         <ul className="navbar-nav">
                             <NavLink to="/" className={({ isActive }) => (isActive ? 'is-active' : 'nav-item')}>
-                                <a className="nav-link text-white" >Home</a>
+                                <label className="nav-link text-white" >Home</label>
                             </NavLink>
                             <NavLink to="/About" className={({ isActive }) => (isActive ? 'is-active' : 'nav-item')}>
-                                <a className="nav-link text-white">About</a>
+                                <label className="nav-link text-white">About</label>
                             </NavLink>
                             <NavLink to="/Team" className={({ isActive }) => (isActive ? 'is-active' : 'nav-item')}>
-                                <a className="nav-link text-white">Team</a>
+                                <label className="nav-link text-white">Team</label>
                             </NavLink>
                             <NavLink to="/Contact" className={({ isActive }) => (isActive ? 'is-active' : 'nav-item')}>
-                                <a className="nav-link text-white">Contact Us</a>
+                                <label className="nav-link text-white">Contact Us</label>
                             </NavLink>
                             {
                                 login ? (
 
-                                    <a onClick={handlelogin} className='nav-item'>
-                                    <a className="nav-link text-white">Account</a>
-                                </a>
+                                    <label onClick={handlelogin} className='nav-item'>
+                                    <label className="nav-link text-white">Account</label>
+                                </label>
                                 ):(
                                     <NavLink to="/Login" className={({ isActive }) => (isActive ? 'is-active' : 'nav-item')}>
-                                    <a className="nav-link text-white">Login</a>
+                                    <label className="nav-link text-white">Login</label>
                                 </NavLink>
                                 )
                            

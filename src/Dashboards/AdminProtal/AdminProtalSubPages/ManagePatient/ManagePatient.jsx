@@ -14,7 +14,6 @@ function ManagePatient() {
   const getuser = async () => {
     await axios.get(url).then((res) => {
       setData(res.data);
-      console.log(res.data);
     });
   };
 
@@ -25,7 +24,6 @@ function ManagePatient() {
  }).catch((err)=>{
    console.log(err)
  })
-
   }
   return (
     <TableStyle>
@@ -43,8 +41,6 @@ function ManagePatient() {
           </tr>
         </thead>
         <tbody>
-
-
           {data &&
             data.filter(data => data.role === "user").slice(0).reverse().map((data, index) => {
               return (
@@ -57,14 +53,39 @@ function ManagePatient() {
                     <article className="action-buttons-wrapper">
                       <button
                         className="action-button"
-                        onClick={()=>deleteuser(data?._id)}
-
+                        data-bs-toggle="modal" data-bs-target="#myModal1"                
                       >
                         <DeleteIcon />
                       </button>
                     </article>
+                    <div class="modal" id="myModal1">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                
+                      <div class="modal-header">
+                        <h4 class="modal-title">Delete Item</h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                      </div>
+                
+                     
+                      <div class="modal-body">
+                        Are you sure?
+                      </div>
+                
+                     
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" onClick={()=>deleteuser(data?._id)} data-bs-dismiss="modal">Delete</button>
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                      </div>
+                
+                    </div>
+                  </div>
+                </div>
+                
                   </td>
                 </tr>
+
+                
               )
             }
             )
