@@ -66,6 +66,9 @@ function AdminDashboard() {
 
     return (
         <AdminDashboardStyle>
+            <article>
+               <p className="ms-3 mb-2"> Home&gt;Dashboard </p>
+            </article>
             <article className='Cards'>
                 <VerticalCard icon={cancerimg} label="Total Cases" count={ucount} />
                 <VerticalCard icon={patentimg} label="Total Patient" count="23" />

@@ -13,7 +13,8 @@ import "react-toastify/dist/ReactToastify.css";
 function SignUp() {
   const url = `${process.env.REACT_APP_BASE_URL}/users/signup`;
   const reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-  var regexp = new RegExp('^[0-9+]{5}-[0-9+]{7}-[0-9]{1}$');              
+  var regexp = new RegExp('^[0-9+]{5}-[0-9+]{7}-[0-9]{1}$'); 
+  var pattern = new RegExp(/^[0-9\b]+$/);             
   const [passwordShown, setPasswordShown] = useState(false);
   const [error, seterror] = useState("")
   const [data, setData] = useState({
@@ -59,6 +60,17 @@ function SignUp() {
           theme: "dark",
         });
     }
+    else if (data.phone_no.length !== 11) {
+      formIsValid = false;
+      toast.error("Please Enter Valid Phone no", {
+        theme: "dark",
+      });
+    }else if(!pattern.test(data.phone_no)){
+      formIsValid = false;
+      toast.error("Please Enter valid Phone no", {
+        theme: "dark",
+      });
+    } 
      else if(data.password.length < 8){
         formIsValid = false;
         toast.error("Please Enter a Correct Password Minimum 8 charter", {

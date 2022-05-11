@@ -29,6 +29,7 @@ function DocViewAllPatient() {
             <th scope="col">Patient ID</th>
             <th scope="col">Report Date</th>
             <th scope="col">Result</th>
+            <th scope="col">Description</th>
             <th scope="col">Download</th>
           </tr>
         </thead>
@@ -38,10 +39,10 @@ function DocViewAllPatient() {
               return (
                 <tr>
                   <td data-label="Patient ID">{data?.cnic}</td>
-                  <td data-label="Date">03/01/2016 </td>
+                  <td data-label="Date">{data?.date}</td>
                   <td data-label="Result">{data?.type_of_cancer}</td>
-
-                  <td>
+                  <td data-label="Description">{data?.description}</td>
+                  <td data-label="Download">
                     <div className="download-link">
                       <PDFDownloadLink
                         document={<PdfDocument data={data} />}

@@ -28,6 +28,7 @@ function Contact() {
     e.preventDefault();
     let formIsValid = true;
     const reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    var pattern = new RegExp(/^[0-9\b]+$/);
     if (data.user_name === "") {
       formIsValid = false;
       toast.error("Please Add User Name", {
@@ -38,12 +39,18 @@ function Contact() {
       toast.error("Please Add Your Email", {
         theme: "dark",
       });
-    } else if (data.phone_no === "") {
+    } else if (data.phone_no.length !== 11) {
       formIsValid = false;
-      toast.error("Please Add Your Phone no", {
+      toast.error("Please Enter Valid Phone no", {
         theme: "dark",
       });
-    } else if (data.discripition === "") {
+    }else if(!pattern.test(data.phone_no)){
+      formIsValid = false;
+      toast.error("Please Enter valid Phone no", {
+        theme: "dark",
+      });
+    } 
+    else if (data.discripition === "") {
       formIsValid = false;
       toast.error("Please Add Description", {
         theme: "dark",
@@ -61,7 +68,7 @@ function Contact() {
       try {
         const res = await axios.post(url, data);
         console.log(res);
-        toast.success("Your Query Add Successfully", {
+        toast.success("Query Send Successfully", {
           theme: "dark",
         });
       } catch (error) {

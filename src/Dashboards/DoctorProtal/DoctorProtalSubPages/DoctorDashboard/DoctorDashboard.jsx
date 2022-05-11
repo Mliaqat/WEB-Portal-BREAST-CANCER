@@ -179,6 +179,9 @@ function DoctorDashboard() {
     return (
         <DoctorDashboardStyle>
                <ToastContainer />
+               <article>
+               <p className="ms-3 mb-2"> Home&gt;Dashboard </p>
+            </article>
             <article className="file">
                 <label>
                     <h4 className="mb-3">Upload Only Histopathology Image:</h4>

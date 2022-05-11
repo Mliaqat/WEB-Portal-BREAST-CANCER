@@ -29,6 +29,7 @@ function AddDoctor() {
   const [userdata, setuserData] = useState([]);
   const reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
   var regexp = new RegExp('^[0-9+]{5}-[0-9+]{7}-[0-9]{1}$');
+  var pattern = new RegExp(/^[0-9\b]+$/);
 
 
   const handleInputChange = (e) => {
@@ -49,14 +50,24 @@ function AddDoctor() {
       });
     }
 
-    if (reg.test(data.email) === false) {
+    else if (reg.test(data.email) === false) {
       formIsValid = false;
       toast.error("Please Enter a Valid Email", {
         theme: "dark",
       });
     }
-
-    if (!regexp.test(data.cnic)) {
+    else if (data.phone_no.length !== 11) {
+      formIsValid = false;
+      toast.error("Please Enter Valid Phone no", {
+        theme: "dark",
+      });
+    } else if (!pattern.test(data.phone_no)) {
+      formIsValid = false;
+      toast.error("Please Enter valid Phone no", {
+        theme: "dark",
+      });
+    }
+    else if (!regexp.test(data.cnic)) {
 
       formIsValid = false;
       toast.error("Please Enter a Valid Cnic", {
@@ -71,7 +82,7 @@ function AddDoctor() {
     if (formIsValid) {
       try {
         const res = await axios.post(url, data)
-        console.log(res)
+        getuser();
         toast.success("Signup Successfully", {
           theme: 'dark'
         });
@@ -149,43 +160,43 @@ function AddDoctor() {
                         <td data-label="Name">{userdata?.first_name}</td>
                         <td data-label="Date">{userdata?.dob} </td>
                         <td data-label="Action">
-                    <article className="action-buttons-wrapper">
-                      <button
-                        className="action-button"
-                        data-bs-toggle="modal" data-bs-target="#myModal1"                
-                      >
-                        <DeleteIcon />
-                      </button>
-                    </article>
-                    <div class="modal" id="myModal1">
-                  <div class="modal-dialog">
-                    <div class="modal-content">
-                
-                      <div class="modal-header">
-                        <h4 class="modal-title">Delete Item</h4>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                      </div>
-                
-                     
-                      <div class="modal-body">
-                        Are you sure?
-                      </div>
-                
-                     
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" onClick={()=>deleteuser(userdata?._id)} data-bs-dismiss="modal">Delete</button>
-                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-                      </div>
-                
-                    </div>
-                  </div>
-                </div>
-                
-                  </td>
+                          <article className="action-buttons-wrapper">
+                            <button
+                              className="action-button"
+                              data-bs-toggle="modal" data-bs-target="#myModal1"
+                            >
+                              <DeleteIcon />
+                            </button>
+                          </article>
+                          <div class="modal" id="myModal1">
+                            <div class="modal-dialog">
+                              <div class="modal-content">
+
+                                <div class="modal-header">
+                                  <h4 class="modal-title">Delete Item</h4>
+                                  <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                </div>
+
+
+                                <div class="modal-body">
+                                  Are you sure?
+                                </div>
+
+
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-primary" onClick={() => deleteuser(userdata?._id)} data-bs-dismiss="modal">Delete</button>
+                                  <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                                </div>
+
+                              </div>
+                            </div>
+                          </div>
+
+                        </td>
                       </tr>
                     );
                   })
-               
+
               }
             </tbody>
           </table>
@@ -199,7 +210,7 @@ function AddDoctor() {
 
         <div className="modal" id="myModal">
           <div className="modal-dialog">
-            <div className="modal-content">
+            <div className="modal-content add-model">
 
               <div className="modal-header">
                 <h4 className="modal-title">Add Doctor</h4>

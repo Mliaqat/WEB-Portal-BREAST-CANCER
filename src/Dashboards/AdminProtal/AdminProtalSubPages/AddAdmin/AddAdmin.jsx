@@ -25,6 +25,7 @@ function AddAdmin() {
 
   const reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
   var regexp = new RegExp("^[0-9+]{5}-[0-9+]{7}-[0-9]{1}$");
+  var pattern = new RegExp(/^[0-9\b]+$/);             
 
   const handleInputChange = (e) => {
     setData({
@@ -48,14 +49,25 @@ function AddAdmin() {
       });
     }
 
-    if (reg.test(data.email) === false) {
+    else if (reg.test(data.email) === false) {
         formIsValid = false;
         toast.error("Please Enter a Valid Email", {
           theme: "dark",
         });
       }
+      else if (data.phone_no.length !== 11) {
+        formIsValid = false;
+        toast.error("Please Enter Valid Phone no", {
+          theme: "dark",
+        });
+      }else if(!pattern.test(data.phone_no)){
+        formIsValid = false;
+        toast.error("Please Enter valid Phone no", {
+          theme: "dark",
+        });
+      } 
     
-      if (!regexp.test(data.cnic)) {
+     else if (!regexp.test(data.cnic)) {
         formIsValid = false;
         toast.error("Please Enter a Valid Cnic", {
           theme: "dark",
@@ -68,7 +80,7 @@ function AddAdmin() {
     if (formIsValid) {
       try {
         const res = await axios.post(url, data);
-        console.log(res);
+       getuser();
         toast.success("Signup Successfully", {
           theme: "dark",
         });
@@ -189,7 +201,7 @@ function AddAdmin() {
 {/* <!-- The Modal --> */}
 <div className="modal" id="myModal">
   <div className="modal-dialog w-100">
-    <div className="modal-content">
+    <div className="modal-content add-model">
 
 
    

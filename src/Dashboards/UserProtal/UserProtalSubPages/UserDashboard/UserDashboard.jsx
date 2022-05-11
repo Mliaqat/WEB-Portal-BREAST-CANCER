@@ -21,6 +21,9 @@ function UserDashboard() {
 
   return (
     <TableStyle>
+        <article>
+               <p className="ms-3 mb-2"> Home&gt;Dashboard </p>
+            </article>
       <h2 className="title">View Report</h2>
       <hr className="mb-5"></hr>
 
