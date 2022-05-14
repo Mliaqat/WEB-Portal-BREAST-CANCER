@@ -35,7 +35,7 @@ export const DoctorDashboardStyle = styled.main`
   .viewresult {
     margin-top: 5rem;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
     justify-content: center;
     align-items: center;
     justify-items: center;
@@ -56,7 +56,6 @@ export const DoctorDashboardStyle = styled.main`
 
   .product-image-wrapper {
     display: flex;
-
     height: 30rem;
     width: 30rem;
     background: ${({ theme }) => theme.colors.ALTO_GRAY_COLOR};
@@ -70,8 +69,7 @@ export const DoctorDashboardStyle = styled.main`
     }
 
     .preview-image {
-      width: 100%;
-      height: 100%;
+      overflow: hidden;
       display: inline-block;
       border: 0.1rem solid ${({ theme }) => theme.colors.PRIMARY_COLOR};
     }

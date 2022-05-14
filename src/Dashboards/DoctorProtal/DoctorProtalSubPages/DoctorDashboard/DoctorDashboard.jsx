@@ -10,7 +10,7 @@ import "react-toastify/dist/ReactToastify.css";
 const Modal = ({ handleClose, type, userdata }) => {
     const url = `${process.env.REACT_APP_BASE_URL}/reports/report`;
 
- 
+
 
     const docName = sessionStorage.getItem("fname");
     const [selectedValue, setSelectedValue] = useState();
@@ -19,13 +19,13 @@ const Modal = ({ handleClose, type, userdata }) => {
     const data = {
         doctor_name: docName,
         cnic: selectedValue,
-        type_of_cancer: type, 
-        description:desc       
+        type_of_cancer: type,
+        description: desc
     };
 
 
     const submit = async (e) => {
-        e.preventDefault();      
+        e.preventDefault();
 
         if (selectedValue) {
             try {
@@ -41,10 +41,10 @@ const Modal = ({ handleClose, type, userdata }) => {
                 });
             }
         }
-        else{
+        else {
             toast.error("Please Select Cnic No", {
-                        theme: "dark",
-                    });
+                theme: "dark",
+            });
         }
     };
 
@@ -90,7 +90,7 @@ const Modal = ({ handleClose, type, userdata }) => {
                                 value={type}
                                 readOnly
                                 name="type_of_cancer"
-                               
+
                             ></input>
 
                             <h3 className="my-4">Add description:</h3>
@@ -123,6 +123,7 @@ function DoctorDashboard() {
     const [result, setResult] = useState();
     const [previewimage, setPreViewImage] = useState();
     const [show, setShow] = useState(false);
+    const [checkimg, setcheckimg] = useState(true)
     const [reportdata, setReportdata] = useState("");
 
 
@@ -134,29 +135,36 @@ function DoctorDashboard() {
         setShow(false);
     };
 
-    
+
 
     const add = async () => {
-        let formData = new FormData();
-        formData.append("file", image);
-        await axios({
-            method: "post",
-            url: "http://localhost:5000/predict",
-            data: formData,
-        })
-            .then((response) => {
-                setResult(response.data);
+        if (checkimg) {
+            let formData = new FormData();
+            formData.append("file", image);
+            await axios({
+                method: "post",
+                url: "http://localhost:5000/predict",
+                data: formData,
             })
-            .catch((error) => {
-             
-                toast.error("Please Try Letter Api Error", {
-                    theme: "dark",
-                  });
+                .then((response) => {
+                    setResult(response.data);
+                })
+                .catch((error) => {
 
+                    toast.error("Please Try Letter Api Error", {
+                        theme: "dark",
+                    });
+
+                });
+        } else {
+            toast.error("Please Add Valid Image", {
+                theme: "dark",
             });
+        }
     };
 
-   
+
+    // -------------upload Image--------------
 
     const filehandler = (e) => {
         setImage(e.target.files[0]);
@@ -164,6 +172,22 @@ function DoctorDashboard() {
         if (e.target.files.length !== 0) {
             setPreViewImage(URL.createObjectURL(e.target.files[0]));
         }
+    };
+
+    const onImgLoad = ({ target: img }) => {
+        const { offsetHeight, offsetWidth } = img;
+        console.log(offsetHeight, offsetWidth);
+        if (offsetHeight == 460 && offsetWidth == 700) {
+            setcheckimg(true)
+        } else {
+            setcheckimg(false)
+        }
+    };
+
+    const clear = () => {
+        setImage(null);
+        setPreViewImage(null)
+        setResult(null)
     };
 
     useEffect(() => {
@@ -178,14 +202,14 @@ function DoctorDashboard() {
 
     return (
         <DoctorDashboardStyle>
-               <ToastContainer />
-               <article>
-               <p className="ms-3 mb-2"> Home&gt;Dashboard </p>
+            <ToastContainer />
+            <article>
+                <p className="ms-3 mb-2"> Home&gt;Dashboard </p>
             </article>
             <article className="file">
                 <label>
                     <h4 className="mb-3">Upload Only Histopathology Image:</h4>
-                    <input type="file" onChange={filehandler} accept=".jpeg , .png" />
+                    <input type="file" onChange={filehandler} />
                 </label>
                 <button className="btn mx-3" onClick={() => add()}>
                     View Result
@@ -193,11 +217,7 @@ function DoctorDashboard() {
             </article>
 
             <article className="viewresult">
-                {previewimage && (
-                    <article>
-                        <h3>Uploded Image</h3>
-                    </article>
-                )}
+
 
                 {result && (
                     <>
@@ -210,15 +230,11 @@ function DoctorDashboard() {
                     </>
                 )}
 
-                {previewimage && (
-                    <article>
-                        <img className="preview-image" src={previewimage}></img>
-                    </article>
-                )}
+
                 {result && (
                     <>
                         <article>
-                            <h4>{result?.class}</h4>
+                            <h4 className="fw-bold">{result?.class}</h4>
                         </article>
                         <article className="d-flex flex-column">
                             <button
@@ -227,11 +243,23 @@ function DoctorDashboard() {
                             >
                                 Add Report
                             </button>
+                            <button
+                                className="btn mt-2"
+                                onClick={() => clear()}
+                            >
+                                Clear Result
+                            </button>
+
                         </article>
                     </>
                 )}
 
             </article>
+            {previewimage && (
+                <article className="text-center mt-2">
+                    <img onLoad={onImgLoad} src={previewimage}></img>
+                </article>
+            )}
             {show && <Modal type={reportdata} userdata={data} handleClose={hideModal} />}
         </DoctorDashboardStyle>
     );

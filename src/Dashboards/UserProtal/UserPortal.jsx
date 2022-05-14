@@ -57,7 +57,7 @@ function UserProtal() {
 
                     <Link to="/" className="text logo-text">
                         <span className="name">User</span>
-                        <span className="profession">Protal</span>
+                        <span className="profession">Portal</span>
                     </Link>
                     <hr></hr>
 

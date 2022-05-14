@@ -51,7 +51,7 @@ function DoctorProtal() {
 
                     <Link to="/" className="text logo-text">
                         <span className="name">Doctor</span>
-                        <span className="profession">Protal</span>
+                        <span className="profession">Portal</span>
                     </Link>
                     <hr></hr>
 
