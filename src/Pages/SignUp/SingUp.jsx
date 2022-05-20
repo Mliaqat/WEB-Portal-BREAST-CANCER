@@ -6,17 +6,20 @@ import vedio from "../../Asset/vedio/signupvedio.mp4";
 import { Signupstyle } from "./SignUp.style";
 import Navbar from "../../Component/Navbar/Navbar";
 import Footer from "../../Component/Footer/Footer";
-import { BsFillEyeFill,BsFillEyeSlashFill } from "react-icons/bs";
+import { BsFillEyeFill, BsFillEyeSlashFill } from "react-icons/bs";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 function SignUp() {
   const url = `${process.env.REACT_APP_BASE_URL}/users/signup`;
   const reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-  var regexp = new RegExp('^[0-9+]{5}-[0-9+]{7}-[0-9]{1}$'); 
-  var pattern = new RegExp(/^[0-9\b]+$/);             
+  var regexp = new RegExp('^[0-9+]{5}-[0-9+]{7}-[0-9]{1}$');
+  var pattern = new RegExp(/^[0-9\b]+$/);
   const [passwordShown, setPasswordShown] = useState(false);
   const [error, seterror] = useState("")
+  const [pherror, setpherror] = useState("")
+  const [cnicerror, setcnicerror] = useState("")
+  const [passworderror, setpassworderror] = useState("")
   const [data, setData] = useState({
     first_name: "",
     last_name: "",
@@ -31,13 +34,16 @@ function SignUp() {
 
   const handleInputChange = (e) => {
     seterror(null)
+    setpherror(null)
+    setcnicerror(null)
+    setpassworderror(null)
     setData({
       ...data,
       [e.target.name]: e.target.value,
     });
   };
 
-  
+
 
   const submit = async (e) => {
     e.preventDefault();
@@ -53,44 +59,48 @@ function SignUp() {
         theme: "dark",
       });
     }
-   else if(reg.test(data.email) === false){
-        formIsValid = false;
-        seterror("Enter a Valid Email")
-        toast.error("Please Enter a Valid Email", {
-          theme: "dark",
-        });
+    else if (reg.test(data.email) === false) {
+      formIsValid = false;
+      seterror("Enter a Valid Email")
+      toast.error("Please Enter a Valid Email", {
+        theme: "dark",
+      });
     }
     else if (data.phone_no.length !== 11) {
       formIsValid = false;
+      setpherror("Enter a Valid Ph no")
       toast.error("Please Enter Valid Phone no", {
         theme: "dark",
       });
-    }else if(!pattern.test(data.phone_no)){
+    } else if (!pattern.test(data.phone_no)) {
       formIsValid = false;
+      setpherror("Enter a Valid Ph no")
       toast.error("Please Enter valid Phone no", {
         theme: "dark",
       });
-    } 
-     else if(data.password.length < 8){
-        formIsValid = false;
-        toast.error("Please Enter a Correct Password Minimum 8 charter", {
-          theme: "dark",
-        });
     }
-  
-  else if (!regexp.test(data.cnic)) {
+    else if (data.password.length < 8) {
+      formIsValid = false;
+      setpassworderror("Enter a Minium 8 charcter Password")
+      toast.error("Please Enter a Correct Password Minimum 8 charter", {
+        theme: "dark",
+      });
+    }
 
-    formIsValid = false;
-    toast.error("Please Enter a Valid Cnic", {
-      theme: "dark",
-    });
+    else if (!regexp.test(data.cnic)) {
+
+      formIsValid = false;
+      setcnicerror("Enter a Valid Cnic")
+      toast.error("Please Enter a Valid Cnic", {
+        theme: "dark",
+      });
 
 
-  }
+    }
 
 
 
-// ---------------Post Api---------------
+    // ---------------Post Api---------------
 
 
     if (formIsValid) {
@@ -112,7 +122,7 @@ function SignUp() {
   // Show Password
   const togglePassword = () => {
     setPasswordShown(!passwordShown);
-};
+  };
 
   return (
     <>
@@ -147,7 +157,7 @@ function SignUp() {
                     onChange={(e) => handleInputChange(e)}
                     required
                   />
-                  
+
                 </div>
                 <div className="form-group">
                   <label>Last Name:</label>
@@ -171,9 +181,9 @@ function SignUp() {
                     onChange={(e) => handleInputChange(e)}
                     required
                   />
-                   {error &&
-                      <label className="error">{error}</label>
-                    }
+                  {error &&
+                    <label className="error">{error}</label>
+                  }
                 </div>
 
                 <div className="form-group">
@@ -186,11 +196,14 @@ function SignUp() {
                     onChange={(e) => handleInputChange(e)}
                     required
                   />
+                  {pherror &&
+                    <label className="error">{pherror}</label>
+                  }
                 </div>
                 <div className="form-group">
                   <div className="d-flex justify-content-between">
-                  <label>CNIC:</label>
-                  <p className="text-white"><small>Please Enter with Dash(-)</small></p>
+                    <label>CNIC:</label>
+                    <p className="text-white"><small>Please Enter with Dash(-)</small></p>
                   </div>
                   <input
                     type="dec"
@@ -200,6 +213,9 @@ function SignUp() {
                     onChange={(e) => handleInputChange(e)}
                     required
                   />
+                  {cnicerror &&
+                    <label className="error">{cnicerror}</label>
+                  }
                 </div>
                 <div className="form-group">
                   <label>Address:</label>
@@ -263,7 +279,10 @@ function SignUp() {
                     minLength="8"
                   />
                   <label className="eyeicon" onClick={togglePassword}>
-                      {passwordShown ?    <BsFillEyeSlashFill  /> :  <BsFillEyeFill  /> }</label>
+                    {passwordShown ? <BsFillEyeSlashFill /> : <BsFillEyeFill />}</label>
+                  {passworderror &&
+                    <label className="error">{passworderror}</label>
+                  }
                 </div>
               </article>
 

@@ -40,8 +40,8 @@ export const DashboardStyle = styled.main`
     justify-content: center;
     font-size: 2rem;
   }
-  .logouttxt{
-    cursor:pointer;
+  .logouttxt {
+    cursor: pointer;
   }
 
   header {
@@ -237,6 +237,19 @@ export const TableStyle = styled.main`
     padding: 2rem 0;
   }
 
+  .search {
+    display: grid;
+    grid-template-columns: 35% 10rem;
+    align-items: end;
+    gap: 2rem;
+    margin-bottom: 1rem;
+  }
+  .b {
+    ${CommonButton}
+    padding:.2rem 1rem;
+    border-radius: 0.5rem;
+  }
+
   .btn_wrapper {
     display: flex;
     justify-content: space-between;
@@ -250,12 +263,12 @@ export const TableStyle = styled.main`
     font-size: 1.5rem;
   }
 
-  .icon{
-    display: flex;    
+  .icon {
+    display: flex;
     align-items: center;
-    gap:1rem;
-    img{
-      width:4rem
+    gap: 1rem;
+    img {
+      width: 4rem;
     }
   }
 
@@ -339,8 +352,6 @@ export const TableStyle = styled.main`
       }
 
       .action-buttons-wrapper {
-       
-
         .action-button {
           border: none;
           background: none;
