@@ -23,7 +23,7 @@ function About() {
                             </h4>
                             <br /> <br />
                             <p>
-                                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Facere aliquid fugit, quo, at expedita tempore quam a saepe recusandae distinctio voluptatibus dolorem veritatis dignissimos placeat quis? Libero fuga sint illo.
+                                Our target is to save lives through breast health education that focuses on breast cancer prevention, early detection, risk reduction and healthy lifestyle choices.
                             </p>
                             <br />
                             <h1>
@@ -36,7 +36,7 @@ function About() {
                             </h4>
                             <br />
                             <p className="my-4">
-                                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptates sint recusandae autem veniam nisi eius ducimus nihil, tenetur magni nobis praesentium numquam! Suscipit, in numquam. Aliquam repellat quam nesciunt ratione?
+                                Our target is to save lives through breast health education that focuses on breast cancer prevention, early detection, risk reduction and healthy lifestyle choices.
                             </p>
                         </div>
                     </div>

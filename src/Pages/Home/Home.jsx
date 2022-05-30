@@ -35,7 +35,7 @@ const Mission = () => {
 
             >
                 <h1>Our Mission</h1>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum nulla alias modi deserunt nihil rerum aspernatur eius omnis cumque quam eum eveniet blanditiis accusantium sunt quod, laudantium voluptatem quos iste.</p>
+                <p>Our mission is to prevent and cure breast cancer by advancing the world's most promising research. Breast cancer knows no age, gender or race.</p>
                 <a href="https://www.facebook.com" className="btn">Click Here!</a>
             </article>
         </Missionstyle>
