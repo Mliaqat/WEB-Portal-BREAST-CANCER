@@ -64,7 +64,7 @@ function AdminProtal() {
 
                     <Link to="/" className="text logo-text">
                         <span className="name">Admin</span>
-                        <span className="profession">Protal</span>
+                        <span className="profession">Portal</span>
                     </Link>
                     <hr></hr>
 
@@ -96,7 +96,7 @@ function AdminProtal() {
                                 </NavLink>
                             </article>
 
-                                     <article>
+                            <article>
                                 <NavLink to="adddoctor" className={({ isActive }) => (isActive ? 'is-active' : 'link')}>
                                     <article className='sidebaricon my-5' >
                                         <h2>

@@ -34,7 +34,7 @@ const Mission = () => {
             <article className="missioncontainer"
 
             >
-                <h1>OUR Mission</h1>
+                <h1>Our Mission</h1>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum nulla alias modi deserunt nihil rerum aspernatur eius omnis cumque quam eum eveniet blanditiis accusantium sunt quod, laudantium voluptatem quos iste.</p>
                 <a href="https://www.facebook.com" className="btn">Click Here!</a>
             </article>
@@ -74,7 +74,7 @@ const Heading = () => {
         <Headingstyle>
 
             <article >
-                <h1>Help support women in need</h1>
+                <h1>Help and support women</h1>
                 <h3>Donations are always appreciated, but there are lots of great ways to get involved.</h3>
             </article>
             <article>

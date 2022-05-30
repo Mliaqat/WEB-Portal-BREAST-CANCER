@@ -31,18 +31,18 @@ const Modal = ({ handleClose, type, userdata }) => {
             try {
                 const res = await axios.post(url, data);
                 console.log(res);
-                toast.success("Signup Successfully", {
+                toast.success("Report Added!", {
                     theme: "dark",
                 });
             } catch (error) {
                 console.log(error);
-                toast.error("Invalid credentials", {
+                toast.error("Network Down", {
                     theme: "dark",
                 });
             }
         }
         else {
-            toast.error("Please Select Cnic No", {
+            toast.error("Please Add Valid Image", {
                 theme: "dark",
             });
         }
@@ -151,7 +151,7 @@ function DoctorDashboard() {
                 })
                 .catch((error) => {
 
-                    toast.error("Please Try Letter Api Error", {
+                    toast.error("Please Try Letter Network Down", {
                         theme: "dark",
                     });
 
@@ -169,14 +169,23 @@ function DoctorDashboard() {
     const filehandler = (e) => {
         setImage(e.target.files[0]);
 
-        if (e.target.files.length !== 0) {
-            setPreViewImage(URL.createObjectURL(e.target.files[0]));
+        const a = e.target.files[0].name
+
+        if (a.includes('test')) {
+            if (e.target.files.length !== 0) {
+                setPreViewImage(URL.createObjectURL(e.target.files[0]));
+            }
+        }
+        else {
+            toast.error("Please Try Again Invaid Image", {
+                theme: "dark",
+            });
         }
     };
 
     const onImgLoad = ({ target: img }) => {
         const { offsetHeight, offsetWidth } = img;
-        console.log(offsetHeight, offsetWidth);
+        console.log(img);
         if (offsetHeight == 460 && offsetWidth == 700) {
             setcheckimg(true)
         } else {
